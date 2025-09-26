@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.14.36518.9 d17.14
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Signal-Lost", "Signal-Lost.vcxproj", "{70463DE2-55A7-4620-8603-9BE842291E55}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Signal-Lost", "Signal-Lost\Signal-Lost.vcxproj", "{70463DE2-55A7-4620-8603-9BE842291E55}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -26,6 +26,6 @@ Global
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {CBC41BA9-F0B6-4BFC-8C77-56A2F6DEB848}
+		SolutionGuid = {B901C094-26CC-4EA3-BCEA-2C6F03F7A582}
 	EndGlobalSection
 EndGlobal

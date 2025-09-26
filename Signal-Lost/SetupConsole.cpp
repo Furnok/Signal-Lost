@@ -1,7 +1,7 @@
 #include "Main.h"
 
 constexpr wstring_view appName = L"Signal Lost";
-constexpr wstring_view font = L"Clarendon";
+constexpr wstring_view fontName = L"Clarendon";
 
 struct ConsoleSettings 
 {
@@ -15,15 +15,15 @@ struct ScreenFont
 	int fontSize = 0;
 };
 
-constexpr ScreenFont fontMap[] =
-{
+constexpr auto fontMap = to_array<ScreenFont>(
+{ 
 	{3840, 34},
 	{2560, 30},
 	{1920, 26},
 	{1680, 22},
 	{1280, 18},
 	{0, 14},
-};
+});
 
 /// <summary>
 /// Setup the Name of the Console
@@ -60,17 +60,15 @@ static void CheckInstance()
 /// </summary>
 /// <param name="x"></param>
 /// <param name="y"></param>
-static void SetConsoleWindowPosition(HWND window, int width, int height)
+static void SetConsoleWindowPosition(HWND window, int screenWidth, int screenHeight)
 {
 	// Get the Console Window Size
 	RECT consoleRect{};
 	GetWindowRect(window, &consoleRect);
-	int consoleW = consoleRect.right - consoleRect.left;
-	int consoleH = consoleRect.bottom - consoleRect.top;
 
 	// Calculate
-	int x = (width - consoleW) / 2;
-	int y = (height - consoleH) / 2;
+	int x = (screenWidth - (consoleRect.right - consoleRect.left)) / 2;
+	int y = (screenHeight - (consoleRect.bottom - consoleRect.top)) / 2;
 
 	// Set the Position
 	SetWindowPos(window, nullptr, x, y, 0, 0, SWP_NOSIZE | SWP_NOZORDER);
@@ -119,14 +117,9 @@ static void SetConsoleFontSize(HANDLE outHandle, int size)
 	// Get the Current Font
 	if (GetCurrentConsoleFontEx(outHandle, FALSE, &info)) 
 	{
-		info.dwFontSize = 
-		{ 
-			0,
-			static_cast<SHORT>(size),
-		};
-
 		// Set the Font
-		wcscpy_s(info.FaceName, font.data());
+		info.dwFontSize.Y = static_cast<SHORT>(size);
+		wcscpy_s(info.FaceName, fontName.data());
 		SetCurrentConsoleFontEx(outHandle, FALSE, &info);
 	}
 }

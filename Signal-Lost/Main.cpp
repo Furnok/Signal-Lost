@@ -15,7 +15,7 @@ int main(int argc, char* argv[])
     file.CreateFileErrors(setupConsole);
 
     // No File
-    if (argv[1] == nullptr)
+    if (argc < 2)
     {
         // Read the File Errors
         file.ReadFileError(setupConsole, "NoFile");

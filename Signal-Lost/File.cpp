@@ -1,70 +1,68 @@
 #include "File.h"
 
+/// <summary>
+/// Get the Date and the Time
+/// </summary>
+/// <returns></returns>
 string File::DateTime()
 {
-	// Get the Date and the Time
 	const auto now = system_clock::now();
 
-	// Convert Time Point to Time_t Object
 	const time_t now_time_t = system_clock::to_time_t(now);
 
-	// Convert Time_t Object to a Local Time Struct
 	tm local{};
 	localtime_s(&local, &now_time_t);
 
-	// Format the Date and the Time
 	char buffer[20];
 	strftime(buffer, sizeof(buffer), "%Y-%m-%d_%H-%M-%S", &local);
 
 	return buffer;
 }
 
+/// <summary>
+/// Create the File Errors
+/// </summary>
+/// <param name="setupConsole"></param>
 void File::CreateFileErrors(SetupConsole& setupConsole)
 {
-	// Initialisation
 	filesystem::path path = filesystem::path(setupConsole.GetPathGameFolder()) / errorFolderName;
 	this->pathErrorsFolder = path.string() + '\\';
 
-	// Check Folder Exist
 	if (!filesystem::exists(path))
 	{
-		// Create the Folder
 		filesystem::create_directories(path);
 	}
 
 	const filesystem::path errorFile = path / this->errorsFileName;
 
-	// Check File Exist
 	if (!filesystem::exists(errorFile))
 	{
-		// Open File in Write-Only
 		ofstream outfile(errorFile, ios::out);
 
-		// Create All Errors
 		for (auto& [key, msg] : errors)
 		{
 			outfile << key << '=' << msg << endl;
 		}
 
-		// Close
 		outfile.close();
 	}
 }
 
+/// <summary>
+/// Read the File Errors
+/// </summary>
+/// <param name="setupConsole"></param>
+/// <param name="key"></param>
 void File::ReadFileError(SetupConsole& setupConsole, const string& key) const
 {
-	// Clean Console
 	system("cls");
 
 	setupConsole.SetTextColor(4);
 
-	// Initialisation
 	const filesystem::path path = filesystem::path(GetPathErrorsFolder()) / this->errorsFileName;
 
-	// Open File in Read-Only
 	ifstream infile(path, ios::in);
 
-	// Check File Exist
 	if (!infile)
 	{
 		cout << "Error: Unable to Open the Errors File!" << endl;
@@ -73,7 +71,6 @@ void File::ReadFileError(SetupConsole& setupConsole, const string& key) const
 	{
 		string line;
 
-		// Read Line by Line to Find the Key
 		while (getline(infile, line)) 
 		{
 			if (auto pos = line.find('='); pos != string::npos) 
@@ -82,7 +79,6 @@ void File::ReadFileError(SetupConsole& setupConsole, const string& key) const
 				{
 					cout << line.substr(pos + 1) << endl;
 
-					// Close
 					infile.close();
 
 					setupConsole.SetTextColor(7);
@@ -97,7 +93,6 @@ void File::ReadFileError(SetupConsole& setupConsole, const string& key) const
 		cout << "Error: Unable to Find the Error!" << endl;
 	}
 
-	// Close
 	infile.close();
 
 	setupConsole.SetTextColor(7);
@@ -107,63 +102,68 @@ void File::ReadFileError(SetupConsole& setupConsole, const string& key) const
 	exit(EXIT_SUCCESS);
 }
 
+/// <summary>
+/// Logs Manager for the Logs File
+/// </summary>
+/// <param name="setupConsole"></param>
+/// <param name="inputChoice"></param>
 void File::FileLog(SetupConsole& setupConsole, const string& inputChoice)
 {
-	// Check File Exist
 	if (this->pathLogsFolder.empty())
 	{
-		// Create the File Log
 		CreateFileLog(setupConsole, inputChoice);
 	}
 	else
 	{
-		// Add to the File Log
 		AddToFileLog(inputChoice);
 	}
 }
 
+/// <summary>
+/// Create the File Logs
+/// </summary>
+/// <param name="setupConsole"></param>
+/// <param name="inputChoice"></param>
 void File::CreateFileLog(SetupConsole& setupConsole, const string& inputChoice)
 {
-	// Initialisation
 	filesystem::path path = filesystem::path(setupConsole.GetPathGameFolder()) / this->logsFolderName;
 	this->pathLogsFolder = path.string() + '\\';
 
-	// Check Folder Exist
 	if (!filesystem::exists(path))
 	{
-		// Create the Folder
 		filesystem::create_directories(path);
 	}
 
-	// Add a Name and Date to the File
 	this->logsFileName += DateTime() + ".txt";
 
-	// Open File in Write-Only
 	ofstream outfile(path / this->logsFileName, ios::out);
 
 	//outfile << "Chapter " << chapter << ", " << "Scene " << scene << ", " << "Input Choice " << input << endl;
 
-	// Close
 	outfile.close();
 }
 
+/// <summary>
+/// Add to the File Logs
+/// </summary>
+/// <param name="inputChoice"></param>
 void File::AddToFileLog(const string& inputChoice) const
 {
-	// Initialisation
 	filesystem::path path = filesystem::path(GetPathLogsFolder()) / this->logsFileName;
 
-	// Open File in Write-Only
 	ofstream outfile(path, ios::app);
 
 	//outfile << "Chapter " << chapter << ", " << "Scene " << scene << ", " << "Input Choice " << input << endl;
 
-	// Close
 	outfile.close();
 }
 
+/// <summary>
+/// Read the Chapter File
+/// </summary>
+/// <param name="setupConsole"></param>
 void File::Read(SetupConsole& setupConsole)
 {
-	// Initialisation
 	string contentLine = "";
 	bool headerRead = false;
 
@@ -182,33 +182,26 @@ void File::Read(SetupConsole& setupConsole)
 	this->startTrustPoint = 0;
 	this->startSceneNumber = 0;
 
-	// Check is Text File
 	if (filesystem::path(this->pathChapter).extension() != ".txt")
 	{
 		ReadFileError(setupConsole, "BadFile");
 	}
 
-	// Check is Empty File
 	if (filesystem::file_size(this->pathChapter) == 0) 
 	{
 		ReadFileError(setupConsole, "FileEmpty");
 	}
 
-	// Open the File
 	ifstream infile(this->pathChapter, ios::in);
 
-	// Read Line by Line
 	while (getline(infile, contentLine))
 	{
-		// Add to the Content
 		this->contentChapter += contentLine;
 
-		// First Line of the Chapter
 		if (!headerRead)
 		{
 			headerRead = true;
 
-			// Read All Pairs Key=Value
 			for (smatch match; regex_search(contentLine, match, pairRegex); contentLine = match.suffix())
 			{
 				const string key = match[1];
@@ -250,7 +243,6 @@ void File::Read(SetupConsole& setupConsole)
 		}
 	}
 
-	// Check All Required Keys are Found
 	for (auto& [key, found] : keyFound) 
 	{
 		if (!found) 
@@ -259,6 +251,5 @@ void File::Read(SetupConsole& setupConsole)
 		}
 	}
 
-	// Close the File
 	infile.close();
 }

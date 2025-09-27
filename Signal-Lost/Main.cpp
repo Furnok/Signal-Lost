@@ -4,28 +4,21 @@
 
 int main(int argc, char* argv[])
 {
-    // Class Initialisation
     SetupConsole setupConsole;
     File file;
 
-    // Setup Console
     setupConsole.InitConsole();
 
-    // Create Files Errors
     file.CreateFileErrors(setupConsole);
 
-    // No File
     if (argc < 2)
     {
-        // Read the File Errors
         file.ReadFileError(setupConsole, "NoFile");
     }
     else
     {
-        // Path to Chapter Initialisation
         file.SetPathChapter(argv[1]);
 
-        // Read the Chapter
         file.Read(setupConsole);
     }
 

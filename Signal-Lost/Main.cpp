@@ -1,13 +1,21 @@
 #include "Main.h"
+#include "SetupConsole.h"
+#include "File.h"
 
 int main(int argc, char* argv[])
 {
-    // Setup Console
-    InitConsole();
+    // Class Initialisation
+    SetupConsole setupConsole;
+    File file;
 
-    cout << "Hello World!\n";
+    // Setup Console
+    setupConsole.InitConsole();
+
+    // Create Files Errors
+    file.CreateFileErrors(setupConsole);
 
     cout << "\nPress Enter to exit...\n";
     cin.get();
+
     return 0;
 }

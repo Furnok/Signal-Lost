@@ -1,34 +1,23 @@
-#include "Main.h"
+#include "SetupConsole.h"
 
-constexpr wstring_view appName = L"Signal Lost";
-constexpr wstring_view fontName = L"Clarendon";
-
-struct ConsoleSettings 
+/// <summary>
+/// Setup the Path of the Game
+/// </summary>
+void SetupConsole::SetupPath()
 {
-	int width = 120;
-	int height = 40;
-};
+	// Get the Path of the Executable Folder
+	wchar_t buffer[MAX_PATH];
+	GetModuleFileNameW(nullptr, buffer, MAX_PATH);
 
-struct ScreenFont 
-{
-	int minWidth = 0;
-	int fontSize = 0;
-};
-
-constexpr auto fontMap = to_array<ScreenFont>(
-{ 
-	{3840, 34},
-	{2560, 30},
-	{1920, 26},
-	{1680, 22},
-	{1280, 18},
-	{0, 14},
-});
+	filesystem::path exePath = buffer;
+	wstring pathFolder = exePath.parent_path().wstring() + L'\\';
+	this->pathGameFolder = string(pathFolder.begin(), pathFolder.end());
+}
 
 /// <summary>
 /// Setup the Name of the Console
 /// </summary>
-static void SetupName()
+void SetupConsole::SetupName() const
 {
 	// Name of the Console
 	SetConsoleTitleW(appName.data());
@@ -37,7 +26,7 @@ static void SetupName()
 /// <summary>
 /// Check if the Instance is Already Running
 /// </summary>
-static void CheckInstance()
+void SetupConsole::CheckInstance() const
 {
 	// Instance Running
 	HANDLE mutex = CreateMutexW(nullptr, TRUE, appName.data());
@@ -60,7 +49,7 @@ static void CheckInstance()
 /// </summary>
 /// <param name="x"></param>
 /// <param name="y"></param>
-static void SetConsoleWindowPosition(HWND window, int screenWidth, int screenHeight)
+void SetupConsole::CenterWindow(HWND window, int screenWidth, int screenHeight) const
 {
 	// Get the Console Window Size
 	RECT consoleRect{};
@@ -80,7 +69,7 @@ static void SetConsoleWindowPosition(HWND window, int screenWidth, int screenHei
 /// <param name="outHandle"></param>
 /// <param name="width"></param>
 /// <param name="height"></param>
-static void ResizeConsole(HANDLE outHandle, int width, int height)
+void SetupConsole::ResizeConsole(HANDLE outHandle, int width, int height) const
 {
 	COORD buffer 
 	{ 
@@ -107,7 +96,7 @@ static void ResizeConsole(HANDLE outHandle, int width, int height)
 /// </summary>
 /// <param name="outHandle"></param>
 /// <param name="size"></param>
-static void SetConsoleFontSize(HANDLE outHandle, int size)
+void SetupConsole::SetFontSize(HANDLE outHandle, int size) const
 {
 	CONSOLE_FONT_INFOEX info
 	{ 
@@ -124,10 +113,17 @@ static void SetConsoleFontSize(HANDLE outHandle, int size)
 	}
 }
 
+void SetupConsole::SetTextColor(int indexColor) const
+{
+	HANDLE consoleHandle = GetStdHandle(STD_OUTPUT_HANDLE);
+
+	SetConsoleTextAttribute(consoleHandle, indexColor);
+}
+
 /// <summary>
 /// Set the Console
 /// </summary>
-static void DefineConsole(HWND window)
+void SetupConsole::DefineConsole(HWND window) const
 {
 	// Get the Handles
 	HANDLE in = GetStdHandle(STD_INPUT_HANDLE);
@@ -144,7 +140,7 @@ static void DefineConsole(HWND window)
 	int screenW = desk.right - desk.left;
 	int screenH = desk.bottom - desk.top;
 
-	ConsoleSettings consoleSettings;
+	ConsoleSettings consoleSettings{};
 	ResizeConsole(out, consoleSettings.width, consoleSettings.height);
 
 	// Set the Font Size by the Screen Width
@@ -152,7 +148,7 @@ static void DefineConsole(HWND window)
 	{
 		if (screenW >= entry.minWidth) 
 		{
-			SetConsoleFontSize(out, entry.fontSize);
+			SetFontSize(out, entry.fontSize);
 			break;
 		}
 	}
@@ -161,7 +157,7 @@ static void DefineConsole(HWND window)
 	Sleep(1);
 
 	// Center the Console
-	SetConsoleWindowPosition(window, screenW, screenH);
+	CenterWindow(window, screenW, screenH);
 
 	// Hide the Cursor
 	CONSOLE_CURSOR_INFO ci
@@ -186,11 +182,13 @@ static void DefineConsole(HWND window)
 /// <summary>
 /// Initialise the Console
 /// </summary>
-void InitConsole()
+void SetupConsole::InitConsole()
 {
 	HWND window = GetConsoleWindow();
 
 	ShowWindow(window, SW_HIDE);
+
+	SetupPath();
 
 	SetupName();
 

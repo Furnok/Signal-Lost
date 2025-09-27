@@ -127,12 +127,15 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="File.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="SetupConsole.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="File.h" />
     <ClInclude Include="Main.h" />
     <ClInclude Include="resource.h" />
+    <ClInclude Include="SetupConsole.h" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Signal-Lost.rc" />

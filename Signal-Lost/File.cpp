@@ -259,10 +259,6 @@ void File::Read(SetupConsole& setupConsole)
 		}
 	}
 
-	cout << "Chapter = " << this->chapterNumber << ", Name = " << this->chapterName << ", Trust = " << this->startTrustPoint << ", StartScene = " << this->startSceneNumber << endl;
-
-	cout << "Content = " << this->contentChapter << endl;
-
 	// Close the File
 	infile.close();
 }

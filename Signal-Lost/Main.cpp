@@ -22,9 +22,10 @@ int main(int argc, char* argv[])
     }
     else
     {
-        // Path Chapter Initialisation
+        // Path to Chapter Initialisation
         file.SetPathChapter(argv[1]);
 
+        // Read the Chapter
         file.Read(setupConsole);
     }
 

@@ -2,6 +2,12 @@
 #include "SetupConsole.h"
 #include "File.h"
 
+/// <summary>
+/// Main Function
+/// </summary>
+/// <param name="argc"></param>
+/// <param name="argv"></param>
+/// <returns></returns>
 int main(int argc, char* argv[])
 {
     SetupConsole setupConsole;

@@ -14,6 +14,23 @@ int main(int argc, char* argv[])
     // Create Files Errors
     file.CreateFileErrors(setupConsole);
 
+    // No File
+    if (argv[1] == nullptr)
+    {
+        // Read the File Errors
+        file.ReadFileError(setupConsole, "NoFile");
+    }
+    else
+    {
+        // Path Chapter Initialisation
+        file.SetPathChapter(argv[1]);
+
+        file.Read(setupConsole);
+    }
+
+
+
+
     cout << "\nPress Enter to exit...\n";
     cin.get();
 

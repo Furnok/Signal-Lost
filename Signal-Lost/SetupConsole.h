@@ -3,11 +3,10 @@
 #define _CRT_SECURE_NO_WARNINGS
 
 #include <windows.h>
-#include <filesystem>
 #include <string>
-#include <iostream>
 #include <string_view>
 #include <array>
+#include <filesystem>
 
 using namespace std;
 
@@ -15,12 +14,13 @@ class SetupConsole
 {
 public:
     void InitConsole();
+
     void ResizeConsole(HANDLE out, int w, int h) const;
     void SetFontSize(HANDLE out, int size) const;
     void SetTextColor(int indexColor) const;
     void CenterWindow(HWND window, int screenW, int screenH) const;
 
-    string GetPathGameFolder() const { return pathGameFolder; }
+    [[nodiscard]] string GetPathGameFolder() const noexcept { return pathGameFolder; }
 
 private:
 	void SetupPath();

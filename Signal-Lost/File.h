@@ -6,6 +6,9 @@
 #include <fstream>
 #include <unordered_map>
 #include <chrono>
+#include <conio.h>
+#include <iostream>
+#include <regex>
 
 using namespace std;
 using namespace chrono;
@@ -14,17 +17,23 @@ class File
 {
 public:
 	static string DateTime();
-	void CreateFileErrors(SetupConsole& setupConsole);
-	void ReadFileError(SetupConsole& setupConsole, const string& name) const;
-	void FileLog(SetupConsole& setupConsole, string inputChoice);
-	void CreateFileLog(SetupConsole& setupConsole, string inputChoice);
-	void AddToFileLog(SetupConsole& setupConsole, string inputChoice) const;
-	string Read(string pathChapter) const;
 
-	string GetPathErrorsFolder() const { return pathErrorsFolder; }
-	string GetPathLogsFolder() const { return pathLogsFolder; }
+	void CreateFileErrors(SetupConsole& setupConsole);
+	void ReadFileError(SetupConsole& setupConsole, const string& key) const;
+
+	void FileLog(SetupConsole& setupConsole, const string& inputChoice);
+
+	void Read(SetupConsole& setupConsole);
+
+	[[nodiscard]] string GetPathErrorsFolder() const noexcept { return pathErrorsFolder; }
+	[[nodiscard]] string GetPathLogsFolder() const noexcept { return pathLogsFolder; }
+
+	void SetPathChapter(string pathChapter) { this->pathChapter = move(pathChapter); }
 
 private:
+	void CreateFileLog(SetupConsole& setupConsole, const string& inputChoice);
+	void AddToFileLog(const string& inputChoice) const;
+
 	string errorFolderName = "Errors";
 	string logsFolderName = "Logs";
 
@@ -34,12 +43,26 @@ private:
 	string errorsFileName = "Errors.txt";
 	string logsFileName = "Logs_";
 
+	string pathChapter = "";
+	string contentChapter = "";
+
+	int chapterNumber = 0;
+	string chapterName = "";
+	int startTrustPoint = 0;
+	int startSceneNumber = 0;
+
+	bool startTrustSet = false;
+
 	unordered_map<string, string> errors
 	{
-		{"BadFile", "Bad File!"},
-		{"FileEmpty", "File Empty!"},
-		{"NoSceneExist", "Scene Doesn't Exist!"},
-		{"NoFile", "No File Exist!"},
-		{"NoChapterExist", "Chapter Doesn't Exist!"},
+		{"BadFile", "The File is not a Text File!"},
+		{"FileEmpty", "The File Chapter is Empty!"},
+		{"NoSceneExist", "The Scene doesn't Exist!"},
+		{"NoFile", "Need to have a File!"},
+		{"NoChapterExist", "The Chapter doesn't Exist!"},
+		{"ChapterNumber", "The Chapter Number Header is not a Number!"},
+		{"TrustNumber", "The Trust Number Header is not a Number!"},
+		{"SceneNumber", "The Scene Number Header is not a Number!"},
+		{"HeaderCorrupt", "The Header is Corrupt!"},
 	};
 };

@@ -7,6 +7,7 @@
 #include <iostream>
 #include <windows.h>
 #include <conio.h>
+#include <thread>
 
 using namespace std;
 
@@ -18,8 +19,10 @@ public:
 	[[nodiscard]] bool GetShowMainMenu() const noexcept { return this->showMainMenu; }
 
 private:
-	void UpdateSettingSoundActivated(Utils& utils, SetupConsole& setupConsole);
-	void UpdateSettingFontSize(Utils& utils, SetupConsole& setupConsole);
+	void DrawBox(Utils& utils, int left, int top, int width, int height) const;
+
+	void UpdateSettingSoundActivated(Utils& utils, SetupConsole& setupConsole, int right, int top);
+	void UpdateSettingFontSize(Utils& utils, SetupConsole& setupConsole, int right, int top);
 	void ShowSettings(Utils& utils, SetupConsole& setupConsole);
 
 	void ShowCredits(Utils& utils, SetupConsole& setupConsole);

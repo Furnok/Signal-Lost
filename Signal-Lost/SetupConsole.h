@@ -19,7 +19,6 @@ public:
     void ResizeConsole(HANDLE out, int w, int h) const;
     void SetFontSize(HANDLE out, int size);
     void SetTextColor(int indexColor) const;
-    void CenterWindow(HWND window, int screenW, int screenH) const;
 
     [[nodiscard]] string GetPathGameFolder() const noexcept { return this->pathGameFolder; }
 	[[nodiscard]] bool GetSoundActivated() const noexcept { return this->soundActivated; }
@@ -31,6 +30,7 @@ private:
 	void SetupPath();
     void SetupName() const;
     void CheckInstance() const;
+    void CenterWindow(HWND window, int screenW, int screenH) const;
     void DefineConsole(HWND window);
 
     static constexpr wstring_view appName = L"Signal Lost";

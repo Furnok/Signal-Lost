@@ -1,6 +1,84 @@
 ﻿#include "SetupConsole.h"
 
 /// <summary>
+/// Initialise the Console
+/// </summary>
+void SetupConsole::InitConsole()
+{
+	HWND window = GetConsoleWindow();
+
+	ShowWindow(window, SW_HIDE);
+
+	SetupPath();
+
+	SetupName();
+
+	CheckInstance();
+
+	DefineConsole(window);
+
+	ShowWindow(window, SW_SHOW);
+}
+
+/// <summary>
+/// Size the Console
+/// </summary>
+/// <param name="outHandle"></param>
+/// <param name="width"></param>
+/// <param name="height"></param>
+void SetupConsole::ResizeConsole(HANDLE outHandle, int width, int height) const
+{
+	COORD buffer
+	{
+		static_cast<SHORT>(width), static_cast<SHORT>(height),
+	};
+
+	SetConsoleScreenBufferSize(outHandle, buffer);
+
+	SMALL_RECT rect
+	{
+		0,
+		0,
+		static_cast<SHORT>(width - 1),
+		static_cast<SHORT>(height - 1),
+	};
+
+	SetConsoleWindowInfo(outHandle, TRUE, &rect);
+}
+
+/// <summary>
+/// Set the Font of the Console
+/// </summary>
+/// <param name="outHandle"></param>
+/// <param name="size"></param>
+void SetupConsole::SetFontSize(HANDLE outHandle, int size)
+{
+	CONSOLE_FONT_INFOEX info
+	{
+		sizeof info,
+	};
+
+	if (GetCurrentConsoleFontEx(outHandle, FALSE, &info))
+	{
+		info.dwFontSize.Y = static_cast<SHORT>(size);
+		wcscpy_s(info.FaceName, fontName.data());
+		SetCurrentConsoleFontEx(outHandle, FALSE, &info);
+		this->textFontSize = size;
+	}
+}
+
+/// <summary>
+/// Set the Text Color of the Console
+/// </summary>
+/// <param name="indexColor"></param>
+void SetupConsole::SetTextColor(int indexColor) const
+{
+	HANDLE consoleHandle = GetStdHandle(STD_OUTPUT_HANDLE);
+
+	SetConsoleTextAttribute(consoleHandle, indexColor);
+}
+
+/// <summary>
 /// Setup the Path of the Game
 /// </summary>
 void SetupConsole::SetupPath()
@@ -52,64 +130,6 @@ void SetupConsole::CenterWindow(HWND window, int screenWidth, int screenHeight) 
 	int y = (screenHeight - (consoleRect.bottom - consoleRect.top)) / 2;
 
 	SetWindowPos(window, nullptr, x, y, 0, 0, SWP_NOSIZE | SWP_NOZORDER);
-}
-
-/// <summary>
-/// Size the Console
-/// </summary>
-/// <param name="outHandle"></param>
-/// <param name="width"></param>
-/// <param name="height"></param>
-void SetupConsole::ResizeConsole(HANDLE outHandle, int width, int height) const
-{
-	COORD buffer 
-	{ 
-		static_cast<SHORT>(width), static_cast<SHORT>(height),
-	};
-
-	SetConsoleScreenBufferSize(outHandle, buffer);
-
-	SMALL_RECT rect
-	{ 
-		0,
-		0,
-		static_cast<SHORT>(width - 1),
-		static_cast<SHORT>(height - 1),
-	};
-
-	SetConsoleWindowInfo(outHandle, TRUE, &rect);
-}
-
-/// <summary>
-/// Set the Font of the Console
-/// </summary>
-/// <param name="outHandle"></param>
-/// <param name="size"></param>
-void SetupConsole::SetFontSize(HANDLE outHandle, int size)
-{
-	CONSOLE_FONT_INFOEX info
-	{ 
-		sizeof info,
-	};
-
-	if (GetCurrentConsoleFontEx(outHandle, FALSE, &info)) 
-	{
-		info.dwFontSize.Y = static_cast<SHORT>(size);
-		wcscpy_s(info.FaceName, fontName.data());
-		SetCurrentConsoleFontEx(outHandle, FALSE, &info);
-		this->textFontSize = size;
-	}
-}
-
-/// <summary>
-/// Set the Text Color of the Console
-/// </summary>
-/// <param name="indexColor"></param>
-void SetupConsole::SetTextColor(int indexColor) const
-{
-	HANDLE consoleHandle = GetStdHandle(STD_OUTPUT_HANDLE);
-
-	SetConsoleTextAttribute(consoleHandle, indexColor);
 }
 
 /// <summary>
@@ -173,24 +193,4 @@ void SetupConsole::DefineConsole(HWND window)
 	}
 
 	DrawMenuBar(window);
-}
-
-/// <summary>
-/// Initialise the Console
-/// </summary>
-void SetupConsole::InitConsole()
-{
-	HWND window = GetConsoleWindow();
-
-	ShowWindow(window, SW_HIDE);
-
-	SetupPath();
-
-	SetupName();
-
-	CheckInstance();
-
-	DefineConsole(window);
-
-	ShowWindow(window, SW_SHOW);
 }

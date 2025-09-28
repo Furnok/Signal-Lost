@@ -5,14 +5,15 @@
 #include "SetupConsole.h"
 #include "Utils.h"
 #include "File.h"
+#include <thread>
 
 using namespace std;
 
 class InterfaceGame
 {
 public:
-	void TakeNumber(Utils& utils, int number, int posX, int posY);
 	void ShowTransitionChapter(Utils& utils, SetupConsole& setupConsole, File& file);
+	void DisplayInterfaceGame();
 
 	[[nodiscard]] bool GetNewChapter() const noexcept { return this->newChapter; }
 

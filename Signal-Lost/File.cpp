@@ -120,6 +120,104 @@ void File::FileLog(SetupConsole& setupConsole, const string& inputChoice)
 }
 
 /// <summary>
+/// Read the Chapter File
+/// </summary>
+/// <param name="setupConsole"></param>
+void File::Read(SetupConsole& setupConsole, char* pathChapter)
+{
+	this->pathChapter = pathChapter;
+
+	string contentLine = "";
+	bool headerRead = false;
+
+	regex pairRegex(R"(\[([^\]=]+)=([^\]]+)\])");
+	const vector<string> requiredKeys = { "Chapter", "Name", "Trust", "StartScene" };
+	unordered_map<string, bool> keyFound;
+	for (auto& key : requiredKeys)
+	{
+		keyFound[key] = false;
+	}
+
+	this->contentChapter.clear();
+
+	this->chapterNumber = 0;
+	this->chapterName.clear();
+	this->startTrustPoint = 0;
+	this->startSceneNumber = 0;
+
+	if (filesystem::path(this->pathChapter).extension() != ".txt")
+	{
+		ReadFileError(setupConsole, "BadFile");
+	}
+
+	if (filesystem::file_size(this->pathChapter) == 0)
+	{
+		ReadFileError(setupConsole, "FileEmpty");
+	}
+
+	ifstream infile(this->pathChapter, ios::in);
+
+	while (getline(infile, contentLine))
+	{
+		this->contentChapter += contentLine;
+
+		if (!headerRead)
+		{
+			headerRead = true;
+
+			for (smatch match; regex_search(contentLine, match, pairRegex); contentLine = match.suffix())
+			{
+				const string key = match[1];
+				const string value = match[2];
+
+				auto safeInt = [&](const char* errKey)
+					{
+						try
+						{
+							return stoi(value);
+						}
+						catch (...)
+						{
+							ReadFileError(setupConsole, errKey); return 0;
+						}
+					};
+
+				if (key == "Chapter")
+				{
+					chapterNumber = max(0, safeInt("ChapterNumber"));
+					keyFound[key] = true;
+				}
+				else if (key == "Name")
+				{
+					chapterName = value;
+					keyFound[key] = true;
+				}
+				else if (key == "Trust")
+				{
+					startTrustPoint = clamp(safeInt("TrustNumber"), 0, 100);
+					keyFound[key] = true;
+				}
+				else if (key == "StartScene")
+				{
+					startSceneNumber = max(0, safeInt("SceneNumber"));
+					keyFound[key] = true;
+				}
+			}
+		}
+	}
+
+	for (auto& [key, found] : keyFound)
+	{
+		if (!found)
+		{
+			ReadFileError(setupConsole, "HeaderCorrupt");
+		}
+	}
+
+	infile.close();
+}
+
+/// <summary>
 /// Create the File Logs
 /// </summary>
 /// <param name="setupConsole"></param>
@@ -156,102 +254,4 @@ void File::AddToFileLog(const string& inputChoice) const
 	//outfile << "Chapter " << chapter << ", " << "Scene " << scene << ", " << "Input Choice " << input << endl;
 
 	outfile.close();
-}
-
-/// <summary>
-/// Read the Chapter File
-/// </summary>
-/// <param name="setupConsole"></param>
-void File::Read(SetupConsole& setupConsole, char* pathChapter)
-{
-	this->pathChapter = pathChapter;
-
-	string contentLine = "";
-	bool headerRead = false;
-
-	regex pairRegex(R"(\[([^\]=]+)=([^\]]+)\])");
-	const vector<string> requiredKeys = { "Chapter", "Name", "Trust", "StartScene" };
-	unordered_map<string, bool> keyFound;
-	for (auto& key : requiredKeys)
-	{
-		keyFound[key] = false;
-	}
-
-	this->contentChapter.clear();
-
-	this->chapterNumber = 0;
-	this->chapterName.clear();
-	this->startTrustPoint = 0;
-	this->startSceneNumber = 0;
-
-	if (filesystem::path(this->pathChapter).extension() != ".txt")
-	{
-		ReadFileError(setupConsole, "BadFile");
-	}
-
-	if (filesystem::file_size(this->pathChapter) == 0) 
-	{
-		ReadFileError(setupConsole, "FileEmpty");
-	}
-
-	ifstream infile(this->pathChapter, ios::in);
-
-	while (getline(infile, contentLine))
-	{
-		this->contentChapter += contentLine;
-
-		if (!headerRead)
-		{
-			headerRead = true;
-
-			for (smatch match; regex_search(contentLine, match, pairRegex); contentLine = match.suffix())
-			{
-				const string key = match[1];
-				const string value = match[2];
-
-				auto safeInt = [&](const char* errKey)
-				{
-					try
-					{
-						return stoi(value);
-					}
-					catch (...)
-					{
-						ReadFileError(setupConsole, errKey); return 0;
-					}
-				};
-
-				if (key == "Chapter")
-				{
-					chapterNumber = max(0, safeInt("ChapterNumber"));
-					keyFound[key] = true;
-				}
-				else if (key == "Name")
-				{
-					chapterName = value;
-					keyFound[key] = true;
-				}
-				else if (key == "Trust")
-				{
-					startTrustPoint = clamp(safeInt("TrustNumber"), 0, 100);
-					keyFound[key] = true;
-				}
-				else if (key == "StartScene")
-				{
-					startSceneNumber = max(0, safeInt("SceneNumber"));
-					keyFound[key] = true;
-				}
-			}
-		}
-	}
-
-	for (auto& [key, found] : keyFound) 
-	{
-		if (!found) 
-		{
-			ReadFileError(setupConsole, "HeaderCorrupt");
-		}
-	}
-
-	infile.close();
 }

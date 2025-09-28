@@ -24,7 +24,7 @@ int main(int argc, char* argv[])
     }
     else
     {
-        while (1)
+        while (true)
         {
             file.Read(setupConsole, argv[1]);
 
@@ -35,10 +35,15 @@ int main(int argc, char* argv[])
 
             if (interfaceGame.GetNewChapter())
             {
-				interfaceGame.ShowTransitionChapter(utils, setupConsole, file);
+				//interfaceGame.ShowTransitionChapter(utils, setupConsole, file);
             }
 
-            system("cls");
+			interfaceGame.DisplayInterfaceGame();
+
+            while (!true)
+            {
+
+            }
         }
     }
 

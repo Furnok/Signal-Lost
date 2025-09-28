@@ -12,6 +12,11 @@ class Utils
 public:
 	void PosCursor(int posX, int posY) const;
 
+	void DrawDigit(int number, int posX, int posY) const;
+
+	void DrawLetter(char letter, int posX, int posY) const;
+
+private:
 	void NumberZero(int x, int y) const;
 	void NumberOne(int x, int y) const;
 	void NumberTwo(int x, int y) const;

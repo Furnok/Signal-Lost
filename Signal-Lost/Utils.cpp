@@ -6,6 +6,218 @@ void Utils::PosCursor(int posX, int posY) const
 	SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), pos);
 }
 
+void Utils::DrawDigit(int number, int posX, int posY) const
+{
+	switch (number)
+	{
+		case 0:
+		{
+			NumberZero(posX, posY);
+			break;
+		}
+		case 1:
+		{
+			NumberOne(posX, posY);
+			break;
+		}
+		case 2:
+		{
+			NumberTwo(posX, posY);
+			break;
+		}
+		case 3:
+		{
+			NumberThree(posX, posY);
+			break;
+		}
+		case 4:
+		{
+			NumberFour(posX, posY);
+			break;
+		}
+		case 5:
+		{
+			NumberFive(posX, posY);
+			break;
+		}
+		case 6:
+		{
+			NumberSix(posX, posY);
+			break;
+		}
+		case 7:
+		{
+			NumberSeven(posX, posY);
+			break;
+		}
+		case 8:
+		{
+			NumberEight(posX, posY);
+			break;
+		}
+		case 9:
+		{
+			NumberNine(posX, posY);
+			break;
+		}
+		default:
+		{
+			break;
+		}
+	}
+}
+
+void Utils::DrawLetter(char letter, int posX, int posY) const
+{
+	switch (letter)
+	{
+		case '-':
+		{
+			LetterHyphen(posX, posY);
+			break;
+		}
+		case ' ':
+		{
+			LetterSpace(posX, posY);
+			break;
+		}
+		case 'A':
+		{
+			LetterA(posX, posY);
+			break;
+		}
+		case 'B':
+		{
+			LetterB(posX, posY);
+			break;
+		}
+		case 'C':
+		{
+			LetterC(posX, posY);
+			break;
+		}
+		case 'D':
+		{
+			LetterD(posX, posY);
+			break;
+		}
+		case 'E':
+		{
+			LetterE(posX, posY);
+			break;
+		}
+		case 'F':
+		{
+			LetterF(posX, posY);
+			break;
+		}
+		case 'G':
+		{
+			LetterG(posX, posY);
+			break;
+		}
+		case 'H':
+		{
+			LetterH(posX, posY);
+			break;
+		}
+		case 'I':
+		{
+			LetterI(posX, posY);
+			break;
+		}
+		case 'J':
+		{
+			LetterJ(posX, posY);
+			break;
+		}
+		case 'K':
+		{
+			LetterK(posX, posY);
+			break;
+		}
+		case 'L':
+		{
+			LetterL(posX, posY);
+			break;
+		}
+		case 'M':
+		{
+			LetterM(posX, posY);
+			break;
+		}
+		case 'N':
+		{
+			LetterN(posX, posY);
+			break;
+		}
+		case 'O':
+		{
+			LetterO(posX, posY);
+			break;
+		}
+		case 'P':
+		{
+			LetterP(posX, posY);
+			break;
+		}
+		case 'Q':
+		{
+			LetterQ(posX, posY);
+			break;
+		}
+		case 'R':
+		{
+			LetterR(posX, posY);
+			break;
+		}
+		case 'S':
+		{
+			LetterS(posX, posY);
+			break;
+		}
+		case 'T':
+		{
+			LetterT(posX, posY);
+			break;
+		}
+		case 'U':
+		{
+			LetterU(posX, posY);
+			break;
+		}
+		case 'V':
+		{
+			LetterV(posX, posY);
+			break;
+		}
+		case 'W':
+		{
+			LetterW(posX, posY);
+			break;
+		}
+		case 'X':
+		{
+			LetterS(posX, posY);
+			break;
+		}
+		case 'Y':
+		{
+			LetterY(posX, posY);
+			break;
+		}
+		case 'Z':
+		{
+			LetterZ(posX, posY);
+			break;
+		}
+		default:
+		{
+			break;
+		}
+	}
+}
+
 void Utils::NumberZero(int x, int y) const
 {
 	PosCursor(x, y);

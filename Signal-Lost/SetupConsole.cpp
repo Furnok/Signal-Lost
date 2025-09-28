@@ -1,16 +1,15 @@
-#include "SetupConsole.h"
+﻿#include "SetupConsole.h"
 
 /// <summary>
 /// Setup the Path of the Game
 /// </summary>
 void SetupConsole::SetupPath()
 {
-	wchar_t buffer[MAX_PATH];
-	GetModuleFileNameW(nullptr, buffer, MAX_PATH);
+	wstring buffer(MAX_PATH, L'\0');
+	GetModuleFileNameW(nullptr, buffer.data(), static_cast<DWORD>(buffer.size()));
 
-	filesystem::path exePath = buffer;
-	wstring pathFolder = exePath.parent_path().wstring() + L'\\';
-	this->pathGameFolder = string(pathFolder.begin(), pathFolder.end());
+	filesystem::path exePath(buffer);
+	this->pathGameFolder = exePath.parent_path().string() + "\\";
 }
 
 /// <summary>
@@ -86,7 +85,7 @@ void SetupConsole::ResizeConsole(HANDLE outHandle, int width, int height) const
 /// </summary>
 /// <param name="outHandle"></param>
 /// <param name="size"></param>
-void SetupConsole::SetFontSize(HANDLE outHandle, int size) const
+void SetupConsole::SetFontSize(HANDLE outHandle, int size)
 {
 	CONSOLE_FONT_INFOEX info
 	{ 
@@ -98,6 +97,7 @@ void SetupConsole::SetFontSize(HANDLE outHandle, int size) const
 		info.dwFontSize.Y = static_cast<SHORT>(size);
 		wcscpy_s(info.FaceName, fontName.data());
 		SetCurrentConsoleFontEx(outHandle, FALSE, &info);
+		this->textFontSize = size;
 	}
 }
 
@@ -115,7 +115,7 @@ void SetupConsole::SetTextColor(int indexColor) const
 /// <summary>
 /// Set the Console
 /// </summary>
-void SetupConsole::DefineConsole(HWND window) const
+void SetupConsole::DefineConsole(HWND window)
 {
 	HANDLE in = GetStdHandle(STD_INPUT_HANDLE);
 	HANDLE out = GetStdHandle(STD_OUTPUT_HANDLE);
@@ -160,6 +160,19 @@ void SetupConsole::DefineConsole(HWND window) const
 	DWORD flags{};
 	GetConsoleMode(in, &flags);
 	SetConsoleMode(in, flags & ENABLE_EXTENDED_FLAGS);
+
+	HMENU hMenu = GetSystemMenu(window, FALSE);
+	int count = GetMenuItemCount(hMenu);
+	for (int i = count - 1; i >= 0; --i) 
+	{
+		UINT cmd = GetMenuItemID(hMenu, i);
+		if (cmd != SC_CLOSE && cmd != SC_MINIMIZE)
+		{
+			DeleteMenu(hMenu, i, MF_BYPOSITION);
+		}
+	}
+
+	DrawMenuBar(window);
 }
 
 /// <summary>

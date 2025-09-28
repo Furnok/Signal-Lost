@@ -1,4 +1,4 @@
-#include "File.h"
+﻿#include "File.h"
 
 /// <summary>
 /// Get the Date and the Time

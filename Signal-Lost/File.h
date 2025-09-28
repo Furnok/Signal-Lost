@@ -3,6 +3,7 @@
 #define _CRT_SECURE_NO_WARNINGS
 
 #include "SetupConsole.h"
+#include <filesystem>
 #include <fstream>
 #include <unordered_map>
 #include <chrono>
@@ -25,8 +26,8 @@ public:
 
 	void Read(SetupConsole& setupConsole);
 
-	[[nodiscard]] string GetPathErrorsFolder() const noexcept { return pathErrorsFolder; }
-	[[nodiscard]] string GetPathLogsFolder() const noexcept { return pathLogsFolder; }
+	[[nodiscard]] string GetPathErrorsFolder() const noexcept { return this->pathErrorsFolder; }
+	[[nodiscard]] string GetPathLogsFolder() const noexcept { return this->pathLogsFolder; }
 
 	void SetPathChapter(string pathChapter) { this->pathChapter = move(pathChapter); }
 

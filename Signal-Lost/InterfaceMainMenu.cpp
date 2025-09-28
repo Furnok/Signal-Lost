@@ -4,6 +4,8 @@ void InterfaceMainMenu::ShowMainMenu(Utils& utils, SetupConsole& setupConsole)
 {
 	system("cls");
 
+	this->showMainMenu = false;
+
 	const int delay = 200;
 	const int delayLetter = 100;
 

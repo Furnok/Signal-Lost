@@ -1,4 +1,4 @@
-#pragma once
+﻿#pragma once
 
 #define _CRT_SECURE_NO_WARNINGS
 
@@ -24,12 +24,12 @@ public:
 
 	void FileLog(SetupConsole& setupConsole, const string& inputChoice);
 
-	void Read(SetupConsole& setupConsole);
+	void Read(SetupConsole& setupConsole, char* pathChapter);
 
 	[[nodiscard]] string GetPathErrorsFolder() const noexcept { return this->pathErrorsFolder; }
 	[[nodiscard]] string GetPathLogsFolder() const noexcept { return this->pathLogsFolder; }
-
-	void SetPathChapter(string pathChapter) { this->pathChapter = move(pathChapter); }
+	[[nodiscard]] int GetChapterNumber() const noexcept { return this->chapterNumber; }
+	[[nodiscard]] string GetChapterName() const noexcept { return this->chapterName; }
 
 private:
 	void CreateFileLog(SetupConsole& setupConsole, const string& inputChoice);

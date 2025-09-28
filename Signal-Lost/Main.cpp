@@ -24,18 +24,21 @@ int main(int argc, char* argv[])
     }
     else
     {
-        file.SetPathChapter(argv[1]);
-
         while (1)
         {
-            file.Read(setupConsole);
+            file.Read(setupConsole, argv[1]);
 
             if (interfaceMainMenu.GetShowMainMenu())
             {
-				interfaceMainMenu.ShowMainMenu(utils, setupConsole);
+				//interfaceMainMenu.ShowMainMenu(utils, setupConsole);
             }
 
-            
+            if (interfaceGame.GetNewChapter())
+            {
+				interfaceGame.ShowTransitionChapter(utils, setupConsole, file);
+            }
+
+            system("cls");
         }
     }
 

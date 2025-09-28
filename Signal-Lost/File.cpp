@@ -162,8 +162,10 @@ void File::AddToFileLog(const string& inputChoice) const
 /// Read the Chapter File
 /// </summary>
 /// <param name="setupConsole"></param>
-void File::Read(SetupConsole& setupConsole)
+void File::Read(SetupConsole& setupConsole, char* pathChapter)
 {
+	this->pathChapter = pathChapter;
+
 	string contentLine = "";
 	bool headerRead = false;
 

@@ -128,6 +128,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="File.cpp" />
+    <ClCompile Include="InterfaceGame.cpp" />
     <ClCompile Include="InterfaceMainMenu.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="SetupConsole.cpp" />
@@ -135,6 +136,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="File.h" />
+    <ClInclude Include="InterfaceGame.h" />
     <ClInclude Include="InterfaceMainMenu.h" />
     <ClInclude Include="Main.h" />
     <ClInclude Include="resource.h" />

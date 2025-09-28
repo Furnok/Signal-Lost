@@ -1,8 +1,4 @@
 ﻿#include "Main.h"
-#include "SetupConsole.h"
-#include "File.h"
-#include "InterfaceMainMenu.h"
-#include "Utils.h"
 
 /// <summary>
 /// Main Function
@@ -15,28 +11,31 @@ int main(int argc, char* argv[])
     SetupConsole setupConsole;
     File file;
 	InterfaceMainMenu interfaceMainMenu;
+	InterfaceGame interfaceGame;
 	Utils utils;
 
     setupConsole.InitConsole();
 
     file.CreateFileErrors(setupConsole);
 
-    if (argc < 0)
+    if (argc < 2)
     {
         file.ReadFileError(setupConsole, "NoFile");
     }
     else
     {
-        //file.SetPathChapter(argv[1]);
+        file.SetPathChapter(argv[1]);
 
         while (1)
         {
-            //file.Read(setupConsole);
+            file.Read(setupConsole);
 
             if (interfaceMainMenu.GetShowMainMenu())
             {
 				interfaceMainMenu.ShowMainMenu(utils, setupConsole);
             }
+
+            
         }
     }
 

@@ -2,54 +2,325 @@
 
 #define _CRT_SECURE_NO_WARNINGS
 
+#include <map>
+#include <array>
+#include <string>
+
 class Utils
 {
 public:
 	void PosCursor(int posX, int posY) const;
 
-	void DrawDigit(int number, int posX, int posY) const;
+	void DrawBox(int left, int top, int width, int height) const;
 
-	void DrawLetter(char letter, int posX, int posY) const;
+	void DrawAscii(char ch, int posX, int posY) const;
 
 private:
-	void NumberZero(int x, int y) const;
-	void NumberOne(int x, int y) const;
-	void NumberTwo(int x, int y) const;
-	void NumberThree(int x, int y) const;
-	void NumberFour(int x, int y) const;
-	void NumberFive(int x, int y) const;
-	void NumberSix(int x, int y) const;
-	void NumberSeven(int x, int y) const;
-	void NumberEight(int x, int y) const;
-	void NumberNine(int x, int y) const;
-
-	void LetterHyphen(int x, int y) const;
-	void LetterSpace(int x, int y) const;
-
-	void LetterA(int x, int y) const;
-	void LetterB(int x, int y) const;
-	void LetterC(int x, int y) const;
-	void LetterD(int x, int y) const;
-	void LetterE(int x, int y) const;
-	void LetterF(int x, int y) const;
-	void LetterG(int x, int y) const;
-	void LetterH(int x, int y) const;
-	void LetterI(int x, int y) const;
-	void LetterJ(int x, int y) const;
-	void LetterK(int x, int y) const;
-	void LetterL(int x, int y) const;
-	void LetterM(int x, int y) const;
-	void LetterN(int x, int y) const;
-	void LetterO(int x, int y) const;
-	void LetterP(int x, int y) const;
-	void LetterQ(int x, int y) const;
-	void LetterR(int x, int y) const;
-	void LetterS(int x, int y) const;
-	void LetterT(int x, int y) const;
-	void LetterU(int x, int y) const;
-	void LetterV(int x, int y) const;
-	void LetterW(int x, int y) const;
-	void LetterX(int x, int y) const;
-	void LetterY(int x, int y) const;
-	void LetterZ(int x, int y) const;
+	const std::map<char, std::array<std::string, 5>> ascii =
+	{
+		{ '0',
+		{
+			" ▄▄▄ ",
+			"█  ▄█",
+			"█ █ █",
+			"█▀  █",
+			" ▀▀▀ ",
+		}},
+		{ '1',
+		{
+			"  ▄  ",
+			"▄▀█  ",
+			"  █  ",
+			"  █  ",
+			"▀▀▀▀▀",
+		}},
+		{ '2',
+		{
+			" ▄▄▄ ",
+			"▀   █",
+			" ▄▀▀ ",
+			"█   ▄",
+			"▀▀▀▀▀",
+		}},
+		{ '3',
+		{
+			" ▄▄▄ ",
+			"▀   █",
+			"  ▀▀▄",
+			"▄   █",
+			" ▀▀▀ ",
+		}},
+		{ '4',
+		{
+			"   ▄▄",
+			" ▄▀ █",
+			"█▄▄▄█",
+			"    █",
+			"    ▀",
+		}},
+		{ '5',
+		{
+			"▄▄▄▄▄",
+			"█    ",
+			"▀▀▀▀▄",
+			"▄   █",
+			" ▀▀▀ ",
+		}},
+		{ '6',
+		{
+			"  ▄▄▄",
+			"▄▀   ",
+			"█▄▄▄ ",
+			"█   █",
+			" ▀▀▀ ",
+		}},
+		{ '7',
+		{
+			"▄▄▄▄▄",
+			"▀   █",
+			"  ▄▀ ",
+			"  █  ",
+			"  ▀  ",
+		}},
+		{ '8',
+		{
+			" ▄▄▄ ",
+			"█   █",
+			"▄▀▀▀▄",
+			"█   █",
+			" ▀▀▀ ",
+		}},
+		{ '9',
+		{
+			" ▄▄▄ ",
+			"█   █",
+			" ▀▀▀█",
+			"   ▄▀",
+			"▀▀▀  ",
+		}},
+		{ '-',
+		{
+			"     ",
+			"     ",
+			"▄▄▄▄▄",
+			"     ",
+			"     ",
+		}},
+		{ ' ',
+		{
+			"     ",
+			"     ",
+			"     ",
+			"     ",
+			"     ",
+		}},
+		{ 'A',
+		{
+			"  ▄  ",
+			" █ █ ",
+			"█▄▄▄█",
+			"█   █",
+			"▀   ▀",
+		}},
+		{ 'B',
+		{
+			"▄▄▄▄ ",
+			"█   █",
+			"█▀▀▀▄",
+			"█   █",
+			"▀▀▀▀ ",
+		}},
+		{ 'C',
+		{
+			" ▄▄▄ ",
+			"█   ▀",
+			"█    ",
+			"█   ▄",
+			" ▀▀▀ ",
+		}},
+		{ 'D',
+		{
+			"▄▄▄▄ ",
+			"█   █",
+			"█   █",
+			"█   █",
+			"▀▀▀▀ ",
+		}},
+		{ 'E',
+		{
+			"▄▄▄▄▄",
+			"█    ",
+			"█▀▀▀ ",
+			"█    ",
+			"▀▀▀▀▀",
+		}},
+		{ 'F',
+		{
+			"▄▄▄▄▄",
+			"█    ",
+			"█▀▀▀ ",
+			"█    ",
+			"▀    ",
+		}},
+		{ 'G',
+		{
+			" ▄▄▄ ",
+			"█   ▀",
+			"█  ▄▄",
+			"█   █",
+			" ▀▀▀ ",
+		}},
+		{ 'H',
+		{
+			"▄   ▄",
+			"█   █",
+			"█▀▀▀█",
+			"█   █",
+			"▀   ▀",
+		}},
+		{ 'I',
+		{
+			"▄▄▄▄▄",
+			"  █  ",
+			"  █  ",
+			"  █  ",
+			"▀▀▀▀▀",
+		}},
+		{ 'J',
+		{
+			"▄▄▄▄▄",
+			"  █  ",
+			"  █  ",
+			"█ █  ",
+			" ▀   ",
+		}},
+		{ 'K',
+		{
+			"▄   ▄",
+			"█ ▄▀ ",
+			"██   ",
+			"█ ▀▄ ",
+			"▀   ▀",
+		}},
+		{ 'L',
+		{
+			"▄    ",
+			"█    ",
+			"█    ",
+			"█    ",
+			"▀▀▀▀▀",
+		}},
+		{ 'M',
+		{
+			"▄   ▄",
+			"██ ██",
+			"█ █ █",
+			"█   █",
+			"▀   ▀",
+		}},
+		{ 'N',
+		{
+			"▄   ▄",
+			"██  █",
+			"█ █ █",
+			"█  ██",
+			"▀   ▀",
+		}},
+		{ 'O',
+		{
+			" ▄▄▄ ",
+			"█   █",
+			"█   █",
+			"█   █",
+			" ▀▀▀ ",
+		}},
+		{ 'P',
+		{
+			"▄▄▄▄ ",
+			"█   █",
+			"█▄▄▄▀",
+			"█    ",
+			"▀    ",
+		}},
+		{ 'Q',
+		{
+			" ▄▄▄ ",
+			"█   █",
+			"█   █",
+			"█ ▀▄▀",
+			" ▀▀ ▀",
+		}},
+		{ 'R',
+		{
+			"▄▄▄▄ ",
+			"█   █",
+			"█▀▀▀▄",
+			"█   █",
+			"▀   ▀",
+		}},
+		{ 'S',
+		{
+			" ▄▄▄▄",
+			"█    ",
+			" ▀▀▀▄",
+			"▄   █",
+			" ▀▀▀ ",
+		}},
+		{ 'T',
+		{
+			"▄▄▄▄▄",
+			"  █  ",
+			"  █  ",
+			"  █  ",
+			"  ▀  ",
+		}},
+		{ 'U',
+		{
+			"▄   ▄",
+			"█   █",
+			"█   █",
+			"█   █",
+			" ▀▀▀ ",
+		}},
+		{ 'V',
+		{
+			"▄   ▄",
+			"█   █",
+			"▀▄ ▄▀",
+			" ▀▄▀ ",
+			"  ▀  ",
+		}},
+		{ 'W',
+		{
+			"▄   ▄",
+			"█   █",
+			"█ █ █",
+			"██ ██",
+			"▀   ▀",
+		}},
+		{ 'X',
+		{
+			"▄   ▄",
+			" █ █ ",
+			"  █  ",
+			" █ █ ",
+			"▀   ▀",
+		}},
+		{ 'Y',
+		{
+			"▄   ▄",
+			"▀▄ ▄▀",
+			" ▀▄▀ ",
+			"  █  ",
+			"  ▀  ",
+		}},
+		{ 'Z',
+		{
+			"▄▄▄▄▄",
+			"   ▄▀",
+			"  █  ",
+			"▄▀   ",
+			"▀▀▀▀▀",
+		}},
+	};
 };

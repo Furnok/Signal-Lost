@@ -26,7 +26,7 @@ void InterfaceMainMenu::ShowMainMenu(Utils& utils, SetupConsole& setupConsole)
 	const int consoleWidth = csbi.srWindow.Right - csbi.srWindow.Left + 1;
 	const int consoleHeight = csbi.srWindow.Bottom - csbi.srWindow.Top + 1;
 
-	const std::string letters = "0123456789"; // --SIGNAL LOST--
+	const std::string letters = "--SIGNAL LOST--";
 	const int glyphCount = static_cast<int>(letters.size());
 	const int titleWidth = ((glyphCount - 1) * 7) + 5;
 	const int titleHeight = 5;
@@ -36,14 +36,7 @@ void InterfaceMainMenu::ShowMainMenu(Utils& utils, SetupConsole& setupConsole)
 
 	for (char ch : letters)
 	{
-		if (ch >= '0' && ch <= '9')
-		{
-			utils.DrawDigit(ch - '0', posX, posY);
-		}
-		else
-		{
-			utils.DrawLetter(ch, posX, posY);
-		}
+		utils.DrawAscii(ch, posX, posY);
 			
 		posX += 7;
 		std::this_thread::sleep_for(delayLetter);
@@ -57,7 +50,7 @@ void InterfaceMainMenu::ShowMainMenu(Utils& utils, SetupConsole& setupConsole)
 	const int boxLeft = (consoleWidth - boxWidth) / 2;
 	const int boxTop = (consoleHeight - boxHeight) / 2;
 
-	DrawBox(utils, boxLeft, boxTop, boxWidth, boxHeight);
+	utils.DrawBox(boxLeft, boxTop, boxWidth, boxHeight);
 
 	setupConsole.SetTextColor(1);
 	std::this_thread::sleep_for(delay);
@@ -112,29 +105,6 @@ void InterfaceMainMenu::ShowMainMenu(Utils& utils, SetupConsole& setupConsole)
 	}
 }
 
-void InterfaceMainMenu::DrawBox(Utils& utils, int left, int top, int width, int height) const
-{
-	utils.PosCursor(left, top);
-	for (int i = 0; i < width; ++i)
-	{
-		std::cout << ((i == 0 || i == width - 1) ? char(219) : char(223));
-	}
-
-	for (int y = 1; y < height - 1; ++y)
-	{
-		utils.PosCursor(left, top + y);
-		std::cout << char(219);
-		utils.PosCursor(left + width - 1, top + y);
-		std::cout << char(219);
-	}
-
-	utils.PosCursor(left, top + height - 1);
-	for (int i = 0; i < width; ++i)
-	{
-		std::cout << ((i == 0 || i == width - 1) ? char(219) : char(220));
-	}
-}
-
 void InterfaceMainMenu::UpdateSettingSoundActivated(Utils& utils, SetupConsole& setupConsole, int right, int top)
 {
 	setupConsole.SetTextColor(2);
@@ -182,14 +152,7 @@ void InterfaceMainMenu::ShowSettings(Utils& utils, SetupConsole& setupConsole)
 
 	for (char ch : letters)
 	{
-		if (ch >= '0' && ch <= '9')
-		{
-			utils.DrawDigit(ch - '0', posX, posY);
-		}
-		else
-		{
-			utils.DrawLetter(ch, posX, posY);
-		}
+		utils.DrawAscii(ch, posX, posY);
 
 		posX += 7;
 		std::this_thread::sleep_for(delayLetter);
@@ -203,7 +166,7 @@ void InterfaceMainMenu::ShowSettings(Utils& utils, SetupConsole& setupConsole)
 	const int boxLeft = (consoleWidth - boxWidth) / 2;
 	const int boxTop = (consoleHeight - boxHeight) / 2;
 
-	DrawBox(utils, boxLeft, boxTop, boxWidth, boxHeight);
+	utils.DrawBox(boxLeft, boxTop, boxWidth, boxHeight);
 
 	setupConsole.SetTextColor(1);
 	std::this_thread::sleep_for(delay);
@@ -305,14 +268,7 @@ void InterfaceMainMenu::ShowCredits(Utils& utils, SetupConsole& setupConsole)
 
 	for (char ch : letters)
 	{
-		if (ch >= '0' && ch <= '9')
-		{
-			utils.DrawDigit(ch - '0', posX, posY);
-		}
-		else
-		{
-			utils.DrawLetter(ch, posX, posY);
-		}
+		utils.DrawAscii(ch, posX, posY);
 
 		posX += 7;
 		std::this_thread::sleep_for(delayLetter);
@@ -326,7 +282,7 @@ void InterfaceMainMenu::ShowCredits(Utils& utils, SetupConsole& setupConsole)
 	const int boxLeft = (consoleWidth - boxWidth) / 2;
 	const int boxTop = (consoleHeight - boxHeight) / 2;
 
-	DrawBox(utils, boxLeft, boxTop, boxWidth, boxHeight);
+	utils.DrawBox(boxLeft, boxTop, boxWidth, boxHeight);
 
 	setupConsole.SetTextColor(1);
 	std::this_thread::sleep_for(delay);

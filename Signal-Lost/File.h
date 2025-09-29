@@ -41,7 +41,7 @@ private:
 	std::string contentChapter = "";
 
 	int chapterNumber = 0;
-	std::string chapterName = "";
+	std::string chapterName = "Empty";
 	int startTrustPoint = 0;
 	int startSceneNumber = 0;
 

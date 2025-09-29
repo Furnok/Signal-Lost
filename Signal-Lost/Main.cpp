@@ -35,7 +35,7 @@ int main(int argc, char* argv[])
 
             if (interfaceGame.GetNewChapter())
             {
-				//interfaceGame.ShowTransitionChapter(utils, setupConsole, file);
+				interfaceGame.ShowTransitionChapter(utils, setupConsole, file);
             }
 
 			interfaceGame.DisplayInterfaceGame();

@@ -42,14 +42,7 @@ void InterfaceGame::ShowTransitionChapter(Utils& utils, SetupConsole& setupConso
 
 	for (char ch : all)
 	{
-		if (ch >= '0' && ch <= '9')
-		{
-			utils.DrawDigit(ch - '0', posX, posY);
-		}
-		else
-		{
-			utils.DrawLetter(ch, posX, posY);
-		}
+		utils.DrawAscii(ch, posX, posY);
 
 		posX += 7;
 		std::this_thread::sleep_for(delayLetter);

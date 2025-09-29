@@ -7,7 +7,3 @@
 #include "InterfaceMainMenu.h"
 #include "InterfaceGame.h"
 #include "Utils.h"
-#include <iostream>
-#include <windows.h>
-
-using namespace std;

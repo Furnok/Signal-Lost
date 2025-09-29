@@ -1,5 +1,8 @@
 ﻿#include "Utils.h"
 
+#include <windows.h>
+#include <iostream>
+
 void Utils::PosCursor(int posX, int posY) const
 {
 	COORD pos = { SHORT(posX), SHORT(posY) };
@@ -8,6 +11,10 @@ void Utils::PosCursor(int posX, int posY) const
 
 void Utils::DrawDigit(int number, int posX, int posY) const
 {
+	UINT originalOutputCP = GetConsoleOutputCP();
+
+	SetConsoleOutputCP(CP_UTF8);
+
 	switch (number)
 	{
 		case 0:
@@ -65,10 +72,18 @@ void Utils::DrawDigit(int number, int posX, int posY) const
 			break;
 		}
 	}
+
+	SetConsoleOutputCP(originalOutputCP);
 }
 
 void Utils::DrawLetter(char letter, int posX, int posY) const
 {
+	UINT originalOutputCP = GetConsoleOutputCP();
+
+	SetConsoleOutputCP(CP_UTF8);
+
+	letter = std::toupper(static_cast<unsigned char>(letter));
+
 	switch (letter)
 	{
 		case '-':
@@ -198,7 +213,7 @@ void Utils::DrawLetter(char letter, int posX, int posY) const
 		}
 		case 'X':
 		{
-			LetterS(posX, posY);
+			LetterX(posX, posY);
 			break;
 		}
 		case 'Y':
@@ -216,536 +231,558 @@ void Utils::DrawLetter(char letter, int posX, int posY) const
 			break;
 		}
 	}
+
+	SetConsoleOutputCP(originalOutputCP);
 }
 
 void Utils::NumberZero(int x, int y) const
 {
-	PosCursor(x, y);
-	cout << " " << char(220) << char(220) << char(220) << " " << endl;
-	PosCursor(x, y + 1);
-	cout << char(219) << " " << " " << " " << char(219) << endl;
-	PosCursor(x, y + 2);
-	cout << char(219) << " " << " " << " " << char(219) << endl;
-	PosCursor(x, y + 3);
-	cout << char(219) << " " << " " << " " << char(219) << endl;
-	PosCursor(x, y + 4);
-	cout << " " << char(223) << char(223) << char(223) << " " << endl;
+	const std::string pattern[5] =
+	{
+		" ▄▄▄ ",
+		"█   █",
+		"█   █",
+		"█   █",
+		" ▀▀▀ ",
+	};
+
+	for (int i = 0; i < 5; ++i)
+	{
+		PosCursor(x, y + i);
+		std::cout << pattern[i] << std::endl;
+	}
 }
 
 void Utils::NumberOne(int x, int y) const
 {
-	PosCursor(x, y);
-	cout << " " << " " << char(220) << " " << " " << endl;
-	PosCursor(x, y + 1);
-	cout << char(220) << char(223) << char(219) << " " << " " << endl;
-	PosCursor(x, y + 2);
-	cout << " " << " " << char(219) << " " << " " << endl;
-	PosCursor(x, y + 3);
-	cout << " " << " " << char(219) << " " << " " << endl;
-	PosCursor(x, y + 4);
-	cout << char(223) << char(223) << char(223) << char(223) << char(223) << endl;
+	const std::string pattern[5] =
+	{
+		"  ▄  ",
+		"▄▀█  ",
+		"  █  ",
+		"  █  ",
+		"▀▀▀▀▀",
+	};
+
+	for (int i = 0; i < 5; ++i)
+	{
+		PosCursor(x, y + i);
+		std::cout << pattern[i] << std::endl;
+	}
 }
 
 void Utils::NumberTwo(int x, int y) const
 {
-	PosCursor(x, y);
-	cout << " " << char(220) << char(220) << char(220) << " " << endl;
-	PosCursor(x, y + 1);
-	cout << char(219) << " " << " " << " " << char(219) << endl;
-	PosCursor(x, y + 2);
-	cout << " " << " " << " " << char(219) << " " << endl;
-	PosCursor(x, y + 3);
-	cout << " " << char(220) << char(223) << " " << " " << endl;
-	PosCursor(x, y + 4);
-	cout << char(223) << char(223) << char(223) << char(223) << char(223) << endl;
+	const std::string pattern[5] =
+	{
+		" ▄▄▄ ",
+		"█   █",
+		"  ▄▀ ",
+		"▄▀   ",
+		"▀▀▀▀▀",
+	};
+
+	for (int i = 0; i < 5; ++i)
+	{
+		PosCursor(x, y + i);
+		std::cout << pattern[i] << std::endl;
+	}
 }
 
 void Utils::NumberThree(int x, int y) const
 {
-	PosCursor(x, y);
-	cout << " " << char(220) << char(220) << char(220) << " " << endl;
-	PosCursor(x, y + 1);
-	cout << char(219) << " " << " " << " " << char(219) << endl;
-	PosCursor(x, y + 2);
-	cout << " " << " " << " " << char(219) << " " << endl;
-	PosCursor(x, y + 3);
-	cout << char(219) << " " << " " << " " << char(219) << endl;
-	PosCursor(x, y + 4);
-	cout << " " << char(223) << char(223) << char(223) << " " << endl;
+	const std::string pattern[5] =
+	{
+		" ▄▄▄ ",
+		"▀   █",
+		"   █ ",
+		"▄   █",
+		" ▀▀▀ ",
+	};
+
+	for (int i = 0; i < 5; ++i)
+	{
+		PosCursor(x, y + i);
+		std::cout << pattern[i] << std::endl;
+	}
 }
 
 void Utils::NumberFour(int x, int y) const
 {
 	PosCursor(x, y);
-	cout << " " << " " << char(220) << char(220) << " " << endl;
+	std::cout << " " << " " << char(220) << char(220) << " " << std::endl;
 	PosCursor(x, y + 1);
-	cout << " " << char(220) << char(223) << char(219) << " " << endl;
+	std::cout << " " << char(220) << char(223) << char(219) << " " << std::endl;
 	PosCursor(x, y + 2);
-	cout << char(220) << char(223) << " " << char(219) << " " << endl;
+	std::cout << char(220) << char(223) << " " << char(219) << " " << std::endl;
 	PosCursor(x, y + 3);
-	cout << char(219) << char(220) << char(220) << char(219) << char(220) << endl;
+	std::cout << char(219) << char(220) << char(220) << char(219) << char(220) << std::endl;
 	PosCursor(x, y + 4);
-	cout << " " << " " << " " << char(223) << " " << endl;
+	std::cout << " " << " " << " " << char(223) << " " << std::endl;
 }
 
 void Utils::NumberFive(int x, int y) const
 {
 	PosCursor(x, y);
-	cout << char(220) << char(220) << char(220) << char(220) << char(220) << endl;
+	std::cout << char(220) << char(220) << char(220) << char(220) << char(220) << std::endl;
 	PosCursor(x, y + 1);
-	cout << char(219) << " " << " " << " " << " " << endl;
+	std::cout << char(219) << " " << " " << " " << " " << std::endl;
 	PosCursor(x, y + 2);
-	cout << char(219) << char(220) << char(220) << char(220) << " " << endl;
+	std::cout << char(219) << char(220) << char(220) << char(220) << " " << std::endl;
 	PosCursor(x, y + 3);
-	cout << " " << " " << " " << " " << char(219) << endl;
+	std::cout << " " << " " << " " << " " << char(219) << std::endl;
 	PosCursor(x, y + 4);
-	cout << char(223) << char(223) << char(223) << char(223) << " " << endl;
+	std::cout << char(223) << char(223) << char(223) << char(223) << " " << std::endl;
 }
 
 void Utils::NumberSix(int x, int y) const
 {
 	PosCursor(x, y);
-	cout << " " << " " << char(220) << char(220) << " " << endl;
+	std::cout << " " << " " << char(220) << char(220) << " " << std::endl;
 	PosCursor(x, y + 1);
-	cout << " " << char(219) << " " << " " << " " << endl;
+	std::cout << " " << char(219) << " " << " " << " " << std::endl;
 	PosCursor(x, y + 2);
-	cout << char(219) << char(220) << char(220) << char(220) << " " << endl;
+	std::cout << char(219) << char(220) << char(220) << char(220) << " " << std::endl;
 	PosCursor(x, y + 3);
-	cout << char(219) << " " << " " << " " << char(219) << endl;
+	std::cout << char(219) << " " << " " << " " << char(219) << std::endl;
 	PosCursor(x, y + 4);
-	cout << " " << char(223) << char(223) << char(223) << " " << endl;
+	std::cout << " " << char(223) << char(223) << char(223) << " " << std::endl;
 }
 
 void Utils::NumberSeven(int x, int y) const
 {
 	PosCursor(x, y);
-	cout << char(220) << char(220) << char(220) << char(220) << char(220) << endl;
+	std::cout << char(220) << char(220) << char(220) << char(220) << char(220) << std::endl;
 	PosCursor(x, y + 1);
-	cout << " " << " " << " " << " " << char(219) << endl;
+	std::cout << " " << " " << " " << " " << char(219) << std::endl;
 	PosCursor(x, y + 2);
-	cout << " " << " " << " " << char(219) << " " << endl;
+	std::cout << " " << " " << " " << char(219) << " " << std::endl;
 	PosCursor(x, y + 3);
-	cout << " " << " " << char(219) << " " << " " << endl;
+	std::cout << " " << " " << char(219) << " " << " " << std::endl;
 	PosCursor(x, y + 4);
-	cout << " " << " " << char(223) << " " << " " << endl;
+	std::cout << " " << " " << char(223) << " " << " " << std::endl;
 }
 
 void Utils::NumberEight(int x, int y) const
 {
 	PosCursor(x, y);
-	cout << " " << char(220) << char(220) << char(220) << " " << endl;
+	std::cout << " " << char(220) << char(220) << char(220) << " " << std::endl;
 	PosCursor(x, y + 1);
-	cout << char(219) << " " << " " << " " << char(219) << endl;
+	std::cout << char(219) << " " << " " << " " << char(219) << std::endl;
 	PosCursor(x, y + 2);
-	cout << char(219) << char(220) << char(220) << char(220) << char(219) << endl;
+	std::cout << char(219) << char(220) << char(220) << char(220) << char(219) << std::endl;
 	PosCursor(x, y + 3);
-	cout << char(219) << " " << " " << " " << char(219) << endl;
+	std::cout << char(219) << " " << " " << " " << char(219) << std::endl;
 	PosCursor(x, y + 4);
-	cout << " " << char(223) << char(223) << char(223) << " " << endl;
+	std::cout << " " << char(223) << char(223) << char(223) << " " << std::endl;
 }
 
 void Utils::NumberNine(int x, int y) const
 {
 	PosCursor(x, y);
-	cout << " " << char(220) << char(220) << char(220) << " " << endl;
+	std::cout << " " << char(220) << char(220) << char(220) << " " << std::endl;
 	PosCursor(x, y + 1);
-	cout << char(219) << " " << " " << " " << char(219) << endl;
+	std::cout << char(219) << " " << " " << " " << char(219) << std::endl;
 	PosCursor(x, y + 2);
-	cout << char(219) << char(220) << char(220) << char(220) << char(219) << endl;
+	std::cout << char(219) << char(220) << char(220) << char(220) << char(219) << std::endl;
 	PosCursor(x, y + 3);
-	cout << " " << " " << " " << " " << char(219) << endl;
+	std::cout << " " << " " << " " << " " << char(219) << std::endl;
 	PosCursor(x, y + 4);
-	cout << char(223) << char(223) << char(223) << char(223) << " " << endl;
+	std::cout << char(223) << char(223) << char(223) << char(223) << " " << std::endl;
 }
 
 void Utils::LetterHyphen(int x, int y) const
 {
 	PosCursor(x, y);
-	cout << " " << " " << " " << " " << " " << endl;
+	std::cout << " " << " " << " " << " " << " " << std::endl;
 	PosCursor(x, y + 1);
-	cout << " " << " " << " " << " " << " " << endl;
+	std::cout << " " << " " << " " << " " << " " << std::endl;
 	PosCursor(x, y + 2);
-	cout << char(220) << char(220) << char(220) << char(220) << char(220) << endl;
+	std::cout << char(220) << char(220) << char(220) << char(220) << char(220) << std::endl;
 	PosCursor(x, y + 3);
-	cout << " " << " " << " " << " " << " " << endl;
+	std::cout << " " << " " << " " << " " << " " << std::endl;
 	PosCursor(x, y + 4);
-	cout << " " << " " << " " << " " << " " << endl;
+	std::cout << " " << " " << " " << " " << " " << std::endl;
 }
 
 void Utils::LetterSpace(int x, int y) const
 {
 	PosCursor(x, y);
-	cout << " " << " " << " " << " " << " " << endl;
+	std::cout << " " << " " << " " << " " << " " << std::endl;
 	PosCursor(x, y + 1);
-	cout << " " << " " << " " << " " << " " << endl;
+	std::cout << " " << " " << " " << " " << " " << std::endl;
 	PosCursor(x, y + 2);
-	cout << " " << " " << " " << " " << " " << endl;
+	std::cout << " " << " " << " " << " " << " " << std::endl;
 	PosCursor(x, y + 3);
-	cout << " " << " " << " " << " " << " " << endl;
+	std::cout << " " << " " << " " << " " << " " << std::endl;
 	PosCursor(x, y + 4);
-	cout << " " << " " << " " << " " << " " << endl;
+	std::cout << " " << " " << " " << " " << " " << std::endl;
 }
 
 void Utils::LetterA(int x, int y) const
 {
-	PosCursor(x, y);
-	cout << " " << " " << char(220) << " " << " " << endl;
-	PosCursor(x, y + 1);
-	cout << " " << char(219) << " " << char(219) << " " << endl;
-	PosCursor(x, y + 2);
-	cout << char(219) << " " << " " << " " << char(219) << endl;
-	PosCursor(x, y + 3);
-	cout << char(219) << char(223) << char(223) << char(223) << char(219) << endl;
-	PosCursor(x, y + 4);
-	cout << char(223) << " " << " " << " " << char(223) << endl;
+	const std::string pattern[5] = 
+	{
+		"  ▄  ",
+		" █ █ ",
+		"█   █",
+		"█▀▀▀█",
+		"▀   ▀"
+	};
+
+	for (int i = 0; i < 5; ++i)
+	{
+		PosCursor(x, y + i);
+		std::cout << pattern[i] << std::endl;
+	}
 }
 
 void Utils::LetterB(int x, int y) const
 {
 	PosCursor(x, y);
-	cout << char(220) << char(220) << char(220) << char(220) << " " << endl;
+	std::cout << char(220) << char(220) << char(220) << char(220) << " " << std::endl;
 	PosCursor(x, y + 1);
-	cout << char(219) << " " << " " << " " << char(219) << endl;
+	std::cout << char(219) << " " << " " << " " << char(219) << std::endl;
 	PosCursor(x, y + 2);
-	cout << char(219) << char(220) << char(220) << char(220) << char(223) << endl;
+	std::cout << char(219) << char(220) << char(220) << char(220) << char(223) << std::endl;
 	PosCursor(x, y + 3);
-	cout << char(219) << " " << " " << " " << char(219) << endl;
+	std::cout << char(219) << " " << " " << " " << char(219) << std::endl;
 	PosCursor(x, y + 4);
-	cout << char(223) << char(223) << char(223) << char(223) << " " << endl;
+	std::cout << char(223) << char(223) << char(223) << char(223) << " " << std::endl;
 }
 
 void Utils::LetterC(int x, int y) const
 {
 	PosCursor(x, y);
-	cout << " " << char(220) << char(220) << char(220) << char(220) << endl;
+	std::cout << " " << char(220) << char(220) << char(220) << char(220) << std::endl;
 	PosCursor(x, y + 1);
-	cout << char(219) << " " << " " << " " << endl;
+	std::cout << char(219) << " " << " " << " " << std::endl;
 	PosCursor(x, y + 2);
-	cout << char(219) << " " << " " << " " << endl;
+	std::cout << char(219) << " " << " " << " " << std::endl;
 	PosCursor(x, y + 3);
-	cout << char(219) << " " << " " << " " << endl;
+	std::cout << char(219) << " " << " " << " " << std::endl;
 	PosCursor(x, y + 4);
-	cout << " " << char(223) << char(223) << char(223) << char(223) << endl;
+	std::cout << " " << char(223) << char(223) << char(223) << char(223) << std::endl;
 }
 
 void Utils::LetterD(int x, int y) const
 {
 	PosCursor(x, y);
-	cout << char(220) << char(220) << char(220) << char(220) << " " << endl;
+	std::cout << char(220) << char(220) << char(220) << char(220) << " " << std::endl;
 	PosCursor(x, y + 1);
-	cout << char(219) << " " << " " << " " << char(219) << endl;
+	std::cout << char(219) << " " << " " << " " << char(219) << std::endl;
 	PosCursor(x, y + 2);
-	cout << char(219) << " " << " " << " " << char(219) << endl;
+	std::cout << char(219) << " " << " " << " " << char(219) << std::endl;
 	PosCursor(x, y + 3);
-	cout << char(219) << " " << " " << " " << char(219) << endl;
+	std::cout << char(219) << " " << " " << " " << char(219) << std::endl;
 	PosCursor(x, y + 4);
-	cout << char(223) << char(223) << char(223) << char(223) << " " << endl;
+	std::cout << char(223) << char(223) << char(223) << char(223) << " " << std::endl;
 }
 
 void Utils::LetterE(int x, int y) const
 {
 	PosCursor(x, y);
-	cout << char(220) << char(220) << char(220) << char(220) << char(220) << endl;
+	std::cout << char(220) << char(220) << char(220) << char(220) << char(220) << std::endl;
 	PosCursor(x, y + 1);
-	cout << char(219) << " " << " " << " " << " " << endl;
+	std::cout << char(219) << " " << " " << " " << " " << std::endl;
 	PosCursor(x, y + 2);
-	cout << char(219) << char(220) << char(220) << char(220) << char(220) << endl;
+	std::cout << char(219) << char(220) << char(220) << char(220) << char(220) << std::endl;
 	PosCursor(x, y + 3);
-	cout << char(219) << " " << " " << " " << " " << endl;
+	std::cout << char(219) << " " << " " << " " << " " << std::endl;
 	PosCursor(x, y + 4);
-	cout << char(223) << char(223) << char(223) << char(223) << char(223) << endl;
+	std::cout << char(223) << char(223) << char(223) << char(223) << char(223) << std::endl;
 }
 
 void Utils::LetterF(int x, int y) const
 {
 	PosCursor(x, y);
-	cout << char(220) << char(220) << char(220) << char(220) << char(220) << endl;
+	std::cout << char(220) << char(220) << char(220) << char(220) << char(220) << std::endl;
 	PosCursor(x, y + 1);
-	cout << char(219) << " " << " " << " " << " " << endl;
+	std::cout << char(219) << " " << " " << " " << " " << std::endl;
 	PosCursor(x, y + 2);
-	cout << char(219) << char(220) << char(220) << char(220) << " " << endl;
+	std::cout << char(219) << char(220) << char(220) << char(220) << " " << std::endl;
 	PosCursor(x, y + 3);
-	cout << char(219) << " " << " " << " " << " " << endl;
+	std::cout << char(219) << " " << " " << " " << " " << std::endl;
 	PosCursor(x, y + 4);
-	cout << char(223) << " " << " " << " " << " " << endl;
+	std::cout << char(223) << " " << " " << " " << " " << std::endl;
 }
 
 void Utils::LetterG(int x, int y) const
 {
 	PosCursor(x, y);
-	cout << " " << char(220) << char(220) << char(220) << " " << endl;
+	std::cout << " " << char(220) << char(220) << char(220) << " " << std::endl;
 	PosCursor(x, y + 1);
-	cout << char(219) << " " << " " << " " << char(223) << endl;
+	std::cout << char(219) << " " << " " << " " << char(223) << std::endl;
 	PosCursor(x, y + 2);
-	cout << char(219) << " " << char(220) << char(220) << " " << endl;
+	std::cout << char(219) << " " << char(220) << char(220) << " " << std::endl;
 	PosCursor(x, y + 3);
-	cout << char(219) << " " << " " << " " << char(219) << endl;
+	std::cout << char(219) << " " << " " << " " << char(219) << std::endl;
 	PosCursor(x, y + 4);
-	cout << " " << char(223) << char(223) << char(223) << " " << endl;
+	std::cout << " " << char(223) << char(223) << char(223) << " " << std::endl;
 }
 
 void Utils::LetterH(int x, int y) const
 {
 	PosCursor(x, y);
-	cout << char(220) << " " << " " << " " << char(220) << endl;
+	std::cout << char(220) << " " << " " << " " << char(220) << std::endl;
 	PosCursor(x, y + 1);
-	cout << char(219) << " " << " " << " " << char(219) << endl;
+	std::cout << char(219) << " " << " " << " " << char(219) << std::endl;
 	PosCursor(x, y + 2);
-	cout << char(219) << char(220) << char(220) << char(220) << char(219) << endl;
+	std::cout << char(219) << char(220) << char(220) << char(220) << char(219) << std::endl;
 	PosCursor(x, y + 3);
-	cout << char(219) << " " << " " << " " << char(219) << endl;
+	std::cout << char(219) << " " << " " << " " << char(219) << std::endl;
 	PosCursor(x, y + 4);
-	cout << char(223) << " " << " " << " " << char(223) << endl;
+	std::cout << char(223) << " " << " " << " " << char(223) << std::endl;
 }
 
 void Utils::LetterI(int x, int y) const
 {
 	PosCursor(x, y);
-	cout << char(220) << char(220) << char(220) << char(220) << char(220) << endl;
+	std::cout << char(220) << char(220) << char(220) << char(220) << char(220) << std::endl;
 	PosCursor(x, y + 1);
-	cout << " " << " " << char(219) << " " << " " << endl;
+	std::cout << " " << " " << char(219) << " " << " " << std::endl;
 	PosCursor(x, y + 2);
-	cout << " " << " " << char(219) << " " << " " << endl;
+	std::cout << " " << " " << char(219) << " " << " " << std::endl;
 	PosCursor(x, y + 3);
-	cout << " " << " " << char(219) << " " << " " << endl;
+	std::cout << " " << " " << char(219) << " " << " " << std::endl;
 	PosCursor(x, y + 4);
-	cout << char(223) << char(223) << char(223) << char(223) << char(223) << endl;
+	std::cout << char(223) << char(223) << char(223) << char(223) << char(223) << std::endl;
 }
 
 void Utils::LetterJ(int x, int y) const
 {
 	PosCursor(x, y);
-	cout << char(220) << char(220) << char(220) << char(220) << char(220) << endl;
+	std::cout << char(220) << char(220) << char(220) << char(220) << char(220) << std::endl;
 	PosCursor(x, y + 1);
-	cout << " " << " " << char(219) << " " << " " << endl;
+	std::cout << " " << " " << char(219) << " " << " " << std::endl;
 	PosCursor(x, y + 2);
-	cout << " " << " " << char(219) << " " << " " << endl;
+	std::cout << " " << " " << char(219) << " " << " " << std::endl;
 	PosCursor(x, y + 3);
-	cout << char(219) << " " << char(219) << " " << " " << endl;
+	std::cout << char(219) << " " << char(219) << " " << " " << std::endl;
 	PosCursor(x, y + 4);
-	cout << " " << char(223) << char(223) << " " << " " << endl;
+	std::cout << " " << char(223) << char(223) << " " << " " << std::endl;
 }
 
 void Utils::LetterK(int x, int y) const
 {
 	PosCursor(x, y);
-	cout << char(220) << " " << " " << " " << char(220) << endl;
+	std::cout << char(220) << " " << " " << " " << char(220) << std::endl;
 	PosCursor(x, y + 1);
-	cout << char(219) << " " << char(220) << char(223) << " " << endl;
+	std::cout << char(219) << " " << char(220) << char(223) << " " << std::endl;
 	PosCursor(x, y + 2);
-	cout << char(219) << char(219) << " " << " " << " " << endl;
+	std::cout << char(219) << char(219) << " " << " " << " " << std::endl;
 	PosCursor(x, y + 3);
-	cout << char(219) << " " << char(223) << char(220) << " " << endl;
+	std::cout << char(219) << " " << char(223) << char(220) << " " << std::endl;
 	PosCursor(x, y + 4);
-	cout << char(223) << " " << " " << " " << char(223) << endl;
+	std::cout << char(223) << " " << " " << " " << char(223) << std::endl;
 }
 
 void Utils::LetterL(int x, int y) const
 {
 	PosCursor(x, y);
-	cout << char(220) << " " << " " << " " << " " << endl;
+	std::cout << char(220) << " " << " " << " " << " " << std::endl;
 	PosCursor(x, y + 1);
-	cout << char(219) << " " << " " << " " << " " << endl;
+	std::cout << char(219) << " " << " " << " " << " " << std::endl;
 	PosCursor(x, y + 2);
-	cout << char(219) << " " << " " << " " << " " << endl;
+	std::cout << char(219) << " " << " " << " " << " " << std::endl;
 	PosCursor(x, y + 3);
-	cout << char(219) << " " << " " << " " << " " << endl;
+	std::cout << char(219) << " " << " " << " " << " " << std::endl;
 	PosCursor(x, y + 4);
-	cout << char(223) << char(223) << char(223) << char(223) << char(223) << endl;
+	std::cout << char(223) << char(223) << char(223) << char(223) << char(223) << std::endl;
 }
 
 void Utils::LetterM(int x, int y) const
 {
 	PosCursor(x, y);
-	cout << char(220) << " " << " " << " " << char(220) << endl;
+	std::cout << char(220) << " " << " " << " " << char(220) << std::endl;
 	PosCursor(x, y + 1);
-	cout << char(219) << char(219) << " " << char(219) << char(219) << endl;
+	std::cout << char(219) << char(219) << " " << char(219) << char(219) << std::endl;
 	PosCursor(x, y + 2);
-	cout << char(219) << " " << char(219) << " " << char(219) << endl;
+	std::cout << char(219) << " " << char(219) << " " << char(219) << std::endl;
 	PosCursor(x, y + 3);
-	cout << char(219) << " " << " " << " " << char(219) << endl;
+	std::cout << char(219) << " " << " " << " " << char(219) << std::endl;
 	PosCursor(x, y + 4);
-	cout << char(223) << " " << " " << " " << char(223) << endl;
+	std::cout << char(223) << " " << " " << " " << char(223) << std::endl;
 }
 
 void Utils::LetterN(int x, int y) const
 {
 	PosCursor(x, y);
-	cout << char(220) << " " << " " << " " << char(220) << endl;
+	std::cout << char(220) << " " << " " << " " << char(220) << std::endl;
 	PosCursor(x, y + 1);
-	cout << char(219) << char(219) << " " << " " << char(219) << endl;
+	std::cout << char(219) << char(219) << " " << " " << char(219) << std::endl;
 	PosCursor(x, y + 2);
-	cout << char(219) << " " << char(219) << " " << char(219) << endl;
+	std::cout << char(219) << " " << char(219) << " " << char(219) << std::endl;
 	PosCursor(x, y + 3);
-	cout << char(219) << " " << " " << char(219) << char(219) << endl;
+	std::cout << char(219) << " " << " " << char(219) << char(219) << std::endl;
 	PosCursor(x, y + 4);
-	cout << char(223) << " " << " " << " " << char(223) << endl;
+	std::cout << char(223) << " " << " " << " " << char(223) << std::endl;
 }
 
 void Utils::LetterO(int x, int y) const
 {
 	PosCursor(x, y);
-	cout << " " << char(220) << char(220) << char(220) << " " << endl;
+	std::cout << " " << char(220) << char(220) << char(220) << " " << std::endl;
 	PosCursor(x, y + 1);
-	cout << char(219) << " " << " " << " " << char(219) << endl;
+	std::cout << char(219) << " " << " " << " " << char(219) << std::endl;
 	PosCursor(x, y + 2);
-	cout << char(219) << " " << " " << " " << char(219) << endl;
+	std::cout << char(219) << " " << " " << " " << char(219) << std::endl;
 	PosCursor(x, y + 3);
-	cout << char(219) << " " << " " << " " << char(219) << endl;
+	std::cout << char(219) << " " << " " << " " << char(219) << std::endl;
 	PosCursor(x, y + 4);
-	cout << " " << char(223) << char(223) << char(223) << " " << endl;
+	std::cout << " " << char(223) << char(223) << char(223) << " " << std::endl;
 }
 
 void Utils::LetterP(int x, int y) const
 {
 	PosCursor(x, y);
-	cout << char(220) << char(220) << char(220) << char(220) << " " << endl;
+	std::cout << char(220) << char(220) << char(220) << char(220) << " " << std::endl;
 	PosCursor(x, y + 1);
-	cout << char(219) << " " << " " << " " << char(219) << endl;
+	std::cout << char(219) << " " << " " << " " << char(219) << std::endl;
 	PosCursor(x, y + 2);
-	cout << char(219) << char(220) << char(220) << char(220) << char(223) << endl;
+	std::cout << char(219) << char(220) << char(220) << char(220) << char(223) << std::endl;
 	PosCursor(x, y + 3);
-	cout << char(219) << " " << " " << " " << " " << endl;
+	std::cout << char(219) << " " << " " << " " << " " << std::endl;
 	PosCursor(x, y + 4);
-	cout << char(223) << " " << " " << " " << " " << endl;
+	std::cout << char(223) << " " << " " << " " << " " << std::endl;
 }
 
 void Utils::LetterQ(int x, int y) const
 {
 	PosCursor(x, y);
-	cout << " " << char(220) << char(220) << char(220) << " " << endl;
+	std::cout << " " << char(220) << char(220) << char(220) << " " << std::endl;
 	PosCursor(x, y + 1);
-	cout << char(219) << " " << " " << " " << char(219) << endl;
+	std::cout << char(219) << " " << " " << " " << char(219) << std::endl;
 	PosCursor(x, y + 2);
-	cout << char(219) << " " << " " << " " << char(219) << endl;
+	std::cout << char(219) << " " << " " << " " << char(219) << std::endl;
 	PosCursor(x, y + 3);
-	cout << char(219) << " " << char(223) << char(220) << char(219) << endl;
+	std::cout << char(219) << " " << char(223) << char(220) << char(219) << std::endl;
 	PosCursor(x, y + 4);
-	cout << " " << char(223) << char(223) << char(223) << char(220) << endl;
+	std::cout << " " << char(223) << char(223) << char(223) << char(220) << std::endl;
 }
 
 void Utils::LetterR(int x, int y) const
 {
 	PosCursor(x, y);
-	cout << char(220) << char(220) << char(220) << char(220) << " " << endl;
+	std::cout << char(220) << char(220) << char(220) << char(220) << " " << std::endl;
 	PosCursor(x, y + 1);
-	cout << char(219) << " " << " " << " " << char(219) << endl;
+	std::cout << char(219) << " " << " " << " " << char(219) << std::endl;
 	PosCursor(x, y + 2);
-	cout << char(219) << char(220) << char(220) << char(220) << char(223) << endl;
+	std::cout << char(219) << char(220) << char(220) << char(220) << char(223) << std::endl;
 	PosCursor(x, y + 3);
-	cout << char(219) << " " << char(223) << char(220) << "" << endl;
+	std::cout << char(219) << " " << char(223) << char(220) << " " << std::endl;
 	PosCursor(x, y + 4);
-	cout << char(223) << " " << " " << " " << char(223) << endl;
+	std::cout << char(223) << " " << " " << " " << char(223) << std::endl;
 }
 
 void Utils::LetterS(int x, int y) const
 {
 	PosCursor(x, y);
-	cout << " " << char(220) << char(220) << char(220) << char(220) << endl;
+	std::cout << " " << char(220) << char(220) << char(220) << char(220) << std::endl;
 	PosCursor(x, y + 1);
-	cout << char(219) << " " << " " << " " << " " << endl;
+	std::cout << char(219) << " " << " " << " " << " " << std::endl;
 	PosCursor(x, y + 2);
-	cout << char(223) << char(220) << char(220) << char(220) << " " << endl;
+	std::cout << char(223) << char(220) << char(220) << char(220) << " " << std::endl;
 	PosCursor(x, y + 3);
-	cout << " " << " " << " " << " " << char(219) << endl;
+	std::cout << " " << " " << " " << " " << char(219) << std::endl;
 	PosCursor(x, y + 4);
-	cout << char(223) << char(223) << char(223) << char(223) << " " << endl;
+	std::cout << char(223) << char(223) << char(223) << char(223) << " " << std::endl;
 }
 
 void Utils::LetterT(int x, int y) const
 {
 	PosCursor(x, y);
-	cout << char(220) << char(220) << char(220) << char(220) << char(220) << endl;
+	std::cout << char(220) << char(220) << char(220) << char(220) << char(220) << std::endl;
 	PosCursor(x, y + 1);
-	cout << " " << " " << char(219) << " " << " " << endl;
+	std::cout << " " << " " << char(219) << " " << " " << std::endl;
 	PosCursor(x, y + 2);
-	cout << " " << " " << char(219) << " " << " " << endl;
+	std::cout << " " << " " << char(219) << " " << " " << std::endl;
 	PosCursor(x, y + 3);
-	cout << " " << " " << char(219) << " " << " " << endl;
+	std::cout << " " << " " << char(219) << " " << " " << std::endl;
 	PosCursor(x, y + 4);
-	cout << " " << " " << char(223) << " " << " " << endl;
+	std::cout << " " << " " << char(223) << " " << " " << std::endl;
 }
 
 void Utils::LetterU(int x, int y) const
 {
 	PosCursor(x, y);
-	cout << char(220) << " " << " " << " " << char(220) << endl;
+	std::cout << char(220) << " " << " " << " " << char(220) << std::endl;
 	PosCursor(x, y + 1);
-	cout << char(219) << " " << " " << " " << char(219) << endl;
+	std::cout << char(219) << " " << " " << " " << char(219) << std::endl;
 	PosCursor(x, y + 2);
-	cout << char(219) << " " << " " << " " << char(219) << endl;
+	std::cout << char(219) << " " << " " << " " << char(219) << std::endl;
 	PosCursor(x, y + 3);
-	cout << char(219) << " " << " " << " " << char(219) << endl;
+	std::cout << char(219) << " " << " " << " " << char(219) << std::endl;
 	PosCursor(x, y + 4);
-	cout << " " << char(223) << char(223) << char(223) << " " << endl;
+	std::cout << " " << char(223) << char(223) << char(223) << " " << std::endl;
 }
 
 void Utils::LetterV(int x, int y) const
 {
 	PosCursor(x, y);
-	cout << char(220) << " " << " " << " " << char(220) << endl;
+	std::cout << char(220) << " " << " " << " " << char(220) << std::endl;
 	PosCursor(x, y + 1);
-	cout << char(219) << " " << " " << " " << char(219) << endl;
+	std::cout << char(219) << " " << " " << " " << char(219) << std::endl;
 	PosCursor(x, y + 2);
-	cout << char(219) << " " << " " << " " << char(219) << endl;
+	std::cout << char(219) << " " << " " << " " << char(219) << std::endl;
 	PosCursor(x, y + 3);
-	cout << " " << char(219) << " " << char(219) << " " << endl;
+	std::cout << " " << char(219) << " " << char(219) << " " << std::endl;
 	PosCursor(x, y + 4);
-	cout << " " << " " << char(223) << " " << " " << endl;
+	std::cout << " " << " " << char(223) << " " << " " << std::endl;
 }
 
 void Utils::LetterW(int x, int y) const
 {
 	PosCursor(x, y);
-	cout << char(220) << " " << " " << " " << char(220) << endl;
+	std::cout << char(220) << " " << " " << " " << char(220) << std::endl;
 	PosCursor(x, y + 1);
-	cout << char(219) << " " << " " << " " << char(219) << endl;
+	std::cout << char(219) << " " << " " << " " << char(219) << std::endl;
 	PosCursor(x, y + 2);
-	cout << char(219) << " " << " " << " " << char(219) << endl;
+	std::cout << char(219) << " " << " " << " " << char(219) << std::endl;
 	PosCursor(x, y + 3);
-	cout << char(219) <<" " << char(219) << " " << char(219) << endl;
+	std::cout << char(219) <<" " << char(219) << " " << char(219) << std::endl;
 	PosCursor(x, y + 4);
-	cout << " " << char(223) << " " << char(223) << " " << endl;
+	std::cout << " " << char(223) << " " << char(223) << " " << std::endl;
 }
 
 void Utils::LetterX(int x, int y) const
 {
 	PosCursor(x, y);
-	cout << char(220) << " " << " " << " " << char(220) << endl;
+	std::cout << char(220) << " " << " " << " " << char(220) << std::endl;
 	PosCursor(x, y + 1);
-	cout << " " << char(219) << " " << char(219) << " " << endl;
+	std::cout << " " << char(219) << " " << char(219) << " " << std::endl;
 	PosCursor(x, y + 2);
-	cout << " " << " " << char(219) << " " << " " << endl;
+	std::cout << " " << " " << char(219) << " " << " " << std::endl;
 	PosCursor(x, y + 3);
-	cout << " " << char(219) << " " << char(219) << " " << endl;
+	std::cout << " " << char(219) << " " << char(219) << " " << std::endl;
 	PosCursor(x, y + 4);
-	cout << char(223) << " " << " " << " " << char(223) << endl;
+	std::cout << char(223) << " " << " " << " " << char(223) << std::endl;
 }
 
 void Utils::LetterY(int x, int y) const
 {
 	PosCursor(x, y);
-	cout << char(220) << " " << " " << " " << char(220) << endl;
+	std::cout << char(220) << " " << " " << " " << char(220) << std::endl;
 	PosCursor(x, y + 1);
-	cout << char(223) << char(220) << " " << char(220) << char(223) << endl;
+	std::cout << char(223) << char(220) << " " << char(220) << char(223) << std::endl;
 	PosCursor(x, y + 2);
-	cout << " " << char(223) << char(220) << char(223) << " " << endl;
+	std::cout << " " << char(223) << char(220) << char(223) << " " << std::endl;
 	PosCursor(x, y + 3);
-	cout << " " << " " << char(219) << " " << " " << endl;
+	std::cout << " " << " " << char(219) << " " << " " << std::endl;
 	PosCursor(x, y + 4);
-	cout << " " << " " << char(223) << " " << " " << endl;
+	std::cout << " " << " " << char(223) << " " << " " << std::endl;
 }
 
 void Utils::LetterZ(int x, int y) const
 {
 	PosCursor(x, y);
-	cout << char(220) << char(220) << char(220) << char(220) << char(220) << endl;
+	std::cout << char(220) << char(220) << char(220) << char(220) << char(220) << std::endl;
 	PosCursor(x, y + 1);
-	cout << " " << " " << " " << char(220) << char(223) << endl;
+	std::cout << " " << " " << " " << char(220) << char(223) << std::endl;
 	PosCursor(x, y + 2);
-	cout << " " << " " << char(219) << " " << " " << endl;
+	std::cout << " " << " " << char(219) << " " << " " << std::endl;
 	PosCursor(x, y + 3);
-	cout << char(220) << char(223) << " " << " " << " " << endl;
+	std::cout << char(220) << char(223) << " " << " " << " " << std::endl;
 	PosCursor(x, y + 4);
-	cout << char(223) << char(223) << char(223) << char(223) << char(223) << endl;
+	std::cout << char(223) << char(223) << char(223) << char(223) << char(223) << std::endl;
 }

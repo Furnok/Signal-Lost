@@ -4,12 +4,6 @@
 
 #include "SetupConsole.h"
 #include "Utils.h"
-#include <iostream>
-#include <windows.h>
-#include <conio.h>
-#include <thread>
-
-using namespace std;
 
 class InterfaceMainMenu
 {

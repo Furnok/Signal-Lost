@@ -1,14 +1,19 @@
 ﻿#include "File.h"
 
+#include <filesystem>
+#include <fstream>
+#include <conio.h>
+#include <regex>
+
 /// <summary>
 /// Get the Date and the Time
 /// </summary>
 /// <returns></returns>
-string File::DateTime()
+std::string File::DateTime()
 {
-	const auto now = system_clock::now();
+	const auto now = std::chrono::system_clock::now();
 
-	const time_t now_time_t = system_clock::to_time_t(now);
+	const time_t now_time_t = std::chrono::system_clock::to_time_t(now);
 
 	tm local{};
 	localtime_s(&local, &now_time_t);
@@ -25,23 +30,23 @@ string File::DateTime()
 /// <param name="setupConsole"></param>
 void File::CreateFileErrors(SetupConsole& setupConsole)
 {
-	filesystem::path path = filesystem::path(setupConsole.GetPathGameFolder()) / errorFolderName;
+	std::filesystem::path path = std::filesystem::path(setupConsole.GetPathGameFolder()) / errorFolderName;
 	this->pathErrorsFolder = path.string() + '\\';
 
-	if (!filesystem::exists(path))
+	if (!std::filesystem::exists(path))
 	{
-		filesystem::create_directories(path);
+		std::filesystem::create_directories(path);
 	}
 
-	const filesystem::path errorFile = path / this->errorsFileName;
+	const std::filesystem::path errorFile = path / this->errorsFileName;
 
-	if (!filesystem::exists(errorFile))
+	if (!std::filesystem::exists(errorFile))
 	{
-		ofstream outfile(errorFile, ios::out);
+		std::ofstream outfile(errorFile, std::ios::out);
 
 		for (auto& [key, msg] : errors)
 		{
-			outfile << key << '=' << msg << endl;
+			outfile << key << '=' << msg << std::endl;
 		}
 
 		outfile.close();
@@ -53,31 +58,31 @@ void File::CreateFileErrors(SetupConsole& setupConsole)
 /// </summary>
 /// <param name="setupConsole"></param>
 /// <param name="key"></param>
-void File::ReadFileError(SetupConsole& setupConsole, const string& key) const
+void File::ReadFileError(SetupConsole& setupConsole, const std::string& key) const
 {
 	system("cls");
 
 	setupConsole.SetTextColor(4);
 
-	const filesystem::path path = filesystem::path(GetPathErrorsFolder()) / this->errorsFileName;
+	const std::filesystem::path path = std::filesystem::path(GetPathErrorsFolder()) / this->errorsFileName;
 
-	ifstream infile(path, ios::in);
+	std::ifstream infile(path, std::ios::in);
 
 	if (!infile)
 	{
-		cout << "Error: Unable to Open the Errors File!" << endl;
+		std::cout << "Error: Unable to Open the Errors File!" << std::endl;
 	}
 	else
 	{
-		string line;
+		std::string line;
 
 		while (getline(infile, line)) 
 		{
-			if (auto pos = line.find('='); pos != string::npos) 
+			if (auto pos = line.find('='); pos != std::string::npos)
 			{
 				if (line.substr(0, pos) == key) 
 				{
-					cout << line.substr(pos + 1) << endl;
+					std::cout << line.substr(pos + 1) << std::endl;
 
 					infile.close();
 
@@ -90,7 +95,7 @@ void File::ReadFileError(SetupConsole& setupConsole, const string& key) const
 			}
 		}
 
-		cout << "Error: Unable to Find the Error!" << endl;
+		std::cout << "Error: Unable to Find the Error!" << std::endl;
 	}
 
 	infile.close();
@@ -107,7 +112,7 @@ void File::ReadFileError(SetupConsole& setupConsole, const string& key) const
 /// </summary>
 /// <param name="setupConsole"></param>
 /// <param name="inputChoice"></param>
-void File::FileLog(SetupConsole& setupConsole, const string& inputChoice)
+void File::FileLog(SetupConsole& setupConsole, const std::string& inputChoice)
 {
 	if (this->pathLogsFolder.empty())
 	{
@@ -127,12 +132,12 @@ void File::Read(SetupConsole& setupConsole, char* pathChapter)
 {
 	this->pathChapter = pathChapter;
 
-	string contentLine = "";
+	std::string contentLine = "";
 	bool headerRead = false;
 
-	regex pairRegex(R"(\[([^\]=]+)=([^\]]+)\])");
-	const vector<string> requiredKeys = { "Chapter", "Name", "Trust", "StartScene" };
-	unordered_map<string, bool> keyFound;
+	std::regex pairRegex(R"(\[([^\]=]+)=([^\]]+)\])");
+	const std::vector<std::string> requiredKeys = { "Chapter", "Name", "Trust", "StartScene" };
+	std::unordered_map<std::string, bool> keyFound;
 	for (auto& key : requiredKeys)
 	{
 		keyFound[key] = false;
@@ -145,17 +150,17 @@ void File::Read(SetupConsole& setupConsole, char* pathChapter)
 	this->startTrustPoint = 0;
 	this->startSceneNumber = 0;
 
-	if (filesystem::path(this->pathChapter).extension() != ".txt")
+	if (std::filesystem::path(this->pathChapter).extension() != ".txt")
 	{
 		ReadFileError(setupConsole, "BadFile");
 	}
 
-	if (filesystem::file_size(this->pathChapter) == 0)
+	if (std::filesystem::file_size(this->pathChapter) == 0)
 	{
 		ReadFileError(setupConsole, "FileEmpty");
 	}
 
-	ifstream infile(this->pathChapter, ios::in);
+	std::ifstream infile(this->pathChapter, std::ios::in);
 
 	while (getline(infile, contentLine))
 	{
@@ -165,10 +170,10 @@ void File::Read(SetupConsole& setupConsole, char* pathChapter)
 		{
 			headerRead = true;
 
-			for (smatch match; regex_search(contentLine, match, pairRegex); contentLine = match.suffix())
+			for (std::smatch match; regex_search(contentLine, match, pairRegex); contentLine = match.suffix())
 			{
-				const string key = match[1];
-				const string value = match[2];
+				const std::string key = match[1];
+				const std::string value = match[2];
 
 				auto safeInt = [&](const char* errKey)
 					{
@@ -194,7 +199,7 @@ void File::Read(SetupConsole& setupConsole, char* pathChapter)
 				}
 				else if (key == "Trust")
 				{
-					startTrustPoint = clamp(safeInt("TrustNumber"), 0, 100);
+					startTrustPoint = std::clamp(safeInt("TrustNumber"), 0, 100);
 					keyFound[key] = true;
 				}
 				else if (key == "StartScene")
@@ -222,19 +227,19 @@ void File::Read(SetupConsole& setupConsole, char* pathChapter)
 /// </summary>
 /// <param name="setupConsole"></param>
 /// <param name="inputChoice"></param>
-void File::CreateFileLog(SetupConsole& setupConsole, const string& inputChoice)
+void File::CreateFileLog(SetupConsole& setupConsole, const std::string& inputChoice)
 {
-	filesystem::path path = filesystem::path(setupConsole.GetPathGameFolder()) / this->logsFolderName;
+	std::filesystem::path path = std::filesystem::path(setupConsole.GetPathGameFolder()) / this->logsFolderName;
 	this->pathLogsFolder = path.string() + '\\';
 
-	if (!filesystem::exists(path))
+	if (!std::filesystem::exists(path))
 	{
-		filesystem::create_directories(path);
+		std::filesystem::create_directories(path);
 	}
 
 	this->logsFileName += DateTime() + ".txt";
 
-	ofstream outfile(path / this->logsFileName, ios::out);
+	std::ofstream outfile(path / this->logsFileName, std::ios::out);
 
 	//outfile << "Chapter " << chapter << ", " << "Scene " << scene << ", " << "Input Choice " << input << endl;
 
@@ -245,11 +250,11 @@ void File::CreateFileLog(SetupConsole& setupConsole, const string& inputChoice)
 /// Add to the File Logs
 /// </summary>
 /// <param name="inputChoice"></param>
-void File::AddToFileLog(const string& inputChoice) const
+void File::AddToFileLog(const std::string& inputChoice) const
 {
-	filesystem::path path = filesystem::path(GetPathLogsFolder()) / this->logsFileName;
+	std::filesystem::path path = std::filesystem::path(GetPathLogsFolder()) / this->logsFileName;
 
-	ofstream outfile(path, ios::app);
+	std::ofstream outfile(path, std::ios::app);
 
 	//outfile << "Chapter " << chapter << ", " << "Scene " << scene << ", " << "Input Choice " << input << endl;
 

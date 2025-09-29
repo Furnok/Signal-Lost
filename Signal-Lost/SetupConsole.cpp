@@ -1,5 +1,7 @@
 ﻿#include "SetupConsole.h"
 
+#include <filesystem>
+
 /// <summary>
 /// Initialise the Console
 /// </summary>
@@ -83,10 +85,10 @@ void SetupConsole::SetTextColor(int indexColor) const
 /// </summary>
 void SetupConsole::SetupPath()
 {
-	wstring buffer(MAX_PATH, L'\0');
+	std::wstring buffer(MAX_PATH, L'\0');
 	GetModuleFileNameW(nullptr, buffer.data(), static_cast<DWORD>(buffer.size()));
 
-	filesystem::path exePath(buffer);
+	std::filesystem::path exePath(buffer);
 	this->pathGameFolder = exePath.parent_path().string() + "\\";
 }
 

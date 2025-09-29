@@ -3,58 +3,51 @@
 #define _CRT_SECURE_NO_WARNINGS
 
 #include "SetupConsole.h"
-#include <filesystem>
-#include <fstream>
-#include <unordered_map>
-#include <chrono>
-#include <conio.h>
-#include <iostream>
-#include <regex>
 
-using namespace std;
-using namespace chrono;
+#include <iostream>
+#include <unordered_map>
 
 class File
 {
 public:
-	static string DateTime();
+	static std::string DateTime();
 
 	void CreateFileErrors(SetupConsole& setupConsole);
-	void ReadFileError(SetupConsole& setupConsole, const string& key) const;
+	void ReadFileError(SetupConsole& setupConsole, const std::string& key) const;
 
-	void FileLog(SetupConsole& setupConsole, const string& inputChoice);
+	void FileLog(SetupConsole& setupConsole, const std::string& inputChoice);
 
 	void Read(SetupConsole& setupConsole, char* pathChapter);
 
-	[[nodiscard]] string GetPathErrorsFolder() const noexcept { return this->pathErrorsFolder; }
-	[[nodiscard]] string GetPathLogsFolder() const noexcept { return this->pathLogsFolder; }
+	[[nodiscard]] std::string GetPathErrorsFolder() const noexcept { return this->pathErrorsFolder; }
+	[[nodiscard]] std::string GetPathLogsFolder() const noexcept { return this->pathLogsFolder; }
 	[[nodiscard]] int GetChapterNumber() const noexcept { return this->chapterNumber; }
-	[[nodiscard]] string GetChapterName() const noexcept { return this->chapterName; }
+	[[nodiscard]] std::string GetChapterName() const noexcept { return this->chapterName; }
 
 private:
-	void CreateFileLog(SetupConsole& setupConsole, const string& inputChoice);
-	void AddToFileLog(const string& inputChoice) const;
+	void CreateFileLog(SetupConsole& setupConsole, const std::string& inputChoice);
+	void AddToFileLog(const std::string& inputChoice) const;
 
-	string errorFolderName = "Errors";
-	string logsFolderName = "Logs";
+	std::string errorFolderName = "Errors";
+	std::string logsFolderName = "Logs";
 
-	string pathErrorsFolder = "";
-	string pathLogsFolder = "";
+	std::string pathErrorsFolder = "";
+	std::string pathLogsFolder = "";
 
-	string errorsFileName = "Errors.txt";
-	string logsFileName = "Logs_";
+	std::string errorsFileName = "Errors.txt";
+	std::string logsFileName = "Logs_";
 
-	string pathChapter = "";
-	string contentChapter = "";
+	std::string pathChapter = "";
+	std::string contentChapter = "";
 
 	int chapterNumber = 0;
-	string chapterName = "";
+	std::string chapterName = "";
 	int startTrustPoint = 0;
 	int startSceneNumber = 0;
 
 	bool startTrustSet = false;
 
-	unordered_map<string, string> errors
+	std::unordered_map<std::string, std::string> errors
 	{
 		{"BadFile", "The File is not a Text File!"},
 		{"FileEmpty", "The File Chapter is Empty!"},

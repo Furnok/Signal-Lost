@@ -18,19 +18,19 @@ int main(int argc, char* argv[])
 
     file.CreateFileErrors(setupConsole);
 
-    if (argc < 2)
+    if (argc < 0)
     {
-        file.ReadFileError(setupConsole, "NoFile");
+        //file.ReadFileError(setupConsole, "NoFile");
     }
     else
     {
         while (true)
         {
-            file.Read(setupConsole, argv[1]);
+            //file.Read(setupConsole, argv[1]);
 
             if (interfaceMainMenu.GetShowMainMenu())
             {
-				//interfaceMainMenu.ShowMainMenu(utils, setupConsole);
+				interfaceMainMenu.ShowMainMenu(utils, setupConsole);
             }
 
             if (interfaceGame.GetNewChapter())
@@ -50,8 +50,8 @@ int main(int argc, char* argv[])
 
 
 
-    cout << "\nPress Enter to exit...\n";
-    cin.get();
+    std::cout << "\nPress Enter to exit...\n";
+    std::cin.get();
 
     return 0;
 }

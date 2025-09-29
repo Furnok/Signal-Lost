@@ -3,13 +3,8 @@
 #define _CRT_SECURE_NO_WARNINGS
 
 #include <windows.h>
-#include <string>
-#include <string_view>
-#include <array>
-#include <filesystem>
 #include <iostream>
-
-using namespace std;
+#include <array>
 
 class SetupConsole
 {
@@ -20,11 +15,11 @@ public:
     void SetFontSize(HANDLE out, int size);
     void SetTextColor(int indexColor) const;
 
-    [[nodiscard]] string GetPathGameFolder() const noexcept { return this->pathGameFolder; }
+    [[nodiscard]] std::string GetPathGameFolder() const noexcept { return this->pathGameFolder; }
 	[[nodiscard]] bool GetSoundActivated() const noexcept { return this->soundActivated; }
     [[nodiscard]] int GetFontSize() const noexcept { return this->textFontSize; }
 
-    void SetSoundActivated(bool value) { this->soundActivated = move(value); }
+    void SetSoundActivated(bool value) { this->soundActivated = std::move(value); }
 
 private:
 	void SetupPath();
@@ -33,10 +28,10 @@ private:
     void CenterWindow(HWND window, int screenW, int screenH) const;
     void DefineConsole(HWND window);
 
-    static constexpr wstring_view appName = L"Signal Lost";
-    static constexpr wstring_view fontName = L"Lucida Console";
+    static constexpr std::wstring_view appName = L"Signal Lost";
+    static constexpr std::wstring_view fontName = L"Lucida Console";
 
-	string pathGameFolder = "";
+    std::string pathGameFolder = "";
 	bool soundActivated = true;
     int textFontSize = 0;
 
@@ -52,7 +47,7 @@ private:
         int fontSize = 0;
     };
 
-    static constexpr auto fontMap = to_array<ScreenFont>
+    static constexpr auto fontMap = std::to_array<ScreenFont>
     ({
         {3840, 34},
         {2560, 30},

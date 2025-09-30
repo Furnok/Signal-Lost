@@ -4,19 +4,27 @@
 
 #include <map>
 #include <array>
-#include <string>
+#include <string_view>
+#include <cctype>
+#include <vector>
 
 class Utils
 {
 public:
-	void PosCursor(int posX, int posY) const;
+	void ClearConsole() const noexcept;
+
+	void PosCursor(int posX, int posY) const noexcept;
+
+	void DrawTitle(const std::string_view& text, const int consoleWidth) const;
 
 	void DrawBox(int left, int top, int width, int height) const;
+
+	void DrawMenuItems(const std::vector<std::string_view>& items, int left, int top);
 
 	void DrawAscii(char ch, int posX, int posY) const;
 
 private:
-	const std::map<char, std::array<std::string, 5>> ascii =
+	inline static const std::map<char, std::array<std::string_view, 5>> ascii =
 	{
 		{ '0',
 		{

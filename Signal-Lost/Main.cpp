@@ -24,25 +24,27 @@ int main(int argc, char* argv[])
     }
     else
     {
-        while (true)
+        //std::string path = argv[1];
+
+        while (1)
         {
-            //file.Read(setupConsole, argv[1]);
+            //file.Read(setupConsole, path);
 
-            if (interfaceMainMenu.GetShowMainMenu())
+            if (interfaceMainMenu.GetDisplay())
             {
-				interfaceMainMenu.ShowMainMenu(utils, setupConsole);
+				//interfaceMainMenu.DisplayMainMenu(utils, setupConsole);
             }
 
-            if (interfaceGame.GetNewChapter())
+            if (interfaceGame.GetDisplay())
             {
-				interfaceGame.ShowTransitionChapter(utils, setupConsole, file);
+				//interfaceGame.DisplayTransitionChapter(utils, setupConsole, file);
             }
 
-			interfaceGame.DisplayInterfaceGame();
+			interfaceGame.DisplayInterfaceGame(utils);
 
-            while (!true)
+            while (!1)
             {
-
+                
             }
         }
     }

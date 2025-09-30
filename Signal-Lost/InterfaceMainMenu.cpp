@@ -6,19 +6,133 @@
 #include <windows.h>
 #include <iostream>
 
-using namespace std::chrono_literals;
+using namespace std::chrono;
 
-void InterfaceMainMenu::ShowMainMenu(Utils& utils, SetupConsole& setupConsole)
+/// <summary>
+/// Display the Game Main Menu
+/// </summary>
+/// <param name="utils"></param>
+/// <param name="setupConsole"></param>
+void InterfaceMainMenu::DisplayMainMenu(Utils& utils, SetupConsole& setupConsole)
 {
-	system("cls");
+	this->display = false;
+	constexpr auto delay = 200ms;
 
-	this->showMainMenu = false;
+	while (1)
+	{
+		utils.ClearConsole();
+
+		setupConsole.SetTextColor(2);
+		std::this_thread::sleep_for(delay);
+
+		CONSOLE_SCREEN_BUFFER_INFO csbi;
+		GetConsoleScreenBufferInfo(GetStdHandle(STD_OUTPUT_HANDLE), &csbi);
+		const int consoleWidth = csbi.srWindow.Right - csbi.srWindow.Left + 1;
+		const int consoleHeight = csbi.srWindow.Bottom - csbi.srWindow.Top + 1;
+
+		utils.DrawTitle(gameTitle, consoleWidth);
+
+		setupConsole.SetTextColor(7);
+		std::this_thread::sleep_for(delay);
+
+		const int boxWidth = 21;
+		const int boxHeight = 11;
+		const int boxLeft = (consoleWidth - boxWidth) / 2;
+		const int boxTop = (consoleHeight - boxHeight) / 2;
+
+		utils.DrawBox(boxLeft, boxTop, boxWidth, boxHeight);
+
+		setupConsole.SetTextColor(1);
+		std::this_thread::sleep_for(delay);
+
+		utils.DrawMenuItems(mainMenuItems, boxLeft, boxTop);
+
+		setupConsole.SetTextColor(7);
+
+		bool newDisplay = false;
+
+		while (!newDisplay)
+		{
+			FlushConsoleInputBuffer(GetStdHandle(STD_INPUT_HANDLE));
+
+			switch (_getch())
+			{
+				case '1':
+				{
+					return;
+				}
+				case '2':
+				{
+					DisplaySettings(utils, setupConsole);
+					newDisplay = true;
+					break;
+				}
+				case '3':
+				{
+					DisplayCredits(utils, setupConsole);
+					newDisplay = true;
+					break;
+				}
+				case '4':
+				{
+					utils.PosCursor(0, 30);
+					exit(EXIT_SUCCESS);
+				}
+				default:
+				{
+					break;
+				}
+			}
+		}
+	}
+}
+
+/// <summary>
+/// Update the UI Settings Sound
+/// </summary>
+/// <param name="utils"></param>
+/// <param name="setupConsole"></param>
+/// <param name="right"></param>
+/// <param name="top"></param>
+void InterfaceMainMenu::UpdateSettingSoundActivated(Utils& utils, SetupConsole& setupConsole, int right, int top) const
+{
+	setupConsole.SetTextColor(2);
+
+	utils.PosCursor(right, top);
+	std::cout << (setupConsole.GetSoundActivated() ? "ON " : "OFF") << "\n";
+
+	setupConsole.SetTextColor(7);
+}
+
+/// <summary>
+/// Update the UI Settings FontSize
+/// </summary>
+/// <param name="utils"></param>
+/// <param name="setupConsole"></param>
+/// <param name="right"></param>
+/// <param name="top"></param>
+void InterfaceMainMenu::UpdateSettingFontSize(Utils& utils, SetupConsole& setupConsole, int right, int top) const
+{
+	setupConsole.SetTextColor(2);
+
+	utils.PosCursor(right, top);
+	std::cout << setupConsole.GetFontSize() << "px\n";
+
+	setupConsole.SetTextColor(7);
+}
+
+/// <summary>
+/// Display the Settings
+/// </summary>
+/// <param name="utils"></param>
+/// <param name="setupConsole"></param>
+void InterfaceMainMenu::DisplaySettings(Utils& utils, SetupConsole& setupConsole)
+{
+	utils.ClearConsole();
 
 	constexpr auto delay = 200ms;
-	constexpr auto delayLetter = 100ms;
 
 	std::this_thread::sleep_for(delay);
-
 	setupConsole.SetTextColor(2);
 
 	CONSOLE_SCREEN_BUFFER_INFO csbi;
@@ -26,137 +140,7 @@ void InterfaceMainMenu::ShowMainMenu(Utils& utils, SetupConsole& setupConsole)
 	const int consoleWidth = csbi.srWindow.Right - csbi.srWindow.Left + 1;
 	const int consoleHeight = csbi.srWindow.Bottom - csbi.srWindow.Top + 1;
 
-	const std::string letters = "--SIGNAL LOST--";
-	const int glyphCount = static_cast<int>(letters.size());
-	const int titleWidth = ((glyphCount - 1) * 7) + 5;
-	const int titleHeight = 5;
-
-	int posX = (consoleWidth - titleWidth) / 2;
-	int posY = 4;
-
-	for (char ch : letters)
-	{
-		utils.DrawAscii(ch, posX, posY);
-			
-		posX += 7;
-		std::this_thread::sleep_for(delayLetter);
-	}
-
-	setupConsole.SetTextColor(7);
-	std::this_thread::sleep_for(delay);
-
-	const int boxWidth = 21;
-	const int boxHeight = 11;
-	const int boxLeft = (consoleWidth - boxWidth) / 2;
-	const int boxTop = (consoleHeight - boxHeight) / 2;
-
-	utils.DrawBox(boxLeft, boxTop, boxWidth, boxHeight);
-
-	setupConsole.SetTextColor(1);
-	std::this_thread::sleep_for(delay);
-
-	std::vector<std::string> menuItems =
-	{
-		"1 - Start",
-		"2 - Settings",
-		"3 - Credits",
-		"4 - Quit"
-	};
-
-	for (int i = 0; i < menuItems.size(); ++i)
-	{
-		int textX = boxLeft + 4;
-		int textY = boxTop + 2;
-		utils.PosCursor(textX, textY + i * 2);
-		std::cout << menuItems[i] << std::endl;
-	}
-
-	setupConsole.SetTextColor(7);
-
-	FlushConsoleInputBuffer(GetStdHandle(STD_INPUT_HANDLE));
-
-	char inputChoice = _getch();
-
-	switch (inputChoice)
-	{
-		case '1':
-		{
-			return;
-		}
-		case '2':
-		{
-			ShowSettings(utils, setupConsole);
-			break;
-		}
-		case '3':
-		{
-			ShowCredits(utils, setupConsole);
-			break;
-		}
-		case '4':
-		{
-			utils.PosCursor(0, 30);
-			exit(EXIT_SUCCESS);
-		}
-		default:
-		{
-			break;
-		}
-	}
-}
-
-void InterfaceMainMenu::UpdateSettingSoundActivated(Utils& utils, SetupConsole& setupConsole, int right, int top)
-{
-	setupConsole.SetTextColor(2);
-
-	utils.PosCursor(right, top);
-
-	std::cout << (setupConsole.GetSoundActivated() ? "ON " : "OFF") << std::endl;
-
-	setupConsole.SetTextColor(7);
-}
-
-void InterfaceMainMenu::UpdateSettingFontSize(Utils& utils, SetupConsole& setupConsole, int right, int top)
-{
-	setupConsole.SetTextColor(2);
-
-	utils.PosCursor(right, top);
-	std::cout << setupConsole.GetFontSize() << "px" << std::endl;
-
-	setupConsole.SetTextColor(7);
-}
-
-void InterfaceMainMenu::ShowSettings(Utils& utils, SetupConsole& setupConsole)
-{
-	system("cls");
-
-	constexpr auto delay = 200ms;
-	constexpr auto delayLetter = 100ms;
-
-	std::this_thread::sleep_for(delay);
-
-	setupConsole.SetTextColor(2);
-
-	CONSOLE_SCREEN_BUFFER_INFO csbi;
-	GetConsoleScreenBufferInfo(GetStdHandle(STD_OUTPUT_HANDLE), &csbi);
-	const int consoleWidth = csbi.srWindow.Right - csbi.srWindow.Left + 1;
-	const int consoleHeight = csbi.srWindow.Bottom - csbi.srWindow.Top + 1;
-
-	const std::string letters = "SETTINGS";
-	const int glyphCount = static_cast<int>(letters.size());
-	const int titleWidth = ((glyphCount - 1) * 7) + 5;
-	const int titleHeight = 5;
-
-	int posX = (consoleWidth - titleWidth) / 2;
-	int posY = 4;
-
-	for (char ch : letters)
-	{
-		utils.DrawAscii(ch, posX, posY);
-
-		posX += 7;
-		std::this_thread::sleep_for(delayLetter);
-	}
+	utils.DrawTitle(settingsTitle, consoleWidth);
 
 	setupConsole.SetTextColor(7);
 	std::this_thread::sleep_for(delay);
@@ -171,65 +155,49 @@ void InterfaceMainMenu::ShowSettings(Utils& utils, SetupConsole& setupConsole)
 	setupConsole.SetTextColor(1);
 	std::this_thread::sleep_for(delay);
 
-	std::vector<std::string> menuItems =
-	{
-		"1 - Sound:",
-		"2 - FontSize:",
-		"3 - Back",
-	};
-
-	for (int i = 0; i < menuItems.size(); ++i)
-	{
-		int textX = boxLeft + 4;
-		int textY = boxTop + 2;
-		utils.PosCursor(textX, textY + i * 2);
-		std::cout << menuItems[i] << std::endl;
-	}
+	utils.DrawMenuItems(settingsItems, boxLeft, boxTop);
 
 	setupConsole.SetTextColor(7);
 
 	UpdateSettingSoundActivated(utils, setupConsole, boxLeft + boxWidth - 8, boxTop + 2);
 	UpdateSettingFontSize(utils, setupConsole, boxLeft + boxWidth - 8, boxTop + 4);
 
-	const std::vector<int> FONT_SIZES = { 14, 18, 22, 26, 30, 34 };
-	bool exitSettings = false;
-
-	while (!exitSettings)
+	while (1)
 	{
 		FlushConsoleInputBuffer(GetStdHandle(STD_INPUT_HANDLE));
 
-		char inputChoice = _getch();
-
-		switch (inputChoice)
+		switch (_getch())
 		{
 			case '1':
 			{
 				setupConsole.SetSoundActivated(!setupConsole.GetSoundActivated());
 				UpdateSettingSoundActivated(utils, setupConsole, boxLeft + boxWidth - 8, boxTop + 2);
-
 				break;
 			}
 			case '2': 
 			{
 				HANDLE out = GetStdHandle(STD_OUTPUT_HANDLE);
 				int currentSize = setupConsole.GetFontSize();
-				auto it = find(FONT_SIZES.begin(), FONT_SIZES.end(), currentSize);
+				auto it = std::find(FONT_SIZES.begin(), FONT_SIZES.end(), currentSize);
 
-				if (it != FONT_SIZES.end())
+				if (it != FONT_SIZES.end()) 
 				{
-					setupConsole.SetFontSize(out, *(++it == FONT_SIZES.end() ? FONT_SIZES.begin() : it));
+					++it;
+
+					if (it == FONT_SIZES.end())
+					{
+						it = FONT_SIZES.begin();
+					}
+
+					setupConsole.SetFontSize(out, *it);
 				}
 
 				UpdateSettingFontSize(utils, setupConsole, boxLeft + boxWidth - 8, boxTop + 4);
-
 				break;
 			}
 			case '3': 
 			{
-				ShowMainMenu(utils, setupConsole);
-				exitSettings = true;
-
-				break;
+				return;
 			}
 			default:
 			{
@@ -237,42 +205,28 @@ void InterfaceMainMenu::ShowSettings(Utils& utils, SetupConsole& setupConsole)
 			}
 		}
 	}
-
-	ShowMainMenu(utils, setupConsole);
 }
 
-void InterfaceMainMenu::ShowCredits(Utils& utils, SetupConsole& setupConsole)
+/// <summary>
+/// Display the Credits
+/// </summary>
+/// <param name="utils"></param>
+/// <param name="setupConsole"></param>
+void InterfaceMainMenu::DisplayCredits(Utils& utils, SetupConsole& setupConsole)
 {
-	system("cls");
+	utils.ClearConsole();
 
 	constexpr auto delay = 200ms;
-	constexpr auto delayLetter = 100ms;
-	constexpr auto delayCredits = 10s;
-
-	std::this_thread::sleep_for(delay);
 
 	setupConsole.SetTextColor(2);
+	std::this_thread::sleep_for(delay);
 
 	CONSOLE_SCREEN_BUFFER_INFO csbi;
 	GetConsoleScreenBufferInfo(GetStdHandle(STD_OUTPUT_HANDLE), &csbi);
 	const int consoleWidth = csbi.srWindow.Right - csbi.srWindow.Left + 1;
 	const int consoleHeight = csbi.srWindow.Bottom - csbi.srWindow.Top + 1;
 
-	const std::string letters = "CREDITS";
-	const int glyphCount = static_cast<int>(letters.size());
-	const int titleWidth = ((glyphCount - 1) * 7) + 5;
-	const int titleHeight = 5;
-
-	int posX = (consoleWidth - titleWidth) / 2;
-	int posY = 4;
-
-	for (char ch : letters)
-	{
-		utils.DrawAscii(ch, posX, posY);
-
-		posX += 7;
-		std::this_thread::sleep_for(delayLetter);
-	}
+	utils.DrawTitle(creditsTitle, consoleWidth);
 
 	setupConsole.SetTextColor(7);
 	std::this_thread::sleep_for(delay);
@@ -287,58 +241,52 @@ void InterfaceMainMenu::ShowCredits(Utils& utils, SetupConsole& setupConsole)
 	setupConsole.SetTextColor(1);
 	std::this_thread::sleep_for(delay);
 
-	struct CreditEntry 
+	std::size_t maxRole = 0;
+	for (auto& c : creditsProfiles)
 	{
-		std::string role;
-		std::string name;
-	};
-
-	std::vector<CreditEntry> menuItems =
-	{
-		{"Project Manager & Lead Game Designer:", "Baptiste PERRIN"},
-		{"Game Designer:", "Loic VAREILLES"},
-		{""},
-		{"Lead Game Programmer:", "Killian FURNO"},
-		{"Game Programmer:", "Adrien LECHAT"},
-		{"Game Programmer:", "Hortense MARIE"},
-		{"Game Programmer:", "Florian MARTINS"},
-	};
-
-	size_t maxRoleLen = 0;
-	for (auto& c : menuItems)
-	{
-		maxRoleLen = max(maxRoleLen, c.role.size());
+		maxRole = max(maxRole, c.role.size());
 	}
 
-	for (size_t i = 0; i < menuItems.size(); ++i) 
+	for (std::size_t i = 0; i < creditsProfiles.size(); ++i)
 	{
 		utils.PosCursor(boxLeft + 4, boxTop + 2 + static_cast<int>(i) * 2);
-
 		setupConsole.SetTextColor(1);
-		std::cout << std::left << std::setw(static_cast<int>(maxRoleLen) + 2) << menuItems[i].role;
-
+		std::cout << std::left << std::setw(static_cast<int>(maxRole) + 2) << creditsProfiles[i].role;
 		setupConsole.SetTextColor(2);
-		std::cout << menuItems[i].name << std::endl;
+		std::cout << creditsProfiles[i].name << '\n';
 	}
 
 	setupConsole.SetTextColor(7);
+	std::this_thread::sleep_for(delay);
 
-	FlushConsoleInputBuffer(GetStdHandle(STD_INPUT_HANDLE));
+	const int box2Width = 16;
+	const int box2Height = 5;
+	const int box2Left = (consoleWidth - box2Width) / 2;
+	const int box2Top = ((consoleHeight - box2Height) / 2) + 14;
 
-	auto waited = 0ms;
-	constexpr auto delayWait = 20ms;
-	while (waited < delayCredits)
+	utils.DrawBox(box2Left, box2Top, box2Width, box2Height);
+
+	setupConsole.SetTextColor(1);
+	std::this_thread::sleep_for(delay);
+
+	utils.DrawMenuItems(creditsItems, box2Left, box2Top);
+
+	setupConsole.SetTextColor(7);
+
+	while (1)
 	{
-		if (_kbhit()) 
+		FlushConsoleInputBuffer(GetStdHandle(STD_INPUT_HANDLE));
+
+		switch (_getch())
 		{
-			(void)_getch();
-			break;
+			case '1':
+			{
+				return;
+			}
+			default: 
+			{ 
+				break; 
+			}
 		}
-
-		std::this_thread::sleep_for(delayWait);
-
-		waited += delayWait;
 	}
-
-	ShowMainMenu(utils, setupConsole);
 }

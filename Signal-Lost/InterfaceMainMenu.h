@@ -5,19 +5,64 @@
 #include "SetupConsole.h"
 #include "Utils.h"
 
+#include <vector>
+
 class InterfaceMainMenu
 {
 public:
-	void ShowMainMenu(Utils& utils, SetupConsole& setupConsole);
+	void DisplayMainMenu(Utils& utils, SetupConsole& setupConsole);
 	
-	[[nodiscard]] bool GetShowMainMenu() const noexcept { return this->showMainMenu; }
+	[[nodiscard]] bool GetDisplay() const noexcept { return this->display; }
 
 private:
-	void UpdateSettingSoundActivated(Utils& utils, SetupConsole& setupConsole, int right, int top);
-	void UpdateSettingFontSize(Utils& utils, SetupConsole& setupConsole, int right, int top);
-	void ShowSettings(Utils& utils, SetupConsole& setupConsole);
+	void UpdateSettingSoundActivated(Utils& utils, SetupConsole& setupConsole, int right, int top) const;
+	void UpdateSettingFontSize(Utils& utils, SetupConsole& setupConsole, int right, int top) const;
+	void DisplaySettings(Utils& utils, SetupConsole& setupConsole);
 
-	void ShowCredits(Utils& utils, SetupConsole& setupConsole);
+	void DisplayCredits(Utils& utils, SetupConsole& setupConsole);
 
-	bool showMainMenu = true;
+	static constexpr std::string_view gameTitle = "--SIGNAL LOST--";
+	static constexpr std::string_view settingsTitle = "SETTINGS";
+	static constexpr std::string_view creditsTitle = "CREDITS";
+
+	static inline const std::vector<std::string_view> mainMenuItems =
+	{
+		"1 - Start",
+		"2 - Settings",
+		"3 - Credits",
+		"4 - Quit"
+	};
+
+	const std::vector<int> FONT_SIZES = { 14, 18, 22, 26, 30, 34 };
+
+	static inline const std::vector<std::string_view> settingsItems =
+	{
+		"1 - Sound:",
+		"2 - FontSize:",
+		"3 - Back",
+	};
+
+	const struct CreditEntry
+	{
+		std::string_view role;
+		std::string_view name;
+	};
+
+	static inline const std::vector<CreditEntry> creditsProfiles =
+	{
+		{"Project Manager & Lead Game Designer:", "Baptiste PERRIN"},
+		{"Game Designer:", "Loic VAREILLES"},
+		{""},
+		{"Lead Game Programmer:", "Killian FURNO"},
+		{"Game Programmer:", "Adrien LECHAT"},
+		{"Game Programmer:", "Hortense MARIE"},
+		{"Game Programmer:", "Florian MARTINS"},
+	};
+
+	static inline const std::vector<std::string_view> creditsItems =
+	{
+		"1 - Back",
+	};
+
+	bool display = true;
 };

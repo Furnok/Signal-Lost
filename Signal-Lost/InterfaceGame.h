@@ -9,12 +9,14 @@
 class InterfaceGame
 {
 public:
-	void ShowTransitionChapter(Utils& utils, SetupConsole& setupConsole, File& file);
+	void DisplayTransitionChapter(Utils& utils, SetupConsole& setupConsole, const File& file);
 
-	void DisplayInterfaceGame();
+	void DisplayInterfaceGame(Utils& utils);
 
-	[[nodiscard]] bool GetNewChapter() const noexcept { return this->newChapter; }
+	[[nodiscard]] bool GetDisplay() const noexcept { return this->display; }
 
 private:
-	bool newChapter = true;
+	static constexpr std::string_view textChapter = "CHAPTER-";
+
+	bool display = true;
 };

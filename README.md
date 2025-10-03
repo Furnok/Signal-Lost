@@ -1,12 +1,11 @@
 # Signal-Lost
 
 PREREQUISITES:   
-- Operating system: Windows 10 or Later.
+- Operating System: Windows 10 or Later.
 - Processor: 2 GHz.
 - Memory: 1 GB RAM.
-- Graphics Card: minimum resolution 1280x720.
-- Hard disk: 100 MB of available space.
-- A working internet connection.
+- Graphics Card: Minimum Resolution 1280x720px.
+- Hard Disk: 100 MB of Available Space.
 
 TERMS OF USE:   
 PEGI 12 Warning, this game contains insults.

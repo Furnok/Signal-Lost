@@ -1,2 +1,15 @@
 # Signal-Lost
-Console Game made with Visual Studio 2022 for School Project (1rd Year School)
+
+PREREQUISITES:   
+- Operating system: Windows 10 or older.
+- Processor: 2 GHz.
+- Memory: 1 GB RAM.
+- Graphics: minimum resolution 1280x720.
+- Hard disk: 100 MB of available space.
+- A working internet connection.
+
+TERMS OF USE:   
+PEGI 12 Warning, this game contains insults.
+
+LICENSE:   
+Distributed under the MIT License

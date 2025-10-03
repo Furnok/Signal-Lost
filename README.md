@@ -1,10 +1,10 @@
 # Signal-Lost
 
 PREREQUISITES:   
-- Operating system: Windows 10 or older.
+- Operating system: Windows 10 or Later.
 - Processor: 2 GHz.
 - Memory: 1 GB RAM.
-- Graphics: minimum resolution 1280x720.
+- Graphics Card: minimum resolution 1280x720.
 - Hard disk: 100 MB of available space.
 - A working internet connection.
 

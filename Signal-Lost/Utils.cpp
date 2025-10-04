@@ -36,11 +36,11 @@ void Utils::PosCursor(int posX, int posY) const noexcept
 }
 
 /// <summary>
-/// Draw the Title
+/// Draw the Main Menu Title
 /// </summary>
 /// <param name="text"></param>
 /// <param name="consoleWidth"></param>
-void Utils::DrawTitle(const std::string_view& text, const int consoleWidth) const
+void Utils::DrawMainMenuTitle(const std::string_view& text, const int consoleWidth) const
 {
     constexpr auto delayLetter = 100ms;
     const int letterSize = 5;
@@ -57,6 +57,26 @@ void Utils::DrawTitle(const std::string_view& text, const int consoleWidth) cons
 
         posX += letterSize + spaceLetter;
         std::this_thread::sleep_for(delayLetter);
+    }
+}
+
+/// <summary>
+/// Draw the Game Title
+/// </summary>
+/// <param name="text"></param>
+/// <param name="consoleWidth"></param>
+void Utils::DrawGameTitle(const std::string_view& text, const int posX, const int posY) const
+{
+    const int letterSize = 5;
+    const int spaceLetter = 2;
+
+    int positionX = posX;
+
+    for (char ch : text)
+    {
+        DrawAscii(ch, positionX, posY);
+
+        positionX += letterSize + spaceLetter;
     }
 }
 
@@ -85,14 +105,14 @@ void Utils::DrawBox(int left, int top, int width, int height) const
         std::cout << rightChar;
     };
 
-    drawLine(top, char(219), char(223), char(219));
+    drawLine(top, char(220), char(220), char(220));
 
     for (int y = 1; y < height - 1; ++y)
     {
         drawLine(top + y, char(219), ' ', char(219));
     }
 
-    drawLine(top + height - 1, char(219), char(220), char(219));
+    drawLine(top + height - 1, char(223), char(223), char(223));
 }
 
 /// <summary>

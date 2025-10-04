@@ -136,7 +136,7 @@ void File::Read(SetupConsole& setupConsole, char* pathChapter)
 	bool headerRead = false;
 
 	std::regex pairRegex(R"(\[([^\]=]+)=([^\]]+)\])");
-	const std::vector<std::string> requiredKeys = { "Chapter", "Name", "Trust", "StartScene" };
+	const std::vector<std::string> requiredKeys = { "Chapter", "Name", "Connexion", "Trust", "StartScene" };
 	std::unordered_map<std::string, bool> keyFound;
 	for (auto& key : requiredKeys)
 	{
@@ -147,6 +147,7 @@ void File::Read(SetupConsole& setupConsole, char* pathChapter)
 
 	this->chapterNumber = 0;
 	this->chapterName.clear();
+	this->startConnectionPoint = 0;
 	this->startTrustPoint = 0;
 	this->startSceneNumber = 0;
 
@@ -189,22 +190,29 @@ void File::Read(SetupConsole& setupConsole, char* pathChapter)
 
 				if (key == "Chapter")
 				{
-					chapterNumber = max(0, safeInt("ChapterNumber"));
+					this->chapterNumber = max(0, safeInt("ChapterNumber"));
 					keyFound[key] = true;
 				}
 				else if (key == "Name")
 				{
-					chapterName = value;
+					this->chapterName = value;
 					keyFound[key] = true;
 				}
-				else if (key == "Trust")
+				else if (key == "Connexion" && !initialise)
 				{
-					startTrustPoint = std::clamp(safeInt("TrustNumber"), 0, 100);
+					this->startConnectionPoint = std::clamp(safeInt("Connection"), 0, 4);
+					this->connectionPoint = this->startConnectionPoint;
+					keyFound[key] = true;
+				}
+				else if (key == "Trust" && !initialise)
+				{
+					this->startTrustPoint = std::clamp(safeInt("TrustNumber"), 0, 100);
+					this->trustPoint = this->startTrustPoint;
 					keyFound[key] = true;
 				}
 				else if (key == "StartScene")
 				{
-					startSceneNumber = max(0, safeInt("SceneNumber"));
+					this->startSceneNumber = max(0, safeInt("SceneNumber"));
 					keyFound[key] = true;
 				}
 			}
@@ -218,6 +226,8 @@ void File::Read(SetupConsole& setupConsole, char* pathChapter)
 			ReadFileError(setupConsole, "HeaderCorrupt");
 		}
 	}
+
+	initialise = true;
 
 	infile.close();
 }

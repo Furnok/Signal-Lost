@@ -30,7 +30,7 @@ void InterfaceMainMenu::DisplayMainMenu(Utils& utils, SetupConsole& setupConsole
 		const int consoleWidth = csbi.srWindow.Right - csbi.srWindow.Left + 1;
 		const int consoleHeight = csbi.srWindow.Bottom - csbi.srWindow.Top + 1;
 
-		utils.DrawTitle(gameTitle, consoleWidth);
+		utils.DrawMainMenuTitle(gameTitle, consoleWidth);
 
 		setupConsole.SetTextColor(7);
 		std::this_thread::sleep_for(delay);
@@ -140,7 +140,7 @@ void InterfaceMainMenu::DisplaySettings(Utils& utils, SetupConsole& setupConsole
 	const int consoleWidth = csbi.srWindow.Right - csbi.srWindow.Left + 1;
 	const int consoleHeight = csbi.srWindow.Bottom - csbi.srWindow.Top + 1;
 
-	utils.DrawTitle(settingsTitle, consoleWidth);
+	utils.DrawMainMenuTitle(settingsTitle, consoleWidth);
 
 	setupConsole.SetTextColor(7);
 	std::this_thread::sleep_for(delay);
@@ -226,7 +226,7 @@ void InterfaceMainMenu::DisplayCredits(Utils& utils, SetupConsole& setupConsole)
 	const int consoleWidth = csbi.srWindow.Right - csbi.srWindow.Left + 1;
 	const int consoleHeight = csbi.srWindow.Bottom - csbi.srWindow.Top + 1;
 
-	utils.DrawTitle(creditsTitle, consoleWidth);
+	utils.DrawMainMenuTitle(creditsTitle, consoleWidth);
 
 	setupConsole.SetTextColor(7);
 	std::this_thread::sleep_for(delay);

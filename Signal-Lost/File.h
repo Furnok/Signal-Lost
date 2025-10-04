@@ -23,6 +23,9 @@ public:
 	[[nodiscard]] std::string GetPathLogsFolder() const noexcept { return this->pathLogsFolder; }
 	[[nodiscard]] int GetChapterNumber() const noexcept { return this->chapterNumber; }
 	[[nodiscard]] std::string GetChapterName() const noexcept { return this->chapterName; }
+	[[nodiscard]] int GetConnectionPoint() const noexcept { return this->connectionPoint; }
+	[[nodiscard]] int GetTrustPoint() const noexcept { return this->trustPoint; }
+	[[nodiscard]] int GetStartSceneNumber() const noexcept { return this->startSceneNumber; }
 
 private:
 	void CreateFileLog(SetupConsole& setupConsole, const std::string& inputChoice);
@@ -42,10 +45,13 @@ private:
 
 	int chapterNumber = 0;
 	std::string chapterName = "Empty";
+	int startConnectionPoint = 0;
+	int connectionPoint = 0;
 	int startTrustPoint = 0;
+	int trustPoint = 0;
 	int startSceneNumber = 0;
 
-	bool startTrustSet = false;
+	bool initialise = false;
 
 	std::unordered_map<std::string, std::string> errors
 	{

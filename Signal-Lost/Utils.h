@@ -15,7 +15,9 @@ public:
 
 	void PosCursor(int posX, int posY) const noexcept;
 
-	void DrawTitle(const std::string_view& text, const int consoleWidth) const;
+	void DrawMainMenuTitle(const std::string_view& text, const int consoleWidth) const;
+
+	void DrawGameTitle(const std::string_view& text, const int posX, const int posY) const;
 
 	void DrawBox(int left, int top, int width, int height) const;
 
@@ -113,6 +115,14 @@ private:
 			"▄▄▄▄▄",
 			"     ",
 			"     ",
+		}},
+		{ '%',
+		{
+			"▄   ▄",
+			"   ▄▀",
+			"  █  ",
+			"▄▀   ",
+			"▀   ▀",
 		}},
 		{ ' ',
 		{

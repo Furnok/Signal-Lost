@@ -40,7 +40,7 @@ int main(int argc, char* argv[])
 				//interfaceGame.DisplayTransitionChapter(utils, setupConsole, file);
             }
 
-			interfaceGame.DisplayInterfaceGame(utils);
+			interfaceGame.DisplayInterfaceGame(utils, setupConsole, file);
 
             while (!1)
             {

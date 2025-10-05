@@ -45,11 +45,11 @@ private:
 
 	int chapterNumber = 0;
 	std::string chapterName = "Empty";
-	int startConnectionPoint = 0;
+
 	int connectionPoint = 0;
-	int startTrustPoint = 0;
 	int trustPoint = 0;
 	int startSceneNumber = 0;
+	int scene = 0;
 
 	bool initialise = false;
 

@@ -153,3 +153,49 @@ void Utils::DrawAscii(char ch, int posX, int posY) const
 
 	SetConsoleOutputCP(originalCP);
 }
+
+/// <summary>
+/// Draw the Connection Barre
+/// </summary>
+/// <param name="number"></param>
+/// <param name="posX"></param>
+/// <param name="posY"></param>
+void Utils::DrawConnection(int number, int posX, int posY) const
+{
+    auto it = connection.find(number);
+    if (it == connection.end()) return;
+
+    UINT originalCP = GetConsoleOutputCP();
+    SetConsoleOutputCP(CP_UTF8);
+
+    for (size_t i = 0; i < it->second.size(); ++i)
+    {
+        PosCursor(posX, posY + static_cast<int>(i));
+        std::cout << it->second[i];
+    }
+
+    SetConsoleOutputCP(originalCP);
+}
+
+/// <summary>
+/// Draw the Trust Barre
+/// </summary>
+/// <param name="number"></param>
+/// <param name="posX"></param>
+/// <param name="posY"></param>
+void Utils::DrawTrustBarre(int number, int posX, int posY) const
+{
+    auto it = trust.find(number);
+    if (it == trust.end()) return;
+
+    UINT originalCP = GetConsoleOutputCP();
+    SetConsoleOutputCP(CP_UTF8);
+
+    for (size_t i = 0; i < it->second.size(); ++i)
+    {
+        PosCursor(posX, posY + static_cast<int>(i));
+        std::cout << it->second[i];
+    }
+
+    SetConsoleOutputCP(originalCP);
+}

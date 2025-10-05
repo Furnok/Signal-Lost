@@ -74,6 +74,8 @@ void InterfaceGame::DisplayInterfaceGame(Utils& utils, SetupConsole& setupConsol
 
 	DisplayHeader(utils, setupConsole, file);
 
+	utils.DrawBox(2, 27, 96, 13);
+
 	constexpr auto delayTransition = 60min;
 	std::this_thread::sleep_for(delayTransition);
 }
@@ -88,31 +90,12 @@ void InterfaceGame::DisplayConnectionBarre(Utils& utils, SetupConsole& setupCons
 {
 	setupConsole.SetTextColor(1);
 
-	int posX = 2;
-	const int posY = 5;
+	const int posX = 2;
+	const int posY = 1;
 
 	int connectionPoint = file.GetConnectionPoint();
 
-	for (int i = 0; i < 4; i++)
-	{
-		int barHeight = (i + 1);
-
-		for (int y = 0; y < barHeight; y++)
-		{
-			utils.PosCursor(posX, posY - y);
-
-			if (i < connectionPoint)
-			{
-				std::cout << char(219) << '\n';
-			}
-			else
-			{
-				std::cout << " " << '\n';
-			}
-		}
-
-		posX += 3;
-	}
+	utils.DrawConnection(connectionPoint, posX, posY);
 
 	setupConsole.SetTextColor(7);
 }
@@ -127,41 +110,12 @@ void InterfaceGame::DisplayTrustBarre(Utils& utils, SetupConsole& setupConsole, 
 {
 	setupConsole.SetTextColor(1);
 
-	for (int i = 0; i < 36; i++)
-	{
-		utils.PosCursor(54 + i, 2);
-		std::cout << " " << "\n";
-	}
+	const int posX = 53;
+	const int posY = 2;
 
-	for (int i = 0; i < 36; i++)
-	{
-		utils.PosCursor(54 + i, 3);
-		std::cout << " " << "\n";
-	}
+	int trustPoint = file.GetTrustPoint();
 
-	for (int i = 0; i < 36; i++)
-	{
-		utils.PosCursor(54 + i, 4);
-		std::cout << " " << "\n";
-	}
-
-	for (int i = 0; i < (100 / 100.0) * 36; i++)
-	{
-		utils.PosCursor(54 + i, 2);
-		std::cout << char(219) << "\n";
-	}
-
-	for (int i = 0; i < (100 / 100.0) * 36; i++)
-	{
-		utils.PosCursor(54 + i, 3);
-		std::cout << char(219) << "\n";
-	}
-
-	for (int i = 0; i < (100 / 100.0) * 36; i++)
-	{
-		utils.PosCursor(54 + i, 4);
-		std::cout << char(219) << "\n";
-	}
+	utils.DrawTrustBarre(trustPoint, posX, posY);
 
 	setupConsole.SetTextColor(7);
 }
@@ -176,15 +130,28 @@ void InterfaceGame::DisplayTrustPercentage(Utils& utils, SetupConsole& setupCons
 {
 	setupConsole.SetTextColor(2);
 
-	int digit1 = 93;
-	int digit2 = 100;
-	int digit3 = 107;
-	int digit4 = 114;
+	int posX = 93;
+	const int posY = 1;
 
-	utils.DrawAscii('0', digit1, 1);
-	utils.DrawAscii('0', digit2, 1);
-	utils.DrawAscii('0', digit3, 1);
-	utils.DrawAscii('%', digit4, 1);
+	int trustPoint = file.GetTrustPoint();
+
+	int hundreds = trustPoint / 100;
+	int tens = (trustPoint / 10) % 10;
+	int ones = trustPoint % 10;
+
+	utils.DrawAscii('0' + hundreds, posX, posY);
+
+	posX += 7;
+
+	utils.DrawAscii('0' + tens, posX, posY);
+
+	posX += 7;
+
+	utils.DrawAscii('0' + ones, posX, posY);
+
+	posX += 7;
+
+	utils.DrawAscii('%', posX, posY);
 
 	setupConsole.SetTextColor(7);
 }
@@ -210,7 +177,7 @@ void InterfaceGame::DisplayHeader(Utils& utils, SetupConsole& setupConsole, cons
 		std::cout << char(223) << "\n";
 	}
 
-	posX += 15;
+	posX += 14;
 
 	for (int i = 0; i < posY; i++)
 	{
@@ -222,11 +189,11 @@ void InterfaceGame::DisplayHeader(Utils& utils, SetupConsole& setupConsole, cons
 
 	setupConsole.SetTextColor(2);
 
-	utils.DrawGameTitle(trustTitle, 18, 1);
+	utils.DrawGameTitle(trustTitle, 17, 1);
 
 	setupConsole.SetTextColor(7);
 
-	utils.DrawBox(53, 1, 38, 5);
+	utils.DrawBox(52, 1, 39, 5);
 
 	DisplayTrustBarre(utils, setupConsole, file);
 

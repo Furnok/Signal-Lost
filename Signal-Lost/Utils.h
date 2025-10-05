@@ -25,6 +25,10 @@ public:
 
 	void DrawAscii(char ch, int posX, int posY) const;
 
+	void DrawConnection(int number, int posX, int posY) const;
+
+	void DrawTrustBarre(int number, int posX, int posY) const;
+
 private:
 	inline static const std::map<char, std::array<std::string_view, 5>> ascii =
 	{
@@ -339,6 +343,84 @@ private:
 			"  █  ",
 			"▄▀   ",
 			"▀▀▀▀▀",
+		}},
+	};
+
+	inline static const std::map<int, std::array<std::string_view, 5>> connection =
+	{
+		{ 0,
+		{
+			"          ",
+			"          ",
+			"          ",
+			"          ",
+			"          ",
+		}},
+		{ 1,
+		{
+			"          ",
+			"          ",
+			"          ",
+			"▄         ",
+			"▀         ",
+		}},
+		{ 2,
+		{
+			"          ",
+			"          ",
+			"   ▄      ",
+			"▄  █      ",
+			"▀  ▀      ",
+		}},
+		{ 3,
+		{
+			"          ",
+			"      ▄   ",
+			"   ▄  █   ",
+			"▄  █  █   ",
+			"▀  ▀  ▀   ",
+		}},
+		{ 4,
+		{
+			"         ▄",
+			"      ▄  █",
+			"   ▄  █  █",
+			"▄  █  █  █",
+			"▀  ▀  ▀  ▀",
+		}},
+	};
+
+	inline static const std::map<int, std::array<std::string_view, 3>> trust =
+	{
+		{ 0,
+		{
+			"                                     ",
+			"                                     ",
+			"                                     ",
+		}},
+		{ 25,
+		{
+			"█████████                            ",
+			"█████████                            ",
+			"█████████                            ",
+		}},
+		{ 50,
+		{
+			"███████████████████                  ",
+			"███████████████████                  ",
+			"███████████████████                  ",
+		}},
+		{ 75,
+		{
+			"████████████████████████████         ",
+			"████████████████████████████         ",
+			"████████████████████████████         ",
+		}},
+		{ 100,
+		{
+			"█████████████████████████████████████",
+			"█████████████████████████████████████",
+			"█████████████████████████████████████",
 		}},
 	};
 };

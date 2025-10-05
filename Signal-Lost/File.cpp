@@ -147,8 +147,6 @@ void File::Read(SetupConsole& setupConsole, char* pathChapter)
 
 	this->chapterNumber = 0;
 	this->chapterName.clear();
-	this->startConnectionPoint = 0;
-	this->startTrustPoint = 0;
 	this->startSceneNumber = 0;
 
 	if (std::filesystem::path(this->pathChapter).extension() != ".txt")
@@ -190,24 +188,30 @@ void File::Read(SetupConsole& setupConsole, char* pathChapter)
 
 				if (key == "Chapter")
 				{
-					this->chapterNumber = max(0, safeInt("ChapterNumber"));
+					this->chapterNumber = std::clamp(safeInt("ChapterNumber"), 0, 999999999);
 					keyFound[key] = true;
 				}
 				else if (key == "Name")
 				{
-					this->chapterName = value;
+					this->chapterName = value.substr(0, 117);
 					keyFound[key] = true;
 				}
-				else if (key == "Connexion" && !initialise)
+				else if (key == "Connexion")
 				{
-					this->startConnectionPoint = std::clamp(safeInt("Connection"), 0, 4);
-					this->connectionPoint = this->startConnectionPoint;
+					if (!initialise)
+					{
+						this->connectionPoint = std::clamp(safeInt("Connection"), 0, 4);
+					}
+
 					keyFound[key] = true;
 				}
-				else if (key == "Trust" && !initialise)
+				else if (key == "Trust")
 				{
-					this->startTrustPoint = std::clamp(safeInt("TrustNumber"), 0, 100);
-					this->trustPoint = this->startTrustPoint;
+					if (!initialise)
+					{
+						this->trustPoint = (std::clamp(safeInt("TrustNumber"), 0, 100) / 25) * 25;
+					}
+
 					keyFound[key] = true;
 				}
 				else if (key == "StartScene")

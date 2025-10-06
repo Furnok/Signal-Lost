@@ -18,33 +18,33 @@ int main(int argc, char* argv[])
 
     file.CreateFileErrors(setupConsole);
 
-    if (argc < 0)
+    if (argc < 2)
     {
-        //file.ReadFileError(setupConsole, "NoFile");
+        file.ReadFileError(setupConsole, "NoFile");
     }
     else
     {
-        //std::string path = argv[1];
+        std::string path = argv[1];
 
         while (1)
         {
-            //file.Read(setupConsole, path);
-
             if (interfaceMainMenu.GetDisplay())
             {
 				//interfaceMainMenu.DisplayMainMenu(utils, setupConsole);
             }
+
+            file.Read(setupConsole, interfaceGame, path);
 
             if (interfaceGame.GetDisplay())
             {
 				//interfaceGame.DisplayTransitionChapter(utils, setupConsole, file);
             }
 
-			interfaceGame.DisplayInterfaceGame(utils, setupConsole, file);
+			interfaceGame.DisplayInterfaceGame(utils, setupConsole);
 
-            while (!1)
+            while (1)
             {
-                
+                interfaceGame.DisplayText(utils, setupConsole, file);
             }
         }
     }

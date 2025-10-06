@@ -128,7 +128,7 @@ void File::FileLog(SetupConsole& setupConsole, const std::string& inputChoice)
 /// Read the Chapter File
 /// </summary>
 /// <param name="setupConsole"></param>
-void File::Read(SetupConsole& setupConsole, char* pathChapter)
+void File::Read(SetupConsole& setupConsole, InterfaceGame& interfaceGame, std::string& pathChapter)
 {
 	this->pathChapter = pathChapter;
 
@@ -144,10 +144,6 @@ void File::Read(SetupConsole& setupConsole, char* pathChapter)
 	}
 
 	this->contentChapter.clear();
-
-	this->chapterNumber = 0;
-	this->chapterName.clear();
-	this->startSceneNumber = 0;
 
 	if (std::filesystem::path(this->pathChapter).extension() != ".txt")
 	{
@@ -175,32 +171,32 @@ void File::Read(SetupConsole& setupConsole, char* pathChapter)
 				const std::string value = match[2];
 
 				auto safeInt = [&](const char* errKey)
+				{
+					try
 					{
-						try
-						{
-							return stoi(value);
-						}
-						catch (...)
-						{
-							ReadFileError(setupConsole, errKey); return 0;
-						}
-					};
+						return stoi(value);
+					}
+					catch (...)
+					{
+						ReadFileError(setupConsole, errKey); return 0;
+					}
+				};
 
 				if (key == "Chapter")
 				{
-					this->chapterNumber = std::clamp(safeInt("ChapterNumber"), 0, 999999999);
+					interfaceGame.SetChapterNumber(std::clamp(safeInt("ChapterNumber"), 0, 999999999));
 					keyFound[key] = true;
 				}
 				else if (key == "Name")
 				{
-					this->chapterName = value.substr(0, 117);
+					interfaceGame.SetChapterName(value.substr(0, 117));
 					keyFound[key] = true;
 				}
 				else if (key == "Connexion")
 				{
 					if (!initialise)
 					{
-						this->connectionPoint = std::clamp(safeInt("Connection"), 0, 4);
+						interfaceGame.SetConnectionPoint(std::clamp(safeInt("Connection"), 0, 4));
 					}
 
 					keyFound[key] = true;
@@ -209,14 +205,14 @@ void File::Read(SetupConsole& setupConsole, char* pathChapter)
 				{
 					if (!initialise)
 					{
-						this->trustPoint = (std::clamp(safeInt("TrustNumber"), 0, 100) / 25) * 25;
+						interfaceGame.SetTrustPoint((std::clamp(safeInt("TrustNumber"), 0, 100) / 25) * 25);
 					}
 
 					keyFound[key] = true;
 				}
 				else if (key == "StartScene")
 				{
-					this->startSceneNumber = max(0, safeInt("SceneNumber"));
+					interfaceGame.SetScene(max(0, safeInt("SceneNumber")));
 					keyFound[key] = true;
 				}
 			}

@@ -3,9 +3,12 @@
 #define _CRT_SECURE_NO_WARNINGS
 
 #include "SetupConsole.h"
+#include "InterfaceGame.h"
 
 #include <iostream>
 #include <unordered_map>
+
+class InterfaceGame;
 
 class File
 {
@@ -17,15 +20,11 @@ public:
 
 	void FileLog(SetupConsole& setupConsole, const std::string& inputChoice);
 
-	void Read(SetupConsole& setupConsole, char* pathChapter);
+	void Read(SetupConsole& setupConsole, InterfaceGame& interfaceGame, std::string& pathChapter);
 
 	[[nodiscard]] std::string GetPathErrorsFolder() const noexcept { return this->pathErrorsFolder; }
 	[[nodiscard]] std::string GetPathLogsFolder() const noexcept { return this->pathLogsFolder; }
-	[[nodiscard]] int GetChapterNumber() const noexcept { return this->chapterNumber; }
-	[[nodiscard]] std::string GetChapterName() const noexcept { return this->chapterName; }
-	[[nodiscard]] int GetConnectionPoint() const noexcept { return this->connectionPoint; }
-	[[nodiscard]] int GetTrustPoint() const noexcept { return this->trustPoint; }
-	[[nodiscard]] int GetStartSceneNumber() const noexcept { return this->startSceneNumber; }
+	[[nodiscard]] std::string GetContentChapter() const noexcept { return this->contentChapter; }
 
 private:
 	void CreateFileLog(SetupConsole& setupConsole, const std::string& inputChoice);
@@ -42,14 +41,6 @@ private:
 
 	std::string pathChapter = "";
 	std::string contentChapter = "";
-
-	int chapterNumber = 0;
-	std::string chapterName = "Empty";
-
-	int connectionPoint = 0;
-	int trustPoint = 0;
-	int startSceneNumber = 0;
-	int scene = 0;
 
 	bool initialise = false;
 

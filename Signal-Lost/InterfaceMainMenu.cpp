@@ -15,7 +15,6 @@ using namespace std::chrono;
 /// <param name="setupConsole"></param>
 void InterfaceMainMenu::DisplayMainMenu(Utils& utils, SetupConsole& setupConsole)
 {
-	this->display = false;
 	constexpr auto delay = 200ms;
 
 	while (1)

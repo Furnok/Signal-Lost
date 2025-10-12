@@ -13,6 +13,8 @@ class Utils
 public:
 	void ClearConsole() const noexcept;
 
+	void ClearAreaConsole(int xStart, int yStart, int xEnd, int yEnd) const noexcept;
+
 	void PosCursor(int posX, int posY) const noexcept;
 
 	void DrawMainMenuTitle(const std::string_view& text, const int consoleWidth) const;

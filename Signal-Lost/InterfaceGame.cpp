@@ -1,11 +1,13 @@
 ﻿#include "InterfaceGame.h"
 
-#include <thread>
 #include <chrono>
 #include <string>
-#include <iostream>
 #include <windows.h>
 #include <regex>
+#include <future>
+#include <iostream>
+#include <thread>
+#include <conio.h>
 
 using namespace std::chrono;
 
@@ -19,7 +21,6 @@ void InterfaceGame::DisplayTransitionChapter(Utils& utils, SetupConsole& setupCo
 {
 	utils.ClearConsole();
 
-	this->display = false;
 	constexpr auto delayStart = 200ms;
 	constexpr auto delayTitle = 500ms;
 	constexpr auto delayLetter = 100ms;
@@ -154,173 +155,367 @@ void InterfaceGame::DisplayTrustPercentage(Utils& utils, SetupConsole& setupCons
 	setupConsole.SetTextColor(7);
 }
 
-struct Choice 
+void InterfaceGame::BeepBackground(std::future<void> stopFuture, SetupConsole& setupConsole)
 {
-	bool isDefault = false;
-	int nextScene = 0;
-	int nextChapter = 0;
-	int trustNeed = 0;
-	int trustAdd = 0;
-	std::string text = "";
-};
-
-struct Scene 
-{
-	int number = 0;
-	bool beepBack = false;
-	int connexion = 0;
-	int timer = 0;
-	std::string content = "";
-	std::vector<Choice> choices;
-};
-
-std::string extractTag(const std::string& text, const std::string& tag) 
-{
-	size_t pos = text.find("[" + tag + "=");
-	if (pos == std::string::npos) return "";
-
-	size_t start = pos + tag.size() + 2;
-	while (start < text.size() && (text[start] == '\n' || text[start] == '\r' || text[start] == ' ')) start++;
-
-	int bracketCount = 0;
-	size_t i = start;
-	for (; i < text.size(); ++i) {
-		if (text[i] == '[') bracketCount++;
-		else if (text[i] == ']') {
-			if (bracketCount == 0) break;
-			bracketCount--;
-		}
-	}
-
-	return text.substr(start, i - start);
-}
-
-std::vector<Choice> parseChoices(const std::string& text)
-{
-	std::vector<Choice> choices;
-	size_t pos = 0;
-
-	while ((pos = text.find("[Choice", pos)) != std::string::npos)
+	if (setupConsole.GetSoundActivated())
 	{
-		size_t start = pos;
-		int bracketCount = 0;
-		size_t i = pos;
+		std::this_thread::sleep_for(200ms);
 
-		for (; i < text.size(); ++i) {
-			if (text[i] == '[') bracketCount++;
-			else if (text[i] == ']') bracketCount--;
-			if (bracketCount == 0) break;
-		}
-
-		std::string choiceText = text.substr(start, i - start + 1);
-
-		Choice c;
-
-		size_t defPos = choiceText.find("[Default=");
-		if (defPos != std::string::npos) {
-			size_t end = choiceText.find(']', defPos);
-			std::string value = choiceText.substr(defPos + 9, end - defPos - 9);
-			c.isDefault = (value == "True" || value == "true");
-		}
-
-		size_t nextPos = choiceText.find("[NextScene=");
-		if (nextPos != std::string::npos) {
-			size_t end = choiceText.find(']', nextPos);
-			std::string value = choiceText.substr(nextPos + 11, end - nextPos - 11);
-			c.nextScene = std::stoi(value);
-		}
-
-		size_t contentPos = choiceText.find("[Content=");
-		if (contentPos != std::string::npos) {
-			size_t end = choiceText.find(']', contentPos);
-			c.text = choiceText.substr(contentPos + 9, end - contentPos - 9);
-		}
-
-		choices.push_back(c);
-		pos = i + 1;
-	}
-
-	return choices;
-}
-
-std::vector<Scene> ParseScenes(const std::string& fileContent)
-{
-	std::vector<Scene> scenes;
-	size_t pos = 0;
-
-	while ((pos = fileContent.find("[Scene=", pos)) != std::string::npos) 
-	{
-		size_t start = pos;
-		int bracketCount = 0;
-		size_t i = pos;
-
-		for (; i < fileContent.size(); ++i) 
+		while (stopFuture.wait_for(100ms) == std::future_status::timeout && this->beepBackground)
 		{
-			if (fileContent[i] == '[') bracketCount++;
-			else if (fileContent[i] == ']') bracketCount--;
-			if (bracketCount == 0) break;
+			for (int i = 0; i < 3; i++)
+			{
+				if (this->beepBackground)
+				{
+					Beep(700, 300);
+				}
+			}
+
+			std::this_thread::sleep_for(300ms);
 		}
-
-		std::string sceneText = fileContent.substr(start, i - start + 1);
-
-		// Extract scene number
-		size_t eq = sceneText.find('=');
-		size_t firstBracket = sceneText.find('[');
-		Scene scene;
-		scene.number = std::stoi(sceneText.substr(eq + 1, firstBracket - eq - 1));
-
-		// Extract Beep
-		std::string beepValue = extractTag(sceneText, "BeepBack");
-		scene.beepBack = (beepValue == "True" || beepValue == "true");
-
-		// Extract Connexion
-		std::string connValue = extractTag(sceneText, "Connexion");
-		if (!connValue.empty()) scene.connexion = std::stoi(connValue);
-
-		// Extract Timer
-		std::string timerValue = extractTag(sceneText, "Timer");
-		if (!timerValue.empty()) scene.timer = std::stoi(timerValue);
-
-		// Extract Content
-		std::string contentValue = extractTag(sceneText, "Content");
-		scene.content = contentValue;
-
-		// Extract Choices
-		std::string choicesValue = extractTag(sceneText, "Choices");
-		scene.choices = parseChoices(choicesValue);
-
-		scenes.push_back(scene);
-		pos = i + 1;
 	}
-
-	return scenes;
 }
 
-const void InterfaceGame::DisplayText(Utils& utils, SetupConsole& setupConsole, const File& file)
+WORD InterfaceGame::GetColorCode(const std::string& colorName)
 {
-	utils.PosCursor(0, 8);
-
-	std::vector<Scene> scenes = ParseScenes(file.GetContentChapter());
-
-	Scene s = scenes[0];
-
-	std::cout << "=== Scene " << s.number << " ===\n";
-	std::cout << "Beep: " << (s.beepBack ? "Yes" : "No") << "\n";
-	std::cout << "Connexion: " << s.connexion << "\n";
-	std::cout << "Timer: " << s.timer << "\n";
-	std::cout << "Content:\n" << s.content << "\n";
-	std::cout << "Choices:\n";
-
-	for (auto& c : s.choices) 
+	static std::unordered_map<std::string, WORD> colors = 
 	{
-		std::cout << (c.isDefault ? "> " : "  ");
-		std::cout << c.text << "  -> Scene " << c.nextScene << "\n";
+		{"Black", 0},
+		{"Blue", 1},
+		{"Green", 2},
+		{"Cyan", 3},
+		{"Red", 4},
+		{"Magenta", 5},
+		{"Yellow", 6},
+		{"White", 7},
+		{"Gray", 8},
+		{"LightBlue", 9},
+		{"LightGreen", 10},
+		{"LightCyan", 11},
+		{"LightRed", 12},
+		{"LightMagenta", 13},
+		{"LightYellow", 14},
+		{"BrightWhite", 15}
+	};
+
+	auto it = colors.find(colorName);
+	return it != colors.end() ? it->second : 7;
+}
+
+void InterfaceGame::DisplayTextWithCommands(Utils& utils, SetupConsole& setupConsole, const std::string& content, auto delayCaracter)
+{
+	std::regex tokenRegex(R"(\[([A-Za-z]+)=([^\]]+)\])");
+	std::sregex_iterator it(content.begin(), content.end(), tokenRegex);
+	std::sregex_iterator end;
+
+	size_t lastPos = 0;
+
+	while (lastPos < content.size())
+	{
+		std::smatch match;
+		bool found = std::regex_search(content.begin() + lastPos, content.end(), match, tokenRegex);
+
+		if (found)
+		{
+			size_t tokenPos = match.position(0) + lastPos;
+
+			for (size_t i = lastPos; i < tokenPos; ++i)
+			{
+				std::cout << content[i] << std::flush;
+				std::this_thread::sleep_for(delayCaracter);
+			}
+
+			std::string command = match[1];
+			std::string value = match[2];
+
+			if (command == "Wait")
+			{
+				int number = 0;
+
+				try
+				{
+					number = std::stoi(value);
+				}
+				catch (...)
+				{
+
+				}
+
+				std::this_thread::sleep_for(std::chrono::milliseconds(number));
+			}
+			else if (command == "Space")
+			{
+				int number = 1;
+
+				try
+				{
+					number = std::clamp(std::stoi(value), 0, 10);
+				}
+				catch (...)
+				{
+
+				}
+
+				for (int i = 0; i < number; ++i)
+				{
+					std::cout << "\n";
+				}
+
+				HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
+
+				CONSOLE_SCREEN_BUFFER_INFO csbi;
+				GetConsoleScreenBufferInfo(hConsole, &csbi);
+
+				utils.PosCursor(2, csbi.dwCursorPosition.Y);
+			}
+			else if (command == "Color")
+			{
+				WORD colorCode = GetColorCode(value);
+				setupConsole.SetTextColor(colorCode);
+			}
+			else if (command == "Beep")
+			{
+				if (setupConsole.GetSoundActivated())
+				{
+					Beep(800, 300);
+				}
+			}
+
+			lastPos = tokenPos + match.length(0);
+		}
+		else
+		{
+			for (size_t i = lastPos; i < content.size(); ++i)
+			{
+				std::cout << content[i] << std::flush;
+				std::this_thread::sleep_for(delayCaracter);
+			}
+			break;
+		}
 	}
 
-	std::cout << "====================================\n\n";
+	setupConsole.SetTextColor(7);
+	std::cout << "\n";
+}
 
-	constexpr auto delayTransition = 60min;
+const void InterfaceGame::DisplayText(Utils& utils, SetupConsole& setupConsole, File& file, InterfaceMainMenu& interfaceMainMenu)
+{
+	constexpr auto delayTransition = 200ms;
 	std::this_thread::sleep_for(delayTransition);
+
+	std::vector<Scene> scenes = file.GetContentScenes();
+
+	int index = this->sceneNumber - 1;
+
+	if (index >= 0 && index < static_cast<int>(scenes.size()))
+	{
+		Scene scene = scenes[index];
+
+		if (scene.beepBack)
+		{
+			this->beepBackground = true;
+			this->stopBeepPromise = std::promise<void>();
+			std::future<void> stopFuture = stopBeepPromise.get_future();
+
+			this->beepFuture = std::async(std::launch::async, &InterfaceGame::BeepBackground, this, std::move(stopFuture), std::ref(setupConsole));
+		}
+
+		if (scene.connexion >= 0)
+		{
+			this->connectionPoint = scene.connexion;
+			DisplayConnectionBarre(utils, setupConsole);
+		}
+
+		if (scene.timer > 0)
+		{
+			this->isTimer = true;
+			this->timer = scene.timer;
+		}
+
+		utils.PosCursor(2, 9);
+
+		constexpr auto delayCaracter = 20ms;
+		DisplayTextWithCommands(utils, setupConsole, scene.content, delayCaracter);
+
+		const int posX = 6;
+		int posY = 29;
+
+		for (auto& c : scene.choices)
+		{
+			utils.PosCursor(posX, posY);
+
+			std::cout << c.choiceNumber << " - " << c.text << "\n";
+
+			posY += 2;
+		}
+
+		InputChoice(utils, setupConsole, scene, file, interfaceMainMenu);
+	}
+	else
+	{
+		file.ReadFileError(setupConsole, "NoSceneExist");
+	}
+}
+
+std::string InterfaceGame::UserInput(std::future<void> stopFuture, bool& finish, Scene& scene)
+{
+	std::string input = "";
+
+	while (!finish)
+	{
+		if (_kbhit())
+		{
+			char ch = _getch();
+			input = ch;
+
+			try
+			{
+				int choice = std::stoi(std::string(1, ch));
+
+				if (choice > 0 && choice <= scene.choices.size())
+				{
+					break;
+				}
+			}
+			catch (...)
+			{
+
+			}
+		}
+	}
+
+	return input;
+}
+
+void InterfaceGame::InputChoice(Utils& utils, SetupConsole& setupConsole, Scene& scene, File& file, InterfaceMainMenu& interfaceMainMenu)
+{
+	bool succed = false;
+	std::string input = "";
+
+	while (!succed)
+	{
+		FlushConsoleInputBuffer(GetStdHandle(STD_INPUT_HANDLE));
+
+		if (this->isTimer)
+		{
+			bool finish = false;
+
+			this->stopTimerPromise = std::promise<void>();
+			std::future<void> stopFuture = stopTimerPromise.get_future();
+
+			this->timerFuture = std::async(std::launch::async, &InterfaceGame::UserInput, this, std::move(stopFuture), std::ref(finish), std::ref(scene));
+
+			while (!finish)
+			{
+				finish = Timer(utils, setupConsole);
+
+				if (finish)
+				{
+					succed = true;
+
+					input = this->timerFuture.get();
+
+					input = "1";
+
+					for (const auto& choice : scene.choices)
+					{
+						if (choice.isDefault)
+						{
+							input = std::to_string(choice.choiceNumber);
+							break;
+						}
+					}
+
+					break;
+				}
+				else if (this->timerFuture.wait_for(std::chrono::seconds(1)) == std::future_status::ready)
+				{
+					succed = true;
+
+					input = this->timerFuture.get();
+
+					break;
+				}
+
+				this->timer -= 1;
+			}
+		}
+		else
+		{
+			char ch = _getch();
+			input = ch;
+
+			try
+			{
+				int choice = std::stoi(std::string(1, ch));
+
+				if (choice > 0 && choice <= scene.choices.size())
+				{
+					succed = true;
+				}
+			}
+			catch (...)
+			{
+				succed = false;
+			}
+		}
+	}
+
+	if (succed)
+	{
+		this->beepBackground = false;
+		this->timer = false;
+		this->isTimer = false;
+
+		utils.ClearAreaConsole(0, 8, 120, 26);
+		utils.ClearAreaConsole(3, 28, 96, 38);
+		utils.ClearAreaConsole(98, 28, 120, 38);
+
+		file.FileLog(setupConsole, *this, input);
+
+		Choices choice = scene.choices[std::stoi(input) - 1];
+
+		if (choice.menu)
+		{
+			interfaceMainMenu.SetDisplay(true);
+			file.SetInitialise(false);
+			this->display = true;
+		}
+		else if (choice.quit)
+		{
+			exit(EXIT_SUCCESS);
+		}
+		else
+		{
+			if (choice.nextChapter != 0)
+			{
+				this->chapterNumber = choice.nextChapter;
+				file.SetInitialise(false);
+				this->display = true;
+
+
+			}
+
+			if (choice.nextScene != 0)
+			{
+				if (this->trustPoint >= choice.trustNeed)
+				{
+					this->sceneNumber = choice.nextScene;
+				}
+				else
+				{
+					this->sceneNumber = choice.nextSceneNotTrust;
+				}
+			}
+
+			if (choice.addTrust != 0)
+			{
+				this->trustPoint = (std::clamp(this->trustPoint + choice.addTrust, 0, 100) / 25) * 25;
+				DisplayTrustBarre(utils, setupConsole);
+				DisplayTrustPercentage(utils, setupConsole);
+			}
+		}
+	}
 }
 
 bool InterfaceGame::Timer(Utils& utils, SetupConsole& setupConsole)
@@ -329,7 +524,7 @@ bool InterfaceGame::Timer(Utils& utils, SetupConsole& setupConsole)
 
 	TimerShow(utils, setupConsole);
 
-	if (!this->noBeepSound && setupConsole.GetSoundActivated())
+	if (!this->noBeepSound && setupConsole.GetSoundActivated() && !this->beepBackground)
 	{
 		Beep(500, 300);
 	}

@@ -26,6 +26,37 @@ void Utils::ClearConsole() const noexcept
 }
 
 /// <summary>
+/// Clear the Area of the Console
+/// </summary>
+void Utils::ClearAreaConsole(int xStart, int yStart, int xEnd, int yEnd) const noexcept
+{
+    HANDLE hOut = GetStdHandle(STD_OUTPUT_HANDLE);
+    if (!hOut) return;
+
+    CONSOLE_SCREEN_BUFFER_INFO csbi{};
+    if (!GetConsoleScreenBufferInfo(hOut, &csbi)) return;
+
+    xStart = max(0, xStart);
+    yStart = max(0, yStart);
+    xEnd = min(csbi.dwSize.X - 1, xEnd);
+    yEnd = min(csbi.dwSize.Y - 1, yEnd);
+
+    DWORD written{};
+    const WORD attributes = csbi.wAttributes;
+
+    for (int y = yStart; y <= yEnd; ++y)
+    {
+        const int width = xEnd - xStart + 1;
+        const COORD startCoord = { static_cast<SHORT>(xStart), static_cast<SHORT>(y) };
+
+        FillConsoleOutputCharacter(hOut, TEXT(' '), width, startCoord, &written);
+        FillConsoleOutputAttribute(hOut, attributes, width, startCoord, &written);
+    }
+
+    SetConsoleCursorPosition(hOut, { static_cast<SHORT>(xStart), static_cast<SHORT>(yStart) });
+}
+
+/// <summary>
 /// Position the Cursor
 /// </summary>
 /// <param name="posX"></param>

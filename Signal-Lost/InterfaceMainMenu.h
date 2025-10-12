@@ -14,6 +14,8 @@ public:
 	
 	[[nodiscard]] bool GetDisplay() const noexcept { return this->display; }
 
+	void SetDisplay(bool value) { this->display = std::move(value); }
+
 private:
 	void UpdateSettingSoundActivated(Utils& utils, SetupConsole& setupConsole, int right, int top) const;
 	void UpdateSettingFontSize(Utils& utils, SetupConsole& setupConsole, int right, int top) const;

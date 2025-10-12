@@ -10,6 +10,30 @@
 
 class InterfaceGame;
 
+struct Choices
+{
+	int choiceNumber = 0;
+	bool isDefault = false;
+	int nextChapter = 0;
+	bool menu = false;
+	bool quit = false;
+	int nextScene = 0;
+	int nextSceneNotTrust = 0;
+	int trustNeed = 0;
+	int addTrust = 0;
+	std::string text = "";
+};
+
+struct Scene
+{
+	int number = 0;
+	bool beepBack = false;
+	int connexion = -1;
+	int timer = 0;
+	std::string content = "";
+	std::vector<Choices> choices;
+};
+
 class File
 {
 public:
@@ -18,17 +42,24 @@ public:
 	void CreateFileErrors(SetupConsole& setupConsole);
 	void ReadFileError(SetupConsole& setupConsole, const std::string& key) const;
 
-	void FileLog(SetupConsole& setupConsole, const std::string& inputChoice);
+	void FileLog(SetupConsole& setupConsole, InterfaceGame& interfaceGame, std::string& inputChoice);
 
 	void Read(SetupConsole& setupConsole, InterfaceGame& interfaceGame, std::string& pathChapter);
 
 	[[nodiscard]] std::string GetPathErrorsFolder() const noexcept { return this->pathErrorsFolder; }
 	[[nodiscard]] std::string GetPathLogsFolder() const noexcept { return this->pathLogsFolder; }
 	[[nodiscard]] std::string GetContentChapter() const noexcept { return this->contentChapter; }
+	[[nodiscard]] std::vector<Scene> GetContentScenes() const noexcept { return this->contentScenes; }
+
+	void SetInitialise(bool value) { this->initialise = std::move(value); }
 
 private:
-	void CreateFileLog(SetupConsole& setupConsole, const std::string& inputChoice);
-	void AddToFileLog(const std::string& inputChoice) const;
+	std::string ExtractTag(const std::string& text, const std::string& tag) const;
+	std::vector<Choices> ParseChoices(const std::string& text) const;
+	std::vector<Scene> ParseScenes(const std::string& fileContent) const;
+
+	void CreateFileLog(SetupConsole& setupConsole, InterfaceGame& interfaceGame, std::string& inputChoice);
+	void AddToFileLog(InterfaceGame& interfaceGame, std::string& inputChoice) const;
 
 	std::string errorFolderName = "Errors";
 	std::string logsFolderName = "Logs";
@@ -41,6 +72,7 @@ private:
 
 	std::string pathChapter = "";
 	std::string contentChapter = "";
+	std::vector<Scene> contentScenes;
 
 	bool initialise = false;
 
@@ -52,6 +84,7 @@ private:
 		{"NoFile", "Need to have a File!"},
 		{"NoChapterExist", "The Chapter doesn't Exist!"},
 		{"ChapterNumber", "The Chapter Number Header is not a Number!"},
+		{"ConnectionNumber", "The Connection Number Header is not a Number!"},
 		{"TrustNumber", "The Trust Number Header is not a Number!"},
 		{"SceneNumber", "The Scene Number Header is not a Number!"},
 		{"HeaderCorrupt", "The Header is Corrupt!"},

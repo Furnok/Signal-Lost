@@ -28,23 +28,25 @@ int main(int argc, char* argv[])
 
         while (1)
         {
+            file.Read(setupConsole, interfaceGame, path);
+
             if (interfaceMainMenu.GetDisplay())
             {
-				//interfaceMainMenu.DisplayMainMenu(utils, setupConsole);
+                interfaceMainMenu.SetDisplay(false);
+				interfaceMainMenu.DisplayMainMenu(utils, setupConsole);
             }
-
-            file.Read(setupConsole, interfaceGame, path);
 
             if (interfaceGame.GetDisplay())
             {
-				//interfaceGame.DisplayTransitionChapter(utils, setupConsole, file);
+                interfaceGame.SetDisplay(false);
+				interfaceGame.DisplayTransitionChapter(utils, setupConsole);
             }
 
 			interfaceGame.DisplayInterfaceGame(utils, setupConsole);
 
-            while (1)
+            while (!interfaceMainMenu.GetDisplay() && !interfaceGame.GetDisplay())
             {
-                interfaceGame.DisplayText(utils, setupConsole, file);
+                interfaceGame.DisplayText(utils, setupConsole, file, interfaceMainMenu);
             }
         }
     }

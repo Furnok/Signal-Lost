@@ -5,6 +5,8 @@
 #include <conio.h>
 #include <regex>
 
+using namespace std::chrono;
+
 /// <summary>
 /// Get the Date and the Time
 /// </summary>
@@ -62,6 +64,9 @@ void File::ReadFileError(SetupConsole& setupConsole, const std::string& key) con
 {
 	system("cls");
 
+	UINT originalCP = GetConsoleOutputCP();
+	SetConsoleOutputCP(CP_UTF8);
+
 	setupConsole.SetTextColor(4);
 
 	const std::filesystem::path path = std::filesystem::path(GetPathErrorsFolder()) / this->errorsFileName;
@@ -100,6 +105,8 @@ void File::ReadFileError(SetupConsole& setupConsole, const std::string& key) con
 
 	infile.close();
 
+	SetConsoleOutputCP(originalCP);
+
 	setupConsole.SetTextColor(7);
 
 	(void)_getch();
@@ -124,14 +131,34 @@ void File::FileLog(SetupConsole& setupConsole, InterfaceGame& interfaceGame, std
 	}
 }
 
+void File::SetNextChapter(SetupConsole& setupConsole, int nextChapterNumber)
+{
+	std::filesystem::path currentPath(this->pathChapter);
+	std::filesystem::path folder = currentPath.parent_path();
+	std::string filename = "Chapter-" + std::to_string(nextChapterNumber) + ".txt";
+	std::filesystem::path nextPath = folder / filename;
+
+	std::cout << nextPath << std::endl;
+
+	if (std::filesystem::exists(nextPath))
+	{
+		this->pathChapter = nextPath.string();
+	}
+	else
+	{
+		constexpr auto delayTransition = 60s;
+		std::this_thread::sleep_for(delayTransition);
+
+		ReadFileError(setupConsole, "NoChapterExist");
+	}
+}
+
 /// <summary>
 /// Read the Chapter File
 /// </summary>
 /// <param name="setupConsole"></param>
-void File::Read(SetupConsole& setupConsole, InterfaceGame& interfaceGame, std::string& pathChapter)
+void File::Read(SetupConsole& setupConsole, InterfaceGame& interfaceGame)
 {
-	this->pathChapter = pathChapter;
-
 	std::string contentLine = "";
 	bool headerRead = false;
 

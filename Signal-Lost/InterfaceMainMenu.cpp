@@ -44,7 +44,12 @@ void InterfaceMainMenu::DisplayMainMenu(Utils& utils, SetupConsole& setupConsole
 		setupConsole.SetTextColor(1);
 		std::this_thread::sleep_for(delay);
 
+		UINT originalCP = GetConsoleOutputCP();
+		SetConsoleOutputCP(CP_UTF8);
+
 		utils.DrawMenuItems(mainMenuItems, boxLeft, boxTop);
+
+		SetConsoleOutputCP(originalCP);
 
 		setupConsole.SetTextColor(7);
 
@@ -154,7 +159,12 @@ void InterfaceMainMenu::DisplaySettings(Utils& utils, SetupConsole& setupConsole
 	setupConsole.SetTextColor(1);
 	std::this_thread::sleep_for(delay);
 
+	UINT originalCP = GetConsoleOutputCP();
+	SetConsoleOutputCP(CP_UTF8);
+
 	utils.DrawMenuItems(settingsItems, boxLeft, boxTop);
+
+	SetConsoleOutputCP(originalCP);
 
 	setupConsole.SetTextColor(7);
 
@@ -246,6 +256,9 @@ void InterfaceMainMenu::DisplayCredits(Utils& utils, SetupConsole& setupConsole)
 		maxRole = max(maxRole, c.role.size());
 	}
 
+	UINT originalCP = GetConsoleOutputCP();
+	SetConsoleOutputCP(CP_UTF8);
+
 	for (std::size_t i = 0; i < creditsProfiles.size(); ++i)
 	{
 		utils.PosCursor(boxLeft + 4, boxTop + 2 + static_cast<int>(i) * 2);
@@ -254,6 +267,8 @@ void InterfaceMainMenu::DisplayCredits(Utils& utils, SetupConsole& setupConsole)
 		setupConsole.SetTextColor(2);
 		std::cout << creditsProfiles[i].name << '\n';
 	}
+
+	SetConsoleOutputCP(originalCP);
 
 	setupConsole.SetTextColor(7);
 	std::this_thread::sleep_for(delay);
@@ -268,7 +283,11 @@ void InterfaceMainMenu::DisplayCredits(Utils& utils, SetupConsole& setupConsole)
 	setupConsole.SetTextColor(1);
 	std::this_thread::sleep_for(delay);
 
-	utils.DrawMenuItems(creditsItems, box2Left, box2Top);
+	SetConsoleOutputCP(CP_UTF8);
+
+	utils.DrawMenuItems(creditsItems, boxLeft, boxTop);
+
+	SetConsoleOutputCP(originalCP);
 
 	setupConsole.SetTextColor(7);
 

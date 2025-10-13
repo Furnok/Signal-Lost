@@ -25,21 +25,22 @@ int main(int argc, char* argv[])
     else
     {
         std::string path = argv[1];
+        file.SetPathChapter(path);
 
         while (1)
         {
-            file.Read(setupConsole, interfaceGame, path);
+            file.Read(setupConsole, interfaceGame);
 
             if (interfaceMainMenu.GetDisplay())
             {
                 interfaceMainMenu.SetDisplay(false);
-				interfaceMainMenu.DisplayMainMenu(utils, setupConsole);
+				//interfaceMainMenu.DisplayMainMenu(utils, setupConsole);
             }
 
             if (interfaceGame.GetDisplay())
             {
                 interfaceGame.SetDisplay(false);
-				interfaceGame.DisplayTransitionChapter(utils, setupConsole);
+				//interfaceGame.DisplayTransitionChapter(utils, setupConsole);
             }
 
 			interfaceGame.DisplayInterfaceGame(utils, setupConsole);

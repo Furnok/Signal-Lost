@@ -44,13 +44,16 @@ public:
 
 	void FileLog(SetupConsole& setupConsole, InterfaceGame& interfaceGame, std::string& inputChoice);
 
-	void Read(SetupConsole& setupConsole, InterfaceGame& interfaceGame, std::string& pathChapter);
+	void SetNextChapter(SetupConsole& setupConsole, int nextChapter);
+
+	void Read(SetupConsole& setupConsole, InterfaceGame& interfaceGame);
 
 	[[nodiscard]] std::string GetPathErrorsFolder() const noexcept { return this->pathErrorsFolder; }
 	[[nodiscard]] std::string GetPathLogsFolder() const noexcept { return this->pathLogsFolder; }
 	[[nodiscard]] std::string GetContentChapter() const noexcept { return this->contentChapter; }
 	[[nodiscard]] std::vector<Scene> GetContentScenes() const noexcept { return this->contentScenes; }
 
+	void SetPathChapter(std::string value) { this->pathChapter = std::move(value); }
 	void SetInitialise(bool value) { this->initialise = std::move(value); }
 
 private:

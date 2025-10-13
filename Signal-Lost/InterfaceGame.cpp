@@ -56,8 +56,13 @@ void InterfaceGame::DisplayTransitionChapter(Utils& utils, SetupConsole& setupCo
 	const int nameX = (consoleWidth - static_cast<int>(chapterName.size())) / 2;
 	const int nameY = (consoleHeight / 2) + spaceLetter;
 
+	UINT originalCP = GetConsoleOutputCP();
+	SetConsoleOutputCP(CP_UTF8);
+
 	utils.PosCursor(nameX, nameY);
 	std::cout << this->chapterName << '\n';
+
+	SetConsoleOutputCP(originalCP);
 
 	std::this_thread::sleep_for(delayTransition);
 }
@@ -334,11 +339,16 @@ const void InterfaceGame::DisplayText(Utils& utils, SetupConsole& setupConsole, 
 
 		utils.PosCursor(2, 9);
 
+		UINT originalCP = GetConsoleOutputCP();
+		SetConsoleOutputCP(CP_UTF8);
+
 		constexpr auto delayCaracter = 20ms;
 		DisplayTextWithCommands(utils, setupConsole, scene.content, delayCaracter);
 
 		const int posX = 6;
 		int posY = 29;
+
+		setupConsole.SetTextColor(1);
 
 		for (auto& c : scene.choices)
 		{
@@ -348,6 +358,10 @@ const void InterfaceGame::DisplayText(Utils& utils, SetupConsole& setupConsole, 
 
 			posY += 2;
 		}
+
+		setupConsole.SetTextColor(7);
+
+		SetConsoleOutputCP(originalCP);
 
 		InputChoice(utils, setupConsole, scene, file, interfaceMainMenu);
 	}
@@ -477,8 +491,8 @@ void InterfaceGame::InputChoice(Utils& utils, SetupConsole& setupConsole, Scene&
 
 		if (choice.menu)
 		{
-			interfaceMainMenu.SetDisplay(true);
 			file.SetInitialise(false);
+			interfaceMainMenu.SetDisplay(true);
 			this->display = true;
 		}
 		else if (choice.quit)
@@ -489,11 +503,15 @@ void InterfaceGame::InputChoice(Utils& utils, SetupConsole& setupConsole, Scene&
 		{
 			if (choice.nextChapter != 0)
 			{
+				if (choice.nextChapter == this->chapterNumber)
+				{
+					file.SetInitialise(false);
+				}
+
 				this->chapterNumber = choice.nextChapter;
-				file.SetInitialise(false);
 				this->display = true;
 
-
+				file.SetNextChapter(setupConsole, choice.nextChapter);
 			}
 
 			if (choice.nextScene != 0)
@@ -553,7 +571,7 @@ void InterfaceGame::TimerShow(Utils& utils, SetupConsole& setupConsole)
 	}
 	else
 	{
-		setupConsole.SetTextColor(7);
+		setupConsole.SetTextColor(2);
 	}
 
 	int hundreds = timer / 100;

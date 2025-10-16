@@ -24,6 +24,7 @@ public:
 	void DisplayTrustPercentage(Utils& utils, SetupConsole& setupConsole);
 
 	void BeepBackground(std::future<void> stopSignal, SetupConsole& setupConsole);
+	
 	std::string UserInput(std::future<void> stopFuture, bool& finish, Scene& scene);
 
 	const void DisplayText(Utils& utils, SetupConsole& setupConsole, File& file, InterfaceMainMenu& interfaceMainMenu);
@@ -51,6 +52,8 @@ private:
 
 	WORD GetColorCode(const std::string& colorName);
 
+	void BeepText(std::future<void> stopFuture, SetupConsole& setupConsole);
+
 	void DisplayTextWithCommands(Utils& utils, SetupConsole& setupConsole, const std::string& content, auto delayCaracter);
 
 	void InputChoice(Utils& utils, SetupConsole& setupConsole, Scene& scene, File& file, InterfaceMainMenu& interfaceMainMenu);
@@ -70,6 +73,9 @@ private:
 
 	std::future<void> beepFuture;
 	std::promise<void> stopBeepPromise;
+
+	std::future<void> beepTextFuture;
+	std::promise<void> stopBeepTextPromise;
 
 	std::future<std::string> timerFuture;
 	std::promise<void> stopTimerPromise;

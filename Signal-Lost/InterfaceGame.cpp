@@ -181,6 +181,14 @@ void InterfaceGame::BeepBackground(std::future<void> stopFuture, SetupConsole& s
 	}
 }
 
+void InterfaceGame::BeepText(std::future<void> stopFuture, SetupConsole& setupConsole)
+{
+	if (setupConsole.GetSoundActivated() && !this->beepBackground)
+	{
+		Beep(800, 300);
+	}
+}
+
 WORD InterfaceGame::GetColorCode(const std::string& colorName)
 {
 	static std::unordered_map<std::string, WORD> colors = 
@@ -280,10 +288,10 @@ void InterfaceGame::DisplayTextWithCommands(Utils& utils, SetupConsole& setupCon
 			}
 			else if (command == "Beep")
 			{
-				if (setupConsole.GetSoundActivated())
-				{
-					Beep(800, 300);
-				}
+				this->stopBeepTextPromise = std::promise<void>();
+				std::future<void> stopFuture = stopBeepTextPromise.get_future();
+
+				this->beepTextFuture = std::async(std::launch::async, &InterfaceGame::BeepText, this, std::move(stopFuture), std::ref(setupConsole));
 			}
 
 			lastPos = tokenPos + match.length(0);

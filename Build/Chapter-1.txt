@@ -657,7 +657,7 @@ I-It's uuuuh...[Wait=500] A laptop, seems to be on the lockscreen.[Wait=500][Spa
 There's a post-it attached on the upper right corner of it.[Wait=500] It says [Color=Green]"Vaccine Rabies Year"[Color=White]...[Wait=500][Space=2]
 I don't know when that thing was![Wait=500][Space=2]
 ...What?[Wait=500] I don't remember how I got here in the first place, don't expect me to remember this![Wait=500][Space=2]
-Anyway, you might want to search for that on the internet, it's a four digit password.[Wait=500] I'll try to log in.[Wait=500][Space=2]
+Anyway, you might want to search for that on the internet, it's a 4-digit password.[Wait=500] I'll try to log in.[Wait=500][Space=2]
 ]
 [Choices=
 [Choice1=[NextScene=52][Content=Okay, go ahead, I'm going to search that in my browser.]]

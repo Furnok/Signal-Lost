@@ -511,7 +511,7 @@ void InterfaceGame::InputChoice(Utils& utils, SetupConsole& setupConsole, Scene&
 		{
 			if (choice.nextChapter != 0)
 			{
-				if (choice.nextChapter == this->chapterNumber)
+				if (choice.reset)
 				{
 					file.SetInitialise(false);
 				}

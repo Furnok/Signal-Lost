@@ -15,6 +15,7 @@ struct Choices
 	int choiceNumber = 0;
 	bool isDefault = false;
 	int nextChapter = 0;
+	bool reset = false;
 	bool menu = false;
 	bool quit = false;
 	int nextScene = 0;

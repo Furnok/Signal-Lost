@@ -376,6 +376,14 @@ std::vector<Choices> File::ParseChoices(const std::string& text) const
 			c.nextChapter = number;
 		}
 
+		size_t resetPos = choiceText.find("[Reset=");
+		if (resetPos != std::string::npos)
+		{
+			size_t end = choiceText.find(']', resetPos);
+			std::string value = choiceText.substr(resetPos + 7, end - resetPos - 7);
+			c.reset = (value == "True" || value == "true");
+		}
+
 		size_t menuPos = choiceText.find("[Menu=");
 		if (menuPos != std::string::npos)
 		{

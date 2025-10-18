@@ -220,7 +220,7 @@ void File::Read(SetupConsole& setupConsole, InterfaceGame& interfaceGame)
 					interfaceGame.SetChapterName(value.substr(0, 117));
 					keyFound[key] = true;
 				}
-				else if (key == "Connexion")
+				else if (key == "Connection")
 				{
 					if (!initialise)
 					{
@@ -539,7 +539,7 @@ std::vector<Scene> File::ParseScenes(const std::string& fileContent) const
 		std::string beepValue = ExtractTag(sceneText, "BeepBack");
 		scene.beepBack = (beepValue == "True" || beepValue == "true");
 
-		std::string connValue = ExtractTag(sceneText, "Connexion");
+		std::string connValue = ExtractTag(sceneText, "Connection");
 		if (!connValue.empty())
 		{
 			number = 0;
@@ -553,7 +553,7 @@ std::vector<Scene> File::ParseScenes(const std::string& fileContent) const
 
 			}
 
-			scene.connexion = number;
+			scene.connection = number;
 		}
 
 		std::string timerValue = ExtractTag(sceneText, "Timer");

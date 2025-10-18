@@ -333,9 +333,9 @@ const void InterfaceGame::DisplayText(Utils& utils, SetupConsole& setupConsole, 
 			this->beepFuture = std::async(std::launch::async, &InterfaceGame::BeepBackground, this, std::move(stopFuture), std::ref(setupConsole));
 		}
 
-		if (scene.connexion >= 0)
+		if (scene.connection >= 0)
 		{
-			this->connectionPoint = scene.connexion;
+			this->connectionPoint = scene.connection;
 			DisplayConnectionBarre(utils, setupConsole);
 		}
 

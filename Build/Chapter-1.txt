@@ -1,7 +1,7 @@
-[Chapter=1][Name=The Call...][Connexion=4][Trust=50][StartScene=1]
+[Chapter=1][Name=The Call...][Connection=4][Trust=50][StartScene=1]
 
 [Scene=1
-[BeepBack=True][Connexion=4][Timer=15]
+[BeepBack=True][Connection=4][Timer=15]
 [Content=
 [Color=Gray]*B[Beep=True]eep*[Color=White]...[Wait=500] [Color=Gray]*B[Beep=True]eep*[Color=White]...[Wait=500] [Color=Gray]*B[Beep=True]eep*[Color=White]...[Wait=500][Space=2]
 [Color=Gray]{INCOMING CALL: UNKNOWN}[Color=White]...[Wait=500][Space=2]
@@ -13,7 +13,7 @@
 ]
 
 [Scene=2
-[Connexion=2]
+[Connection=2]
 [Content=
 [Color=Gray]*Click*[Color=White]...[Wait=500][Space=2]
 [Color=Gray]*SHKRRRRRRRRR*[Color=White]...H-Hello? Is someone there-[Color=Gray]*SHKRRRRRRRRRRRR*[Color=White]...[Wait=500][Space=2]
@@ -26,7 +26,7 @@ Hello?[Wait=500][Space=2]
 ]
 
 [Scene=3
-[Connexion=0]
+[Connection=0]
 [Content=
 [Color=Gray]*Static*[Color=White]...[Wait=500][Space=2]
 .[Wait=500].[Wait=500].[Wait=500][Space=2]
@@ -64,7 +64,7 @@ Are-[Color=Gray]*SHKRRRRRRRR*[Color=White]-still there?[Wait=500][Space=2]
 ]
 
 [Scene=6
-[Connexion=2]
+[Connection=2]
 [Content=
 Fuck! The signal’s scram-[Color=Gray]*SHKRRRRRRRRR*[Color=White]...[Wait=500] There must be a way to-[Color=Gray]*SHKRRRRRRRRRRR*[Color=White]...[Wait=500] [Color=Gray]*Snap*[Color=White]...[Wait=500][Space=2]
 ...[Wait=500][Space=2]
@@ -77,7 +77,7 @@ Fuck! The signal’s scram-[Color=Gray]*SHKRRRRRRRRR*[Color=White]...[Wait=500] 
 ]
 
 [Scene=7
-[Connexion=3]
+[Connection=3]
 [Content=
 Oh, thank God... It’s so nice to hear another voice.[Wait=500][Space=2]
 It’s been an eternity since I last spoke to anyone. Any longer, and I would have gone completely nuts.[Wait=500][Space=2]
@@ -268,7 +268,7 @@ You’re my only way to communicate with the outside world, it’s just a matter
 ]
 
 [Scene=22
-[Connexion=2]
+[Connection=2]
 [Content=
 PLEASE DON’T HANG UP! I just need someone to talk to![Wait=500][Space=2]
 I have no idea if either of us will even be able to call again if you hang up![Wait=500][Space=2]
@@ -283,7 +283,7 @@ Wh-[Wait=500] whatever is happening to me is beyond anything they could believe 
 ]
 
 [Scene=23
-[Connexion=0]
+[Connection=0]
 [Content=
 PLEA-[Color=Gray]*B[Beep=True]eep*[Color=White]...[Wait=500][Space=2]
 .[Wait=500].[Wait=500].[Wait=500][Space=2]
@@ -299,7 +299,7 @@ PLEA-[Color=Gray]*B[Beep=True]eep*[Color=White]...[Wait=500][Space=2]
 ]
 
 [Scene=24
-[Connexion=2]
+[Connection=2]
 [Content=
 I have no idea! Your number was on that phone, that’s the only thing I know![Wait=500][Space=2]
 You can’t just ignore the fact that you’ve got something to do with this bullshit![Wait=500][Space=2]
@@ -312,7 +312,7 @@ You can’t just leave me like that![Wait=500][Space=2]
 ]
 
 [Scene=25
-[Connexion=0]
+[Connection=0]
 [Content=
 NO-[Color=Gray]*B[Beep=True]eep*[Color=White]...[Wait=500][Space=2]
 .[Wait=500].[Wait=500].[Wait=500][Space=2]
@@ -337,7 +337,7 @@ Oh! Thanks for your understanding, I really appreciate that.[Wait=500][Space=2]
 ]
 
 [Scene=27
-[Connexion=3]
+[Connection=3]
 [Content=
 Thank God![Wait=500] I just...[Wait=500] Really depend on you right now.[Wait=500][Space=2]
 I'm sorry to take your time like that, but I haven't really got a choice.[Wait=500][Space=2]
@@ -458,7 +458,7 @@ Even if I don't think I can go fast enough to compete against this escalator eh!
 ]
 
 [Scene=36
-[Connexion=2]
+[Connection=2]
 [Content=
 Hum...[Wait=500][Space=2]
 Okay? It might lead somewhere interesting.[Wait=500][Space=2]
@@ -473,7 +473,7 @@ WOOAAH SHI-[Color=Gray]*THUMP*[Color=White]...[Wait=500][Space=2]
 ]
 
 [Scene=37
-[Connexion=3]
+[Connection=3]
 [Content=
 ...[Wait=500][Space=2]
 Ouch...[Wait=500][Space=2]
@@ -665,7 +665,7 @@ Anyway, you might want to search for that on the internet, it's a 4-digit passwo
 ]
 
 [Scene=52
-[Connexion=2][Timer=60]
+[Connection=2][Timer=60]
 [Content=
 Just have to press enter and...[Wait=500][Space=2]
 OH SHIT!![Wait=500][Space=2]
@@ -684,7 +684,7 @@ HURRY UP, WHAT'S THE PASSWORD?![Wait=500][Space=2]
 ]
 
 [Scene=53
-[Connexion=1]
+[Connection=1]
 [Content=
 ALRIGHT, I'LL TYPE THIS...[Wait=500][Space=2]
 Oh...[Wait=500] Looks like the beeping sound sto-[Wait=500] [Color=Gray]*BOOOM*[Color=White][Wait=500] [Color=Gray]*SHKRRRRRRRRRRRRR*[Color=White]...[Wait=500][Space=2]
@@ -695,7 +695,7 @@ Oh...[Wait=500] Looks like the beeping sound sto-[Wait=500] [Color=Gray]*BOOOM*[
 ]
 
 [Scene=54
-[Connexion=0]
+[Connection=0]
 [Content=
 [Color=Gray]*Static*[Color=White]...[Wait=500][Space=2]
 .[Wait=500].[Wait=500].[Wait=500][Space=2]
@@ -711,7 +711,7 @@ Oh...[Wait=500] Looks like the beeping sound sto-[Wait=500] [Color=Gray]*BOOOM*[
 ]
 
 [Scene=55
-[Connexion=2]
+[Connection=2]
 [Content=
 Alright, alright...[Wait=500][Space=2]
 I HOPE YOU'RE RIGHT![Wait=500][Space=2]
@@ -724,7 +724,7 @@ Please don't explode, please don't explode, please don't explode...[Wait=500][Sp
 ]
 
 [Scene=56
-[Connexion=3]
+[Connection=3]
 [Content=
 Y-Yes?[Wait=500][Space=2]
 I think I am?[Wait=500][Space=2]
@@ -854,7 +854,7 @@ I don't know, but it's our only lead for now, so I'll make it my main objective 
 ]
 
 [Scene=67
-[Connexion=2]
+[Connection=2]
 [Content=
 No, I checked pretty much every shelf while I was inside, and there was nothing but dust on them.[Wait=500][Space=2]
 There might be other interesting locations out there.[Wait=500][Space=2]
@@ -867,7 +867,7 @@ There might be other interesting locations out there.[Wait=500][Space=2]
 ]
 
 [Scene=68
-[Connexion=3]
+[Connection=3]
 [Content=
 Can't you just trust me for a second?[Wait=500][Space=2]
 I told you I checked everything, this damn place back then was filled with ruins and nothing more.[Wait=500][Space=2]
@@ -918,7 +918,7 @@ The [Color=Green]"Zoo"[Color=White], the [Color=Green]"Factory"[Color=White], or
 ]
 
 [Scene=72
-[Connexion=3]
+[Connection=3]
 [Content=
 Hmmm... The buildings here look exactly the same compared to the ones I crossed before calling you...[Wait=500][Space=2]
 Hey![Wait=500] There are signs leading to two different locations here.[Wait=500][Space=2]

@@ -29,7 +29,7 @@ struct Scene
 {
 	int number = 0;
 	bool beepBack = false;
-	int connexion = -1;
+	int connection = -1;
 	int timer = 0;
 	std::string content = "";
 	std::vector<Choices> choices;

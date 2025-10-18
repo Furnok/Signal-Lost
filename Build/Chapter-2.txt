@@ -1,7 +1,7 @@
-[Chapter=2][Name=The Museum][Connexion=3][Trust=75][StartScene=1]
+[Chapter=2][Name=The Museum][Connection=3][Trust=75][StartScene=1]
 
 [Scene=1
-[Connexion=3]
+[Connection=3]
 [Content=
 Going to the museum?[Wait=500] I can work with that.[Wait=500][Space=2]
 This whole trapdoor thing is suspicious anyway.[Wait=500] It might be better to explore this place before doing anything stupid.[Wait=500][Space=2]
@@ -248,7 +248,7 @@ Well, I'm not, and you'll have to bear with it.[Wait=500][Space=2]
 To refocus on what's important, I think exploring this room might be helpful.[Wait=500][Space=2]
 ]
 [Choices=
-[Choice1=[NextScene=27][Content=What is around you again?]]
+[Choice1=[NextScene=27][Content=What’s around you again?]]
 ]
 ]
 
@@ -258,7 +258,7 @@ You see?[Wait=500] I guess we're not so different after all![Wait=500][Space=2]
 Now, this philosophical question is interesting, but it won't help me escape from here, so let's explore this place![Wait=500][Space=2]
 ]
 [Choices=
-[Choice1=[NextScene=27][Content=What is around you again?]]
+[Choice1=[NextScene=27][Content=What’s around you again?]]
 ]
 ]
 
@@ -269,7 +269,7 @@ Ah![Wait=500] You act all confident, but you couldn’t handle a quarter of what
 It might be the right time to come back to the main question: what is this place?[Wait=500][Space=2]
 ]
 [Choices=
-[Choice1=[NextScene=27][Content=What is around you again?]]
+[Choice1=[NextScene=27][Content=What’s around you again?]]
 ]
 ]
 
@@ -280,7 +280,7 @@ I’m not in imminent danger...[Wait=500] I just need to focus on my escape and 
 I needed to reassure myself before doing a bit of exploration, sorry.[Wait=500][Space=2]
 ]
 [Choices=
-[Choice1=[NextScene=27][Content=What is around you again?]]
+[Choice1=[NextScene=27][Content=What’s around you again?]]
 ]
 ]
 
@@ -292,7 +292,7 @@ I’m diving into the unknown and you think it’s funny?[Wait=500] That’s rea
 I don’t want to argue here, so let’s go see what this museum has to offer.[Wait=500][Space=2]
 ]
 [Choices=
-[Choice1=[NextScene=27][Content=What is around you again?]]
+[Choice1=[NextScene=27][Content=What’s around you again?]]
 ]
 ]
 
@@ -304,7 +304,7 @@ I’m diving into the unknown and you think it’s funny?[Wait=500] That’s rea
 I don’t want to argue here, so let’s go see what this museum has to offer.[Wait=500][Space=2]
 ]
 [Choices=
-[Choice1=[NextScene=27][Content=What is around you again?]]
+[Choice1=[NextScene=27][Content=What’s around you again?]]
 ]
 ]
 
@@ -579,7 +579,7 @@ Now for the last letter, it's [Color=Green]"TRANSLATED IN ENGLISH"[Color=White].
 ]
 
 [Scene=49
-[Connexion=2]
+[Connection=2]
 [Content=
 [Color=Gray]*BU[Beep=True]ZZ*[Color=White]...[Wait=500] That wasn't a reassuring sou-.[Wait=500][Space=2]
 [Color=Red]PASSWORD INCORRECT.[Wait=500] ENGAGING ANTI-INTRUDER PROTOCOL.[Color=White][Wait=500][Space=2]
@@ -593,7 +593,7 @@ Now for the last letter, it's [Color=Green]"TRANSLATED IN ENGLISH"[Color=White].
 ]
 
 [Scene=50
-[Connexion=1]
+[Connection=1]
 [Content=
 [Color=Gray]*Cough*[Color=White] [Color=Gray]*COUGH*[Color=White]...[Wait=500][Space=2]
 I c...[Wait=500] [Color=Gray]*Cough*[Color=White][Wait=500] I can't breathe![Wait=500][Space=2]
@@ -607,7 +607,7 @@ Arhh...[Wait=500][Space=2]
 ]
 
 [Scene=51
-[Connexion=0]
+[Connection=0]
 [Content=
 ...[Wait=500][Space=2]
 [Color=Red]--SIGNAL LOST--[Color=White][Wait=500][Space=2]
@@ -762,7 +762,7 @@ But I still count on you to help me here.[Wait=500][Space=2]
 ]
 
 [Scene=64
-[Connexion=2]
+[Connection=2]
 [Content=
 I'm down the stairs.[Wait=500] It see-[Color=Gray]*SHKRRRRRRRRRR*[Color=White].[Wait=500][Space=2]
 There are multiple corridors leading to-[Color=Gray]*SHKRRRRRRRRRR*[Color=White]...[Wait=500] I don't know which one is the right one![Wait=500][Space=2]
@@ -773,7 +773,7 @@ There are multiple corridors leading to-[Color=Gray]*SHKRRRRRRRRRR*[Color=White]
 ]
 
 [Scene=65
-[Connexion=1]
+[Connection=1]
 [Content=
 Hell-[Color=Gray]*SHKRRRRRRRRRRR*[Color=White]-ou hear me?[Wait=500][Space=2]
 Why did you stop spea-[Color=Gray]*SHKRRRRRRRRRRRR*[Color=White].[Wait=500][Space=2]
@@ -877,7 +877,7 @@ Can you hear me?[Wait=500][Space=2]
 ]
 
 [Scene=74
-[Connexion=3]
+[Connection=3]
 [Content=
 I...[Wait=500] I heard everything.[Wait=500][Space=2]
 Were you sincere while answering these questions?[Wait=500][Space=2]
@@ -1063,7 +1063,7 @@ Why not use a lab rat instead of killing HUNDREDS OF HUMANS![Wait=500][Space=2]
 ]
 
 [Scene=90
-[Connexion=2]
+[Connection=2]
 [Content=
 Y-Yes![Wait=500] I'M STAYING INSIDE, YOU PSYCHOPATH![Wait=500][Space=2]
 I'M NOT GOING TO LET YOU SUCK MY BLOOD![Wait=500] I MAY BE A CLONE, BUT I'M NOT BELIEVING ALL THIS SHIT![Wait=500][Space=2]
@@ -1077,7 +1077,7 @@ Y-You're bluffing![Wait=500] I'm not going to fall for this eith-[Color=Gray]*PS
 ]
 
 [Scene=91
-[Connexion=1]
+[Connection=1]
 [Content=
 ...[Wait=500] OH SHIT![Wait=500] THERE'S GREEN GAS SPREADING IN THE ROOM![Wait=500][Space=2]
 [Color=Gray]*Door shake*[Color=White]...[Wait=500][Space=2]
@@ -1092,7 +1092,7 @@ LET ME OUT, THIS FUCKER LOCKED THE DOOR![Wait=500][Space=2]
 ]
 
 [Scene=92
-[Connexion=0]
+[Connection=0]
 [Content=
 ...[Wait=500][Space=2]
 [Color=Yellow]Remember.[Wait=500] One died so that billions live.[Color=White][Wait=500][Space=2]
@@ -1110,7 +1110,7 @@ LET ME OUT, THIS FUCKER LOCKED THE DOOR![Wait=500][Space=2]
 ]
 
 [Scene=93
-[Connexion=2]
+[Connection=2]
 [Content=
 N-NO![Wait=500] I WON'T FOLLOW HIM![Wait=500][Space=2]
 I DON'T TRUST YOU ANYMORE![Wait=500] You were plotting with him since the beginning, right?[Wait=500][Space=2]
@@ -1174,7 +1174,7 @@ I'm willing to sacrifice, as revenge for all the ones that suffered before me.[W
 ]
 
 [Scene=98
-[Connexion=1]
+[Connection=1]
 [Content=
 Have a good death, original.[Wait=500][Space=2]
 [Color=Gray]*Click*[Color=White]...[Wait=500][Space=2]
@@ -1187,7 +1187,7 @@ Have a good death, original.[Wait=500][Space=2]
 ]
 
 [Scene=99
-[Connexion=0]
+[Connection=0]
 [Content=
 ...[Wait=500][Space=2]
 [Color=Red]--SIGNAL LOST--[Color=White][Wait=500][Space=2]
@@ -1203,7 +1203,7 @@ Have a good death, original.[Wait=500][Space=2]
 ]
 
 [Scene=100
-[Connexion=3]
+[Connection=3]
 [Content=
 ...[Wait=500] Is it really for the survival of humanity?[Wait=500] It's not a trick so that I get out and you can shoot me easily?[Wait=500][Space=2]
 [Color=Yellow]Absolutely not.[Wait=500] I care for my research, and I wouldn't waste any of my bullets or any of your blood.[Color=White][Wait=500][Space=2]
@@ -1300,7 +1300,7 @@ I really hope to see you again.[Wait=500] Until then, believe in yourself.[Wait=
 ]
 
 [Scene=107
-[Connexion=0]
+[Connection=0]
 [Content=
 I-I'm hanging up.[Wait=500] [Color=Gray]*Sob*[Color=White]...[Wait=500][Space=2]
 [Color=Gray]*Click*[Color=White]...[Wait=500][Space=2]

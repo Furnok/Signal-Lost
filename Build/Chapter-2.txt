@@ -4,7 +4,7 @@
 [Connexion=3]
 [Content=
 Going to the museum?[Wait=500] I can work with that.[Wait=500][Space=2]
-This whole trapdoor thing is supicious anyway.[Wait=500] It might be better to explore this place before doing anything stupid.[Wait=500][Space=2]
+This whole trapdoor thing is suspicious anyway.[Wait=500] It might be better to explore this place before doing anything stupid.[Wait=500][Space=2]
 ]
 [Choices=
 [Choice1=[NextScene=2][Content=How much time will it take to get there?]]
@@ -13,14 +13,14 @@ This whole trapdoor thing is supicious anyway.[Wait=500] It might be better to e
 
 [Scene=2
 [Content=
-It's not that far away, I think I can even see it from here![Wait=500] I'll take you back in a second when I'll be there![Wait=500][Space=2]
+It's not that far away. I think I can even see it from here![Wait=500] I'll take you back in a second once I'm there![Wait=500][Space=2]
 .[Wait=500].[Wait=500].[Wait=500][Space=2]
 .[Wait=500].[Wait=500].[Wait=500][Space=2]
-Okay![Wait=500] I'm in front of it.[Wait=500] It's smaller than I thought, and it looks really well preserved![Wait=500][Space=2]
+Okay![Wait=500] I'm in front of it.[Wait=500] It's smaller than I thought, and it looks really well-preserved![Wait=500][Space=2]
 ]
 [Choices=
 [Choice1=[NextScene=3][Content=Small?]]
-[Choice2=[NextScene=4][Content=Well preserved?]]
+[Choice2=[NextScene=4][Content=Well-preserved?]]
 ]
 ]
 
@@ -37,44 +37,44 @@ I don't know if there'll be anything interesting here...[Wait=500][Space=2]
 
 [Scene=4
 [Content=
-That's weird right?[Wait=500][Space=2]
-All this place has is empty buildings withered by the time.[Wait=500][Space=2]
-It's weird that a useless building is still standing unharmed.[Wait=500][Space=2]
-...[Wait=500] Does that mean that someone's still here to assure this museum is clean?[Wait=500][Space=2]
+That's weird, right?[Wait=500][Space=2]
+All the other places here are just empty buildings withered by time.[Wait=500][Space=2]
+It's strange that a useless building is still standing unharmed.[Wait=500][Space=2]
+...[Wait=500] Does that mean someone's still here to make sure this museum stays clean?[Wait=500][Space=2]
 ]
 [Choices=
-[Choice1=[NextScene=5][TrustAdd=25][Content=Nah. Why would someone want to clean an old museum anyway? It's a coincidence.]]
-[Choice2=[NextScene=6][Content=I guess there is, why would it be cleaner than the other building otherwise?]]
+[Choice1=[NextScene=5][TrustAdd=25][Content=Nah. Why would someone want to clean an old museum anyway? It's just a coincidence.]]
+[Choice2=[NextScene=6][Content=I guess there is. Why would it be cleaner than the other buildings otherwise?]]
 ]
 ]
 
 [Scene=5
 [Content=
-I'm sure you're right...[Wait=500] But it feels odd, still.[Wait=500][Space=2]
-I'm great.[Wait=500] Now I don't feel like entering this place.[Wait=500][Space=2]
+I'm sure you're right...[Wait=500] But it still feels odd.[Wait=500][Space=2]
+Great.[Wait=500] Now I don't even feel like entering this place.[Wait=500][Space=2]
 ]
 [Choices=
 [Choice1=[NextScene=6][Content=You're afraid of seeing someone now?]]
 [Choice2=[NextScene=7][TrustAdd=-25][Content=Well, don't enter it then.]]
-[Choice3=[NextScene=8][Content=Sorry to announce that, but it doesn't seem that you have the choice...]]
+[Choice3=[NextScene=8][Content=Sorry to say this, but it doesn't seem like you have a choice...]]
 ]
 ]
 
 [Scene=6
 [Content=
-I guess I am...[Wait=500] The fact that everything seems to be designed to make me explore this place is...[Wait=500][Space=2]
+I guess I am...[Wait=500] The fact that everything seems designed to make me explore this place is...[Wait=500][Space=2]
 Yes, I'm scared...[Wait=500][Space=2]
 ]
 [Choices=
-[Choice1=[NextScene=8][TrustAdd=25][Content=Everything's gonna be fine as long as we collaborate.]]
+[Choice1=[NextScene=8][TrustAdd=25][Content=Everything's gonna be fine as long as we work together.]]
 [Choice2=[NextScene=9][TrustAdd=-25][Content=I knew it! You're chicken-hearted!]]
 ]
 ]
 
 [Scene=7
 [Content=
-I FEEL like not entering, but I have no choice and I think you know it well![Wait=500][Space=2]
-I-...[Wait=500] I could do that but there's nothing that could help me escape that strikes my mind.[Wait=500][Space=2]
+I FEEL like not entering, but I have no choice and you know it well![Wait=500][Space=2]
+I—...[Wait=500] I could do that, but nothing comes to mind that could help me escape.[Wait=500][Space=2]
 ]
 [Choices=
 [Choice1=[NextScene=8][TrustAdd=25][Content=You're not in danger as long as I'm with you!]]
@@ -90,15 +90,15 @@ Since I have no choice, let's enter slowly...[Wait=500][Space=2]
 ...[Wait=500] What is that?[Wait=500][Space=2]
 ]
 [Choices=
-[Choice1=[NextScene=15][Content=Is there something weird in here?]]
+[Choice1=[NextScene=15][Content=Is there something weird in there?]]
 ]
 ]
 
 [Scene=9
 [Content=
 I'm chicken-hearted?[Wait=500] Oh yeah?[Wait=500][Space=2]
-Well, you know what?[Wait=500] I'll enter this museum without you begging me for it![Wait=500][Space=2]
-[Color=Gray]*Footsteps*[Color=White][Wait=500] [Color=Gray]*WHAM*[Color=White]...[Wait=500][Space=2]
+Well, you know what?[Wait=500] I'll enter this museum without you begging me to![Wait=500][Space=2]
+[Color=Gray]*Footsteps*[Color=White][Wait=500] [Color=Gray]*WHAM!*[Color=White]...[Wait=500][Space=2]
 HEY![Wait=500] I JUST ENTERED YOUR MUSEUM BY KICKING THE DOOR! [Color=Gray]*Echoes*[Color=White]...[Wait=500][Space=2]
 ]
 [Choices=
@@ -109,10 +109,10 @@ HEY![Wait=500] I JUST ENTERED YOUR MUSEUM BY KICKING THE DOOR! [Color=Gray]*Echo
 
 [Scene=10
 [Content=
-What did I hear?[Wait=500] Is someone getting scared all of the sudden?[Wait=500] That'll teach you![Wait=500][Space=2]
-But there doesn't seem to be anyone here anyway.[Wait=500][Space=2]
+What did I hear?[Wait=500] Is someone getting scared all of a sudden?[Wait=500] That’ll teach you![Wait=500][Space=2]
+But there doesn’t seem to be anyone here anyway.[Wait=500][Space=2]
 Looks like we both worried for nothing.[Wait=500][Space=2]
-...[Wait=500] But there still somthing off-putting here.[Wait=500][Space=2]
+...[Wait=500] But there’s still something off-putting here.[Wait=500][Space=2]
 ]
 [Choices=
 [Choice1=[NextScene=15][Content=What makes you feel like that?]]
@@ -122,19 +122,19 @@ Looks like we both worried for nothing.[Wait=500][Space=2]
 [Scene=11
 [Content=
 See?[Wait=500] I can get cocky when I want![Wait=500] RIGHT?! [Color=Gray]*Echoes*[Color=White]...[Wait=500][Space=2]
-...[Wait=500] Yeah, no one's responding.[Wait=500] Not that I'm disappointed anyway![Wait=500][Space=2]
-It's way better to know that there is no one lurking at me ahah![Wait=500][Space=2]
+...[Wait=500] Yeah, no one’s responding.[Wait=500] Not that I’m disappointed anyway![Wait=500][Space=2]
+It’s way better to know there’s no one lurking around, ahah![Wait=500][Space=2]
 ]
 [Choices=
-[Choice1=[NextScene=12][TrustAdd=25][Content=Well... I am]]
+[Choice1=[NextScene=12][TrustAdd=25][Content=Well... I am.]]
 ]
 ]
 
 [Scene=12
 [Content=
-That's fair, but you seem like a good guy.[Wait=500][Space=2]
-I'm not going to be scared by a voice coming from an old flipphone![Wait=500][Space=2]
-But let's focus more on this museum now.[Wait=500] Something's off.[Wait=500][Space=2]
+That’s fair, but you seem like a good guy.[Wait=500][Space=2]
+I’m not going to be scared by a voice coming from an old flip phone![Wait=500][Space=2]
+But let’s focus on this museum now.[Wait=500] Something’s off.[Wait=500][Space=2]
 ]
 [Choices=
 [Choice1=[NextScene=15][Content=What about it?]]
@@ -143,108 +143,108 @@ But let's focus more on this museum now.[Wait=500] Something's off.[Wait=500][Sp
 
 [Scene=13
 [Content=
-...[Wait=500] I don't think going inside the only building that looks inhabited is a good idea.[Wait=500][Space=2]
-I don't want to land face to face with someone hostile.[Wait=500][Space=2]
+...[Wait=500] I don’t think going inside the only building that looks inhabited is a good idea.[Wait=500][Space=2]
+I don’t want to end up face-to-face with someone hostile.[Wait=500][Space=2]
 ]
 [Choices=
 [Choice1=[NextScene=6][Content=You're afraid of seeing someone now?]]
 [Choice2=[NextScene=7][TrustAdd=-25][Content=Well, don't enter it then.]]
-[Choice3=[NextScene=8][Content=Sorry to announce that, but it doesn't seem that you have the choice...]
+[Choice3=[NextScene=8][Content=Sorry to say this, but it doesn't seem like you have the choice...]]
 ]
 ]
 
 [Scene=14
 [Content=
-If I would listen to me, I would not enter this place because it freaks me out for some reason...[Wait=500][Space=2]
-But you're here! I've got nothing to be afraid of, so I'm heading inside![Wait=500][Space=2]
+If I were to listen to myself, I wouldn’t enter this place because it freaks me out for some reason...[Wait=500][Space=2]
+But you’re here! I’ve got nothing to be afraid of, so I’m heading inside![Wait=500][Space=2]
 [Color=Gray]*Footsteps*[Color=White][Wait=500] [Color=Gray]*Door squeak*[Color=White]...[Wait=500][Space=2]
 ]
 [Choices=
-[Choice1=[NextScene=15][Content=So? What's inside?]]
+[Choice1=[NextScene=15][Content=So? What’s inside?]]
 ]
 ]
 
 [Scene=15
 [Content=
 The inside of this museum truly feels abnormal...[Wait=500][Space=2]
-Everything's clean, there's not a single bit of dust here![Wait=500][Space=2]
-All these paintings are perfectly displayed,[Wait=500] sculptures are bright polished...[Wait=500][Space=2]
-There's even historical relics preserved under glass bells![Wait=500][Space=2]
+Everything’s clean. There’s not a single bit of dust here![Wait=500][Space=2]
+All these paintings are perfectly displayed,[Wait=500] the sculptures are brightly polished...[Wait=500][Space=2]
+There are even historical relics preserved under glass domes![Wait=500][Space=2]
 ]
 [Choices=
-[Choice1=[NextScene=16][Content=That's weird...]]
-[Choice2=[NextScene=17][TrustAdd=-25][Content=That's so cool!]]
+[Choice1=[NextScene=16][Content=That’s weird...]]
+[Choice2=[NextScene=17][TrustAdd=-25][Content=That’s so cool!]]
 ]
 ]
 
 [Scene=16
 [Content=
-It definitly![Wait=500] How can this museum be this clean?[Wait=500][Space=2]
-Considering that it's the first time I see a place not post-apocalyptic-looking on this island...[Wait=500][Space=2]
+It definitely is![Wait=500] How can this museum be this clean?[Wait=500][Space=2]
+Considering it’s the first place on this island that doesn’t look post-apocalyptic...[Wait=500][Space=2]
 It surely means that...[Wait=500][Space=2]
 ]
 [Choices=
-[Choice1=[NextScene=18][TrustAdd=-25][Content=You're becoming paranoïd?]]
-[Choice2=[NextScene=19][Content=Someone's living here?]]
-[Choice3=[NextScene=20][TrustAdd=25][Content=That we have a new mystery to resolve!]
+[Choice1=[NextScene=18][TrustAdd=-25][Content=You're becoming paranoid?]]
+[Choice2=[NextScene=19][Content=Someone’s living here?]]
+[Choice3=[NextScene=20][TrustAdd=25][Content=That means we have a new mystery to solve!]]
 ]
 ]
 
 [Scene=17
 [Content=
-...[Wait=500] No, it isn't?[Wait=500][Space=2]
-It's unsettling...[Wait=500] Every place I've been through on this island has only been ruins and now that![Wait=500][Space=2]
-It most defintly means that this place is special somehow...[Wait=500][Space=2]
+...[Wait=500] No, it isn’t![Wait=500][Space=2]
+It’s unsettling...[Wait=500] Every place I’ve been to on this island has been nothing but ruins, and now this![Wait=500][Space=2]
+It most definitely means that this place is special somehow...[Wait=500][Space=2]
 ]
 [Choices=
-[Choice1=[NextScene=18][TrustAdd=-25][Content=You're definitly becoming paranoïd.]]
+[Choice1=[NextScene=18][TrustAdd=-25][Content=You're definitely becoming paranoid.]]
 [Choice2=[NextScene=19][Content=Is... someone living here?]]
-[Choice3=[NextScene=20][TrustAdd=25][Content=Seems that we'll have to solve this mystery together!]
+[Choice3=[NextScene=20][TrustAdd=25][Content=Seems like we’ll have to solve this mystery together!]]
 ]
 ]
 
 [Scene=18
 [Content=
-...[Wait=500] What?[Wait=500] Wouldn't you be paranoïd after going through what I'm living?[Wait=500][Space=2]
-I'd like us to switch place and see how you could manage all this...[Wait=500][Space=2]
+...[Wait=500] What?[Wait=500] Wouldn’t you be paranoid after going through what I’m living?[Wait=500][Space=2]
+I’d like us to switch places and see how you’d manage all this...[Wait=500][Space=2]
 How would you like that idea?[Wait=500][Space=2]
 ]
 [Choices=
-[Choice1=[NextScene=21][TrustAdd=-25][Content=I think I would be braver than you!]]
-[Choice2=[NextScene=22][TrustAdd=25][Content=I think I'd manage things like you.]]
-[Choice3=[NextScene=23][Content=I'd be... more fearful than you!]
+[Choice1=[NextScene=21][TrustAdd=-25][Content=I think I’d be braver than you!]]
+[Choice2=[NextScene=22][TrustAdd=25][Content=I think I’d manage things like you.]]
+[Choice3=[NextScene=23][Content=I’d be... more fearful than you!]]
 ]
 ]
 
 [Scene=19
 [Content=
-Oh freak...[Wait=500] It means my instinct didn't betray me?[Wait=500][Space=2]
-Do you think it's here? Observing me from a corner?[Wait=500][Space=2]
-[Color=Gray]*Heavy brething*[Color=White]...[Wait=500] I think I'm going to throw up...[Wait=500][Space=2]
+Oh freak...[Wait=500] So my instinct didn’t betray me?[Wait=500][Space=2]
+Do you think it’s here? Watching me from a corner?[Wait=500][Space=2]
+[Color=Gray]*Heavy breathing*[Color=White]...[Wait=500] I think I’m going to throw up...[Wait=500][Space=2]
 ]
 [Choices=
-[Choice1=[NextScene=24][TrustAdd=25][Content=Calm Down. That doesn't justify any panic.]]
-[Choice2=[NextScene=25][TrustAdd=-25][Content=Don't throw up on the art please.]]
-[Choice3=[NextScene=26][TrustAdd=-25][Content=I was joking around! There's surely not anyone here.]"
+[Choice1=[NextScene=24][TrustAdd=25][Content=Calm down. That doesn’t justify any panic.]]
+[Choice2=[NextScene=25][TrustAdd=-25][Content=Don’t throw up on the art, please.]]
+[Choice3=[NextScene=26][TrustAdd=-25][Content=I was joking! There’s surely no one here.]]
 ]
 ]
 
 [Scene=20
 [Content=
-...[Wait=500] I didn't expected that kind of answer but it feels weirdly refreshing![Wait=500][Space=2]
-It's nice having someone dedramatizing this whole situation.[Wait=500][Space=2]
-Let's go and solve that mystery then! Where should I go?[Wait=500][Space=2]
+...[Wait=500] I didn’t expect that kind of answer, but it feels weirdly refreshing![Wait=500][Space=2]
+It’s nice having someone who can de-dramatize the whole situation.[Wait=500][Space=2]
+Let’s go and solve this mystery then! Where should I go?[Wait=500][Space=2]
 ]
 [Choices=
-[Choice1=[NextScene=27][Content=What is around you again?]]
+[Choice1=[NextScene=27][Content=What’s around you again?]]
 ]
 ]
 
 [Scene=21
 [Content=
 That's a bold thing to say![Wait=500][Space=2]
-You're really are a daredevil huh?[Wait=500][Space=2]
-Well I'm not, and you'll have to bare with it.[Wait=500][Space=2]
+You really are a daredevil, huh?[Wait=500][Space=2]
+Well, I'm not, and you'll have to bear with it.[Wait=500][Space=2]
 To refocus on what's important, I think exploring this room might be helpful.[Wait=500][Space=2]
 ]
 [Choices=
@@ -255,7 +255,7 @@ To refocus on what's important, I think exploring this room might be helpful.[Wa
 [Scene=22
 [Content=
 You see?[Wait=500] I guess we're not so different after all![Wait=500][Space=2]
-Now, this ideological question is interesting but it won't help me to escape from here, so let's explore this place![Wait=500][Space=2]
+Now, this philosophical question is interesting, but it won't help me escape from here, so let's explore this place![Wait=500][Space=2]
 ]
 [Choices=
 [Choice1=[NextScene=27][Content=What is around you again?]]
@@ -264,9 +264,9 @@ Now, this ideological question is interesting but it won't help me to escape fro
 
 [Scene=23
 [Content=
-AH![Wait=500] You get all showy while you couldn't handle a quarter of what I'm living![Wait=500][Space=2]
-...[Wait=500] I'm the one making fun of you but in the end I'm still the one stucked on this island...[Wait=500] Ironic.[Wait=500][Space=2]
-It might be the right time to come back at the main question : What is this place?[Wait=500][Space=2]
+Ah![Wait=500] You act all confident, but you couldn’t handle a quarter of what I’m going through![Wait=500][Space=2]
+...[Wait=500] I’m the one making fun of you, but in the end, I’m still the one stuck on this island...[Wait=500] Ironic.[Wait=500][Space=2]
+It might be the right time to come back to the main question: what is this place?[Wait=500][Space=2]
 ]
 [Choices=
 [Choice1=[NextScene=27][Content=What is around you again?]]
@@ -275,8 +275,8 @@ It might be the right time to come back at the main question : What is this plac
 
 [Scene=24
 [Content=
-Phew...[Wait=500] That's true.[Wait=500][Space=2]
-I'm not in imminent danger...[Wait=500] I must focus on my escape and everything will be okay![Wait=500][Space=2]
+Phew...[Wait=500] That’s true.[Wait=500][Space=2]
+I’m not in imminent danger...[Wait=500] I just need to focus on my escape and everything will be okay![Wait=500][Space=2]
 I needed to reassure myself before doing a bit of exploration, sorry.[Wait=500][Space=2]
 ]
 [Choices=
@@ -286,10 +286,10 @@ I needed to reassure myself before doing a bit of exploration, sorry.[Wait=500][
 
 [Scene=25
 [Content=
-Huh?[Wait=500] [Color=Gray]*Heavy breathing*[Color=White][Wait=500] I don't care about the art![Wait=500][Space=2]
-You know it's really not the time to be joking around, right?[Wait=500][Space=2]
-I'm diving into the unknown and you think it's funny?[Wait=500] That's really irritating![Wait=500][Space=2]
-I don't want to argue here, so let's go see what this museum has to offer.[Wait=500][Space=2]
+Huh?[Wait=500] [Color=Gray]*Heavy breathing*[Color=White][Wait=500] I don’t care about the art![Wait=500][Space=2]
+You know it’s really not the time to be joking around, right?[Wait=500][Space=2]
+I’m diving into the unknown and you think it’s funny?[Wait=500] That’s really irritating![Wait=500][Space=2]
+I don’t want to argue here, so let’s go see what this museum has to offer.[Wait=500][Space=2]
 ]
 [Choices=
 [Choice1=[NextScene=27][Content=What is around you again?]]
@@ -298,10 +298,10 @@ I don't want to argue here, so let's go see what this museum has to offer.[Wait=
 
 [Scene=26
 [Content=
-Well, I hope you're not a humorist![Wait=500][Space=2]
-You know it's really not the time to be joking around, right?[Wait=500][Space=2]
-I'm diving into the unknown and you think it's funny?[Wait=500] That's really irritating![Wait=500][Space=2]
-I don't want to argue here, so let's go see what this museum has to offer.[Wait=500][Space=2]
+Well, I hope you’re not a comedian![Wait=500][Space=2]
+You know it’s really not the time to be joking around, right?[Wait=500][Space=2]
+I’m diving into the unknown and you think it’s funny?[Wait=500] That’s really irritating![Wait=500][Space=2]
+I don’t want to argue here, so let’s go see what this museum has to offer.[Wait=500][Space=2]
 ]
 [Choices=
 [Choice1=[NextScene=27][Content=What is around you again?]]
@@ -310,67 +310,67 @@ I don't want to argue here, so let's go see what this museum has to offer.[Wait=
 
 [Scene=27
 [Content=
-There are paintings on the wall, from the impressionism era it seems.[Wait=500][Space=2]
-There's also all these sculptures of muscular men.[Wait=500] The greek heterocurious kind of sculpture, you know.[Wait=500][Space=2]
-And there's also these rock plates with strange language engraved on them.[Wait=500][Space=2]
+There are paintings on the wall, from the Impressionist era, it seems.[Wait=500][Space=2]
+There are also all these sculptures of muscular men.[Wait=500] The Greek, heterocurious kind of sculpture, you know.[Wait=500][Space=2]
+And there are these rock plates with strange language engraved on them.[Wait=500][Space=2]
 ]
 [Choices=
 [Choice1=[NextScene=28][Content=Go and see the paintings.]]
 [Choice2=[NextScene=29][Content=Go and see the sculpture.]]
-[Choice3=[NextScene=30][Content=Go and see the inscriptions on the rock.]
+[Choice3=[NextScene=30][Content=Go and see the inscriptions on the rock.]]
 ]
 ]
 
 [Scene=28
 [Content=
-[Color=Gray]*Footsteps*[Color=White]...[Wait=500] The paintings are all representation of a city![Wait=500][Space=2]
+[Color=Gray]*Footsteps*[Color=White]...[Wait=500] The paintings are all representations of a city![Wait=500][Space=2]
 Seems like the keeper of this museum really liked it.[Wait=500] I can see similar features between all of them.[Wait=500][Space=2]
 ]
 [Choices=
-[Choice1=[NextScene=31][Content=Is there something else than art here?]]
+[Choice1=[NextScene=31][Content=Is there something else besides art here?]]
 [Choice2=[NextScene=39][Content=Can you describe it more precisely?]]
 ]
 ]
 
 [Scene=29
 [Content=
-[Color=Gray]*Footsteps*[Color=White]...[Wait=500] Oh wow! They look even more muscular from close![Wait=500][Space=2]
-These stony guys are fighting reeaaaal good![Wait=500][Space=2]
+[Color=Gray]*Footsteps*[Color=White]...[Wait=500] Oh wow! They look even more muscular up close![Wait=500][Space=2]
+These stone guys are fighting reaaally hard![Wait=500][Space=2]
 ]
 [Choices=
-[Choice1=[NextScene=31][Content=Is there something else than art here?]]
+[Choice1=[NextScene=31][Content=Is there something else besides art here?]]
 [Choice2=[NextScene=40][Content=Can you describe it more precisely?]]
 ]
 ]
 
 [Scene=30
 [Content=
-[Color=Gray]*Footsteps*[Color=White]...[Wait=500] It's a really good looking rock, with good looking inscriptions on it![Wait=500][Space=2]
-Too bad, I can't speak that language tho.[Wait=500][Space=2]
+[Color=Gray]*Footsteps*[Color=White]...[Wait=500] It’s a really good-looking rock, with good-looking inscriptions on it![Wait=500][Space=2]
+Too bad I can’t speak that language though.[Wait=500][Space=2]
 ]
 [Choices=
-[Choice1=[NextScene=31][Content=Is there something else than art here?]]
+[Choice1=[NextScene=31][Content=Is there something else besides art here?]]
 [Choice2=[NextScene=41][Content=Can you describe it more precisely?]]
 ]
 ]
 
 [Scene=31
 [Content=
-I thought the same thing...[Wait=500] I'm not here to appreciate the beauty of hand-made art.[Wait=500][Space=2]
-I'm here to GET OUT OF THIS ISLAND![Wait=500] FUCK YOU, ART![Wait=500][Space=2]
-[Color=Gray]*CRACK*[Color=White][Wait=500] Shit, I didn't know kicking a statue could dislock it's leg-[Color=Gray]*RUMBLE*[Color=White]...[Wait=500] Huh?[Wait=500][Space=2]
+I thought the same thing...[Wait=500] I’m not here to appreciate the beauty of handmade art.[Wait=500][Space=2]
+I’m here to GET OFF THIS ISLAND![Wait=500] FUCK YOU, ART![Wait=500][Space=2]
+[Color=Gray]*CRACK*[Color=White][Wait=500] Shit, I didn’t know kicking a statue could dislocate its leg—[Color=Gray]*RUMBLE*[Color=White]...[Wait=500] Huh?[Wait=500][Space=2]
 ]
 [Choices=
-[Choice1=[NextScene=32][Content=What's going on?]]
+[Choice1=[NextScene=32][Content=What’s going on?]]
 ]
 ]
 
 [Scene=32
 [Content=
-I-I don't know, the ground shaked for a second...[Wait=500][Space=2]
-Wait...[Wait=500] What's tha-...[Wait=500][Space=2]
-...Has a motherfucking door appeared at the back of the museum?[Wait=500][Space=2]
-Did I really activated a mechanism at random because of my rage?[Wait=500][Space=2]
+I-I don’t know, the ground shook for a second...[Wait=500][Space=2]
+Wait...[Wait=500] What’s tha—...[Wait=500][Space=2]
+...Did a motherfucking door just appear at the back of the museum?![Wait=500][Space=2]
+Did I really activate a mechanism at random because of my rage?[Wait=500][Space=2]
 ]
 [Choices=
 [Choice1=[NextScene=33][Content=It must be a secret escape!]]
@@ -380,10 +380,10 @@ Did I really activated a mechanism at random because of my rage?[Wait=500][Space
 
 [Scene=33
 [Content=
-I don't know, but I'm too curious to not go and see what this damn door is all about![Wait=500][Space=2]
-[Color=Gray]*Footsteps*[Color=White]...[Wait=500] SHIT! It's locked![Wait=500][Space=2]
-There's a keypad attached to it.[Wait=500] And it's weird but...[Wait=500] there are letters here instead of numbers.[Wait=500][Space=2]
-Oh![Wait=500] And here you go, another post-it![Wait=500] I start to identify a leitmotiv in these puzzles...[Wait=500][Space=2]
+I don’t know, but I’m too curious not to see what this damn door is all about![Wait=500][Space=2]
+[Color=Gray]*Footsteps*[Color=White]...[Wait=500] SHIT! It’s locked![Wait=500][Space=2]
+There’s a keypad attached to it.[Wait=500] And weirdly enough...[Wait=500] there are letters instead of numbers.[Wait=500][Space=2]
+Oh![Wait=500] And here we go, another post-it![Wait=500] I’m starting to see a pattern in these puzzles...[Wait=500][Space=2]
 ]
 [Choices=
 [Choice1=[NextScene=34][Content=Can you read it for me?]]
@@ -392,12 +392,12 @@ Oh![Wait=500] And here you go, another post-it![Wait=500] I start to identify a 
 
 [Scene=34
 [Content=
-It say:[Wait=500][Space=2]
-[Color=Green]""IN CASE THE MADNESS MAKES YOU FORGET:[Wait=500][Space=2]
+It says:[Wait=500][Space=2]
+[Color=Green]"IN CASE THE MADNESS MAKES YOU FORGET:[Wait=500][Space=2]
 -FIRST LETTER = CITY NAME.[Wait=500][Space=2]
 -SECOND LETTER = ARTIST NAME.[Wait=500][Space=2]
 -THIRD LETTER = TRANSLATED IN ENGLISH.[Wait=500][Space=2]
-KEEP EVERYONE OUT AT ALL COST.""[Color=White][Wait=500][Space=2]
+KEEP EVERYONE OUT AT ALL COSTS."[Color=White][Wait=500][Space=2]
 ...[Wait=500][Space=2]
 ]
 [Choices=
@@ -408,10 +408,10 @@ KEEP EVERYONE OUT AT ALL COST.""[Color=White][Wait=500][Space=2]
 
 [Scene=35
 [Content=
-There are paintings on the wall, from the impressionism era it seems.[Wait=500][Space=2]
-There's also all these sculptures of muscular men.[Wait=500] The greek heterocurious kind of sculpture, you know.[Wait=500][Space=2]
-There's also these rock plates with strange language engraved on them.[Wait=500][Space=2]
-And obviously this weird door with that letter keypad and the note.[Wait=500][Space=2]
+There are paintings on the wall, from the Impressionist era, it seems.[Wait=500][Space=2]
+There are also all these sculptures of muscular men.[Wait=500] The Greek, heterocurious kind of sculpture, you know.[Wait=500][Space=2]
+There are also these rock plates with strange language engraved on them.[Wait=500][Space=2]
+And obviously, this weird door with that letter keypad and the note.[Wait=500][Space=2]
 ]
 [Choices=
 [Choice1=[NextScene=34][Content=Can I see the note again?]]
@@ -423,7 +423,7 @@ And obviously this weird door with that letter keypad and the note.[Wait=500][Sp
 
 [Scene=36
 [Content=
-[Color=Gray]*Footsteps*[Color=White]...[Wait=500] The paintings are all representation of a city![Wait=500][Space=2]
+[Color=Gray]*Footsteps*[Color=White]...[Wait=500] The paintings are all representations of a city![Wait=500][Space=2]
 Seems like the keeper of this museum really liked it.[Wait=500] I can see similar features between all of them.[Wait=500][Space=2]
 ]
 [Choices=
@@ -433,8 +433,8 @@ Seems like the keeper of this museum really liked it.[Wait=500] I can see simila
 
 [Scene=37
 [Content=
-[Color=Gray]*Footsteps*[Color=White]...[Wait=500] Oh wow! They look even more muscular from close![Wait=500][Space=2]
-These stony guys are fighting reeaaaal good![Wait=500][Space=2]
+[Color=Gray]*Footsteps*[Color=White]...[Wait=500] Oh wow! They look even more muscular up close![Wait=500][Space=2]
+These stone guys are fighting reaaally hard![Wait=500][Space=2]
 ]
 [Choices=
 [Choice1=[NextScene=43][Content=Can I have more information about it?]]
@@ -443,8 +443,8 @@ These stony guys are fighting reeaaaal good![Wait=500][Space=2]
 
 [Scene=38
 [Content=
-[Color=Gray]*Footsteps*[Color=White]...[Wait=500] It's a really good looking rock, with good looking inscriptions on it![Wait=500][Space=2]
-Too bad, I can't speak that language tho.[Wait=500][Space=2]
+[Color=Gray]*Footsteps*[Color=White]...[Wait=500] It’s a really good-looking rock, with good-looking inscriptions on it![Wait=500][Space=2]
+Too bad I can’t speak that language though.[Wait=500][Space=2]
 ]
 [Choices=
 [Choice1=[NextScene=44][Content=Can I have more information about it?]]
@@ -453,9 +453,9 @@ Too bad, I can't speak that language tho.[Wait=500][Space=2]
 
 [Scene=39
 [Content=
-It's multiple painting picturing the same city it seems![Wait=500][Space=2]
-I can tell that because of the same looking monument one every of them.[Wait=500][Space=2]
-It's a huge white pillar with at the top a golden urn of fire, or something like that.[Wait=500][Space=2]
+It’s multiple paintings depicting the same city, it seems![Wait=500][Space=2]
+I can tell because of the same monument present in every one of them.[Wait=500][Space=2]
+It’s a huge white pillar with a golden urn of fire on top, or something like that.[Wait=500][Space=2]
 ]
 [Choices=
 [Choice1=[NextScene=27][Content=What else is here?]]
@@ -464,10 +464,10 @@ It's a huge white pillar with at the top a golden urn of fire, or something like
 
 [Scene=40
 [Content=
-It's a white statue of two men fighting.[Wait=500][Space=2]
-Well, I said two men but not really.[Wait=500] One is a centaur if I'm not mistaking.[Wait=500][Space=2]
+It’s a white statue of two men fighting.[Wait=500][Space=2]
+Well... I said two men, but not really.[Wait=500] One is a centaur, if I’m not mistaken.[Wait=500][Space=2]
 The human one is on top of him with a huge stick, ready to strike the centaur.[Wait=500][Space=2]
-That's a cool looking statue![Wait=500][Space=2]
+That’s a cool-looking statue![Wait=500][Space=2]
 ]
 [Choices=
 [Choice1=[NextScene=27][Content=What else is here?]]
@@ -479,7 +479,7 @@ That's a cool looking statue![Wait=500][Space=2]
 It's a flat piece of rock with engravings on it.[Wait=500][Space=2]
 It seems to be a dead language I don't know how to read.[Wait=500][Space=2]
 There is one word on here that's colored in red.[Wait=500][Space=2]
-It reads [Color=Green]""Effingo""[Color=White].[Wait=500] I hope I pronounced it properly.[Wait=500][Space=2]
+It reads [Color=Green]"Effingo"[Color=White].[Wait=500] I hope I pronounced it properly.[Wait=500][Space=2]
 ]
 [Choices=
 [Choice1=[NextScene=27][Content=What else is here?]]
@@ -488,9 +488,9 @@ It reads [Color=Green]""Effingo""[Color=White].[Wait=500] I hope I pronounced it
 
 [Scene=42
 [Content=
-It's multiple painting picturing the same city it seems![Wait=500][Space=2]
-I can tell that because of the same looking monument one every of them.[Wait=500][Space=2]
-It's a huge white pillar with at the top a golden urn of fire, or something like that.[Wait=500][Space=2]
+It's multiple paintings picturing the same city, it seems![Wait=500][Space=2]
+I can tell that because of the same looking monument on every one of them.[Wait=500][Space=2]
+It's a huge white pillar with a golden urn of fire at the top, or something like that.[Wait=500][Space=2]
 ]
 [Choices=
 [Choice1=[NextScene=35][Content=Can you say again what's in here?]]
@@ -500,9 +500,9 @@ It's a huge white pillar with at the top a golden urn of fire, or something like
 [Scene=43
 [Content=
 It's a white statue of two men fighting.[Wait=500][Space=2]
-Well, I said two men but not really.[Wait=500] One is a centaur if I'm not mistaking.[Wait=500][Space=2]
+Well, I said two men, but not really.[Wait=500] One is a centaur if I'm not mistaken.[Wait=500][Space=2]
 The human one is on top of him with a huge stick, ready to strike the centaur.[Wait=500][Space=2]
-That's a cool looking statue![Wait=500][Space=2]
+That's a cool-looking statue![Wait=500][Space=2]
 ]
 [Choices=
 [Choice1=[NextScene=35][Content=Can you say again what's in here?]]
@@ -514,7 +514,7 @@ That's a cool looking statue![Wait=500][Space=2]
 It's a flat piece of rock with engravings on it.[Wait=500][Space=2]
 It seems to be a dead language I don't know how to read.[Wait=500][Space=2]
 There is one word on here that's colored in red.[Wait=500][Space=2]
-It reads [Color=Green]""Effingo""[Color=White].[Wait=500] I hope I pronounced it properly.[Wait=500][Space=2]
+It reads [Color=Green]"Effingo"[Color=White].[Wait=500] I hope I pronounced it properly.[Wait=500][Space=2]
 ]
 [Choices=
 [Choice1=[NextScene=35][Content=Can you say again what's in here?]]
@@ -523,7 +523,7 @@ It reads [Color=Green]""Effingo""[Color=White].[Wait=500] I hope I pronounced it
 
 [Scene=45
 [Content=
-Are you sure?[Wait=500] I don't know what could happen if I type the wrong code but I don't want to find out.[Wait=500][Space=2]
+Are you sure?[Wait=500] I don't know what could happen if I type the wrong code, but I don't want to find out.[Wait=500][Space=2]
 You're confident?[Wait=500][Space=2]
 ]
 [Choices=
@@ -535,7 +535,7 @@ You're confident?[Wait=500][Space=2]
 [Scene=46
 [Content=
 Okay, what first letter should I type?[Wait=500][Space=2]
-It's the [Color=Green]""CITY NAME""[Color=White] thing, right?[Wait=500][Space=2]
+It's the [Color=Green]"CITY NAME"[Color=White] thing, right?[Wait=500][Space=2]
 ]
 [Choices=
 [Choice1=[NextScene=49][Content=A.]]
@@ -548,10 +548,10 @@ It's the [Color=Green]""CITY NAME""[Color=White] thing, right?[Wait=500][Space=2
 
 [Scene=47
 [Content=
-...[Wait=500] I'm shaking of fear, but I need to concentrate to click on the right button...[Wait=500][Space=2]
+...[Wait=500] I'm shaking with fear, but I need to concentrate to click on the right button...[Wait=500][Space=2]
 [Color=Gray]*B[Beep=True]#eep*[Color=White]...[Wait=500][Space=2]
-Oh yes! it didn't explode or anything, so we may be on the right path![Wait=500][Space=2]
-The second letter was [Color=Green]""ARTIST NAME""[Color=White].[Wait=500][Space=2]
+Oh yes! It didn't explode or anything, so we may be on the right path![Wait=500][Space=2]
+The second letter was [Color=Green]"ARTIST NAME"[Color=White].[Wait=500][Space=2]
 ]
 [Choices=
 [Choice1=[NextScene=49][Content=D.]]
@@ -567,7 +567,7 @@ The second letter was [Color=Green]""ARTIST NAME""[Color=White].[Wait=500][Space
 If I die because of this, I'll kill you, remember that...[Wait=500][Space=2]
 [Color=Gray]*B[Beep=True]eep*[Color=White]...[Wait=500][Space=2]
 Another success![Wait=500] You're really good at that![Wait=500][Space=2]
-Now for the last letter, it's [Color=Green]""TRANSLATED IN ENGLISH""[Color=White].[Wait=500][Space=2]
+Now for the last letter, it's [Color=Green]"TRANSLATED IN ENGLISH"[Color=White].[Wait=500][Space=2]
 ]
 [Choices=
 [Choice1=[NextScene=52][Content=C.]]
@@ -596,8 +596,8 @@ Now for the last letter, it's [Color=Green]""TRANSLATED IN ENGLISH""[Color=White
 [Connexion=1]
 [Content=
 [Color=Gray]*Cough*[Color=White] [Color=Gray]*COUGH*[Color=White]...[Wait=500][Space=2]
-I c...[Wait=500] [Color=Gray]*Cough*[Color=White][Wait=500] I can't breath![Wait=500][Space=2]
-[Color=Gray]*Cough*[Color=White][Wait=500] [Color=Gray]*COUGH*[Color=White] [Color=Gray]*COUGH*[Color=White]...[Wait=500][Space=2]
+I c...[Wait=500] [Color=Gray]*Cough*[Color=White][Wait=500] I can't breathe![Wait=500][Space=2]
+[Color=Gray]*Cough*[Color=White] [Color=Gray]*COUGH*[Color=White] [Color=Gray]*COUGH*[Color=White]...[Wait=500][Space=2]
 Arhh...[Wait=500][Space=2]
 ...[Wait=500][Space=2]
 ]
@@ -611,7 +611,7 @@ Arhh...[Wait=500][Space=2]
 [Content=
 ...[Wait=500][Space=2]
 [Color=Red]--SIGNAL LOST--[Color=White][Wait=500][Space=2]
-[Color=Red]{YOU FAIL TO FIND THE RIGHT PASSWORD. MAYBE IF YOU'D TRIED HARDER?}[Color=White][Wait=500][Space=2]
+[Color=Red]{YOU FAILED TO FIND THE RIGHT PASSWORD. MAYBE IF YOU'D TRIED HARDER?}[Color=White][Wait=500][Space=2]
 [Color=Red]BAD ENDING.[Color=White][Wait=500][Space=2]
 ]
 [Choices=
@@ -639,8 +639,8 @@ I don't know what I'll find here, but I'm going inside anyway...[Wait=500][Space
 
 [Scene=53
 [Content=
-For now, all is see are stairs going deep down...[Wait=500][Space=2]
-But I hope that I'll found this fuse to activate the trapdoor in the outside.[Wait=500][Space=2]
+For now, all I see are stairs going deep down...[Wait=500][Space=2]
+But I hope that I'll find this fuse to activate the trapdoor outside.[Wait=500][Space=2]
 Or at least answers for why I'm here.[Wait=500][Space=2]
 ]
 [Choices=
@@ -652,21 +652,21 @@ Or at least answers for why I'm here.[Wait=500][Space=2]
 
 [Scene=54
 [Content=
-That's not reassuring to say pal...[Wait=500][Space=2]
+That's not reassuring to say, pal...[Wait=500][Space=2]
 What if there's no fuse?[Wait=500] Guess I'll die slowly, starving, while you're here listening to my agony.[Wait=500][Space=2]
-Would you be here to support here in my final moments?[Wait=500][Space=2]
+Would you be here to support me in my final moments?[Wait=500][Space=2]
 ]
 [Choices=
 [Choice1=[NextScene=55][TrustAdd=25][Content=Of course! I will be with you until the end.]]
 [Choice2=[NextScene=56][TrustAdd=-25][Content=Uhm, I have more alluring stuff to do.]]
-[Choice3=[NextScene=57][TrustAdd=25][Content=Sorry but I don't feel confortable with hearing someone slowly dying on phone...]]
+[Choice3=[NextScene=57][TrustAdd=25][Content=Sorry, but I don't feel comfortable hearing someone slowly dying on the phone...]]
 ]
 ]
 
 [Scene=55
 [Content=
 Ahah![Wait=500] That was supposed to be a joke![Wait=500][Space=2]
-I admit  that I won't be able to handle that on side anyway.[Wait=500][Space=2]
+I admit that I wouldn't be able to handle that anyway.[Wait=500][Space=2]
 But if you're willing to hear me die, I guess that's okay![Wait=500] If that's not because of a twisted fantasy of yours...[Wait=500][Space=2]
 ]
 [Choices=
@@ -677,7 +677,7 @@ But if you're willing to hear me die, I guess that's okay![Wait=500] If that's n
 [Scene=56
 [Content=
 Oh.[Wait=500] Uhm...[Wait=500][Space=2]
-Of course you have a life, I don't want to disturb you with my boring imminent death...[Wait=500][Space=2]
+Of course you have a life. I don't want to disturb you with my boring imminent death...[Wait=500][Space=2]
 ]
 [Choices=
 [Choice1=[NextScene=64][Content=It's cool to see that you understand! You're down the stairs?]]
@@ -687,7 +687,7 @@ Of course you have a life, I don't want to disturb you with my boring imminent d
 [Scene=57
 [Content=
 Ahah![Wait=500] Of course you're not![Wait=500] That was a joke![Wait=500][Space=2]
-Don't worry about it, if I ever find myself in this kind of situation, I don't you to suffer it too.[Wait=500][Space=2]
+Don't worry about it, if I ever find myself in this kind of situation, I wouldn't want you to suffer it too.[Wait=500][Space=2]
 ]
 [Choices=
 [Choice1=[NextScene=64][Content=Funny one. You're down the stairs?]]
@@ -697,12 +697,12 @@ Don't worry about it, if I ever find myself in this kind of situation, I don't y
 [Scene=58
 [Content=
 ...[Wait=500] If we put together the door system and the tidiness of this museum compared to the other buildings...[Wait=500][Space=2]
-Yes, I think I'm about to meet the ones responsible of all my troubles.[Wait=500][Space=2]
+Yes, I think I'm about to meet the ones responsible for all my troubles.[Wait=500][Space=2]
 I don't know what their project is, but I'm sure I'll soon find out if I speak directly to them.[Wait=500][Space=2]
 ]
 [Choices=
 [Choice1=[NextScene=59][TrustAdd=-25][Content=But they'll be hostile!]]
-[Choice2=[NextScene=60][Content=Maybe we can deal so they free you.]]
+[Choice2=[NextScene=60][Content=Maybe we can make a deal so they free you.]]
 ]
 ]
 
@@ -713,19 +713,19 @@ Of course they don't want me to go![Wait=500] But I have nothing to stop them ot
 Hostile or not, here I come![Wait=500][Space=2]
 ]
 [Choices=
-[Choice1=[NextScene=64][Content=Where ar you now?]]
+[Choice1=[NextScene=64][Content=Where are you now?]]
 ]
 ]
 
 [Scene=60
 [Content=
 That's what I thought.[Wait=500][Space=2]
-If they put me there in the first place, there is a reason, and I don't they did all of that just for fun.[Wait=500][Space=2]
-There is a meaning behind all of this mess I've been through and I want to know about it.[Wait=500][Space=2]
-And if they can free me in the process, it would be nice too.[Wait=500][Space=2]
+If they put me here in the first place, there’s a reason, and I don’t think they did all that just for fun.[Wait=500][Space=2]
+There must be meaning behind all this mess I've been through, and I want to know about it.[Wait=500][Space=2]
+And if they can free me in the process, that would be nice too.[Wait=500][Space=2]
 ]
 [Choices=
-[Choice1=[NextScene=64][Content=Where ar you now?]]
+[Choice1=[NextScene=64][Content=Where are you now?]]
 ]
 ]
 
@@ -736,14 +736,14 @@ I have no choice anyway. It's my only hope to get out of this island.[Wait=500][
 ]
 [Choices=
 [Choice1=[NextScene=62][TrustAdd=-25][Content=I would go back and search for another way out if I were you.]]
-[Choice2=[NextScene=63][Content=Do whatever you want, it's your responsability.]]
+[Choice2=[NextScene=63][Content=Do whatever you want, it's your responsibility.]]
 ]
 ]
 
 [Scene=62
 [Content=
 Too bad you're not me and that I can make decisions on my own![Wait=500][Space=2]
-I've been on this island for hours and I know there is no way out outside.[Wait=500][Space=2]
+I've been on this island for hours, and I know there is no way out outside.[Wait=500][Space=2]
 It's too late to change my mind.[Wait=500][Space=2]
 ]
 [Choices=
@@ -765,7 +765,7 @@ But I still count on you to help me here.[Wait=500][Space=2]
 [Connexion=2]
 [Content=
 I'm down the stairs.[Wait=500] It see-[Color=Gray]*SHKRRRRRRRRRR*[Color=White].[Wait=500][Space=2]
-There's multiple corridor leading to-[Color=Gray]*SHKRRRRRRRRRR*[Color=White]...[Wait=500] I don't know which one is the right one![Wait=500][Space=2]
+There are multiple corridors leading to-[Color=Gray]*SHKRRRRRRRRRR*[Color=White]...[Wait=500] I don't know which one is the right one![Wait=500][Space=2]
 ]
 [Choices=
 [Choice1=[NextScene=65][Content=Shit! The signal's getting weaker again!]]
@@ -866,8 +866,8 @@ Where should I g-[Color=Gray]*SHKRRRRRRRRRR*[Color=White].[Wait=500][Space=2]
 
 [Scene=73
 [Content=
-[Color=Magenta][Beep=True]Th[Wait=500][Beep=True] aT[Wait=500][Beep=True]  wI[Wait=500][Beep=True] lL dO[Wait=500][Beep=True]... Th[Wait=500][Beep=True] aNkS fO[Wait=500][Beep=True] r Y[Wait=500][Beep=True] oU r H[Wait=500][Beep=True] eLp.[Color=White][Wait=500][Space=2]
-...[Color=Gray]*SHKRRRR*[Color=White] Hello?[Wait=500 Hey?[Wait=500][Space=2]
+[Color=Magenta][Beep=True]Th[Wait=500][Beep=True] aT[Wait=500][Beep=True] wI[Wait=500][Beep=True] lL dO[Wait=500][Beep=True]... Th[Wait=500][Beep=True] aNkS fO[Wait=500][Beep=True] r Y[Wait=500][Beep=True] oU r H[Wait=500][Beep=True] eLp.[Color=White][Wait=500][Space=2]
+...[Color=Gray]*SHKRRRR*[Color=White] Hello?[Wait=500] Hey?[Wait=500][Space=2]
 Can you hear me?[Wait=500][Space=2]
 ]
 [Choices=
@@ -901,7 +901,7 @@ But who was the one asking you these questions?[Wait=500][Space=2]
 [Scene=76
 [Content=
 Yeah, as if you could pretend that![Wait=500][Space=2]
-Anyway, let's focus on the most important question : WHO WAS THAT?[Wait=500][Space=2]
+Anyway, let's focus on the most important question: WHO WAS THAT?[Wait=500][Space=2]
 ]
 [Choices=
 [Choice1=[NextScene=78][Content=I have no idea!]]
@@ -911,7 +911,7 @@ Anyway, let's focus on the most important question : WHO WAS THAT?[Wait=500][Spa
 [Scene=77
 [Content=
 Are you serious...[Wait=500][Space=2]
-You know what forget it...[Wait=500] The most important think is who the fuck was this person asking you all this?[Wait=500][Space=2]
+You know what? Forget it...[Wait=500] The most important thing is who the hell was this person asking you all this?[Wait=500][Space=2]
 ]
 [Choices=
 [Choice1=[NextScene=78][Content=I have no idea!]]
@@ -921,7 +921,7 @@ You know what forget it...[Wait=500] The most important think is who the fuck wa
 [Scene=78
 [Content=
 Of course you don't...[Wait=500][Space=2]
-The more I realise the situation I'm in, the less I think all of this makes sense...[Wait=500][Space=2]
+The more I realize the situation I'm in, the less I think all of this makes sense...[Wait=500][Space=2]
 Anyway, I'm inside a complex of whitish corridors, the-[Color=Gray]*Footsteps*[Color=White]...[Wait=500][Space=2]
 Wait...[Wait=500] Those footsteps weren't mine...[Wait=500][Space=2]
 ]
@@ -935,7 +935,7 @@ Wait...[Wait=500] Those footsteps weren't mine...[Wait=500][Space=2]
 [Color=Gray]*Footsteps*[Color=White] It's getting closer![Wait=500][Space=2]
 [Color=Gray]*SLAM*[Color=White]...[Wait=500][Space=2]
 I locked myself inside a room...[Wait=500] I think I'm safe n-.[Wait=500][Space=2]
-[Color=Yellow]It's useless to hide you know?[Wait=500] I know where you are at all time[Color=White][Wait=500][Space=2]
+[Color=Yellow]It's useless to hide, you know?[Wait=500] I know where you are at all times.[Color=White][Wait=500][Space=2]
 ]
 [Choices=
 [Choice1=[NextScene=80][Content=Who is this?]]
@@ -945,7 +945,7 @@ I locked myself inside a room...[Wait=500] I think I'm safe n-.[Wait=500][Space=
 
 [Scene=80
 [Content=
-[Color=Yellow]No matter what your friend says, it's just between me and you subject 835...[Color=White][Wait=500][Space=2]
+[Color=Yellow]No matter what your friend says, it's just between me and you, subject 835...[Color=White][Wait=500][Space=2]
 [Color=Yellow]You bypassed what I've prepared for you by entering the museum. It never happened before![Color=White][Wait=500][Space=2]
 W-Who are you calling subject 835?[Wait=500][Space=2]
 ]
@@ -957,9 +957,9 @@ W-Who are you calling subject 835?[Wait=500][Space=2]
 
 [Scene=81
 [Content=
-[Color=Yellow]Subject 835?[Wait=500] That's you of course![Color=White][Wait=500][Space=2]
+[Color=Yellow]Subject 835?[Wait=500] That's you, of course![Color=White][Wait=500][Space=2]
 [Color=Yellow]You're no more than a pale copy of the one you're calling on this phone right now.[Color=White][Wait=500][Space=2]
-W-Wait...[Wait=500] What?[Wait=500] A copy you say?[Wait=500][Space=2]
+W-Wait...[Wait=500] What?[Wait=500] A copy, you say?[Wait=500][Space=2]
 [Color=Yellow]A clone, if you prefer this term.[Color=White][Wait=500][Space=2]
 ]
 [Choices=
@@ -971,7 +971,7 @@ W-Wait...[Wait=500] What?[Wait=500] A copy you say?[Wait=500][Space=2]
 [Content=
 No...[Wait=500] It's impossible![Wait=500] YOU'RE LYING![Wait=500][Space=2]
 [Color=Yellow]...I expected this kind of reaction.[Wait=500] Why do you think you and the original behind this call have the same voice?[Color=White][Wait=500][Space=2]
-[Color=Yellow]Didn't it strike you at first that he was the only contact on this phone?[Color=White][Wait=500][Space=2]
+[Color=Yellow]Didn't it strike you that he was the only contact on this phone?[Color=White][Wait=500][Space=2]
 ]
 [Choices=
 [Choice1=[NextScene=83][Content=He's lying!]]
@@ -980,7 +980,7 @@ No...[Wait=500] It's impossible![Wait=500] YOU'RE LYING![Wait=500][Space=2]
 
 [Scene=83
 [Content=
-[Color=Yellow]I'm telling you the truth.[Wait=500] It might seem troubling but you have to accept that you're just a mere reproduction.[Color=White][Wait=500][Space=2]
+[Color=Yellow]I'm telling you the truth.[Wait=500] It might seem troubling, but you have to accept that you're just a mere reproduction.[Color=White][Wait=500][Space=2]
 [Color=Yellow]But why would it matter?[Wait=500] You're now the perfect subject I was waiting for.[Color=White][Wait=500][Space=2]
 ...[Wait=500] What do you mean by...[Wait=500] The perfect subject?[Wait=500][Space=2]
 ]
@@ -1002,10 +1002,10 @@ No...[Wait=500] It's impossible![Wait=500] YOU'RE LYING![Wait=500][Space=2]
 
 [Scene=85
 [Content=
-[Color=Yellow]Not all.[Wait=500] I just said that you were subject 835.[Wait=500] 3 are still alive to this day.[Color=White][Wait=500][Space=2]
-[Color=Yellow]One was not able to handle the virus. However he managed to take out his tracker and he's still roaming outside.[Color=White][Wait=500][Space=2]
+[Color=Yellow]Not all.[Wait=500] I just said that you were subject 835.[Wait=500] Three are still alive to this day.[Color=White][Wait=500][Space=2]
+[Color=Yellow]One was not able to handle the virus. However, he managed to take out his tracker and is still roaming outside.[Color=White][Wait=500][Space=2]
 [Color=Yellow]He was responsible for the death of some clones because of his hostility.[Color=White][Wait=500][Space=2]
-[Color=Yellow]The other one was immune, but he managed to bypass my security and to free himself.[Color=White][Wait=500][Space=2]
+[Color=Yellow]The other one was immune, but he managed to bypass my security and free himself.[Color=White][Wait=500][Space=2]
 ]
 [Choices=
 [Choice1=[NextScene=86][Content=Virus? Immune?]]
@@ -1015,9 +1015,9 @@ No...[Wait=500] It's impossible![Wait=500] YOU'RE LYING![Wait=500][Space=2]
 
 [Scene=86
 [Content=
-[Color=Yellow]Oh?[Wait=500] He contacted you?[Wait=500] How curious, this must mean he's still on the island.[Color=White][Wait=500][Space=2]
-[Color=Magenta][Beep=True]DoN[Wait=500][Beep=True]'t tRu[Wait=500][Beep=True]st hIm[Wait=500][Beep=True].  aLl oF[Wait=500][Beep=True]  tHeSe dEa[Wait=500][Beep=True]tHs iS[Wait=500][Beep=True]  bEcAuSe[Wait=500][Beep=True]  oF hIm.[Color=White][Wait=500][Space=2]
-...[Wait=500] I can't believe all that...[Wait=500] Why am I here![Wait=500] TELL ME WHY DID YOU MADE ME![Wait=500][Space=2]
+[Color=Yellow]Oh?[Wait=500] He contacted you?[Wait=500] How curious. This must mean he's still on the island.[Color=White][Wait=500][Space=2]
+[Color=Magenta][Beep=True]DoN[Wait=500][Beep=True]'t tRu[Wait=500][Beep=True]st hIm[Wait=500][Beep=True]. aLl oF[Wait=500][Beep=True] tHeSe dEa[Wait=500][Beep=True]tHs iS[Wait=500][Beep=True] bEcAuSe[Wait=500][Beep=True] oF hIm.[Color=White][Wait=500][Space=2]
+...[Wait=500] I can't believe all that...[Wait=500] Why am I here?[Wait=500] TELL ME WHY DID YOU MAKE ME?![Wait=500][Space=2]
 ]
 [Choices=
 [Choice1=[NextScene=87][Content=Calm down!]]
@@ -1028,8 +1028,8 @@ No...[Wait=500] It's impossible![Wait=500] YOU'RE LYING![Wait=500][Space=2]
 [Scene=87
 [Content=
 [Color=Yellow]I understand your confusion.[Wait=500] But the survival of humankind is at stake at this very moment.[Color=White][Wait=500][Space=2]
-[Color=Yellow]A virus is spreading, and it's undetectable.[Wait=500] I called it the Emotoxin.[Wait=500] No one believed me.[Color=White][Wait=500][Space=2]
-[Color=Yellow]It decuplates the instensity of our emotions, causing us to burst out of rage, euphoria or feel miserable.[Color=White][Wait=500][Space=2]
+[Color=Yellow]A virus is spreading, and it's undetectable.[Wait=500] I call it the Emotoxin.[Wait=500] No one believed me.[Color=White][Wait=500][Space=2]
+[Color=Yellow]It amplifies the intensity of our emotions, causing us to burst into rage, euphoria, or misery.[Color=White][Wait=500][Space=2]
 ...[Wait=500] And in what way could this cause the end of humankind?[Wait=500][Space=2]
 ]
 [Choices=
@@ -1041,7 +1041,7 @@ No...[Wait=500] It's impossible![Wait=500] YOU'RE LYING![Wait=500][Space=2]
 [Content=
 [Color=Yellow]You should see how an infected acts.[Color=White][Wait=500][Space=2]
 [Color=Yellow]In our world filled with hate, it would cause people to kill each other over a small argument.[Color=White][Wait=500][Space=2]
-...[Wait=500] I'm not infected right?[Wait=500] So why would you do all that in the first place![Wait=500][Space=2]
+...[Wait=500] I'm not infected, right?[Wait=500] So why would you do all that in the first place?[Wait=500][Space=2]
 Why not use a lab rat instead of killing HUNDREDS OF HUMANS![Wait=500][Space=2]
 ]
 [Choices=
@@ -1051,8 +1051,8 @@ Why not use a lab rat instead of killing HUNDREDS OF HUMANS![Wait=500][Space=2]
 
 [Scene=89
 [Content=
-[Color=Yellow]The Emotoxin only affects humans. So I preffered to base my search on clones instead of real humans.[Color=White][Wait=500][Space=2]
-[Color=Yellow]I chose to clone you because your DNA was highly compatible with cloning and resistent to the Emotoxin structure.[Color=White][Wait=500][Space=2]
+[Color=Yellow]The Emotoxin only affects humans. So I preferred to base my research on clones instead of real humans.[Color=White][Wait=500][Space=2]
+[Color=Yellow]I chose to clone you because your DNA was highly compatible with cloning and resistant to the Emotoxin structure.[Color=White][Wait=500][Space=2]
 [Color=Yellow]All these puzzles were tests to see if you were affected by the toxin by playing with your emotions.[Color=White][Wait=500][Space=2]
 [Color=Yellow]I think it might be time to get out of this room now.[Wait=500] I need your blood.[Color=White][Wait=500][Space=2]
 ]
@@ -1065,9 +1065,9 @@ Why not use a lab rat instead of killing HUNDREDS OF HUMANS![Wait=500][Space=2]
 [Scene=90
 [Connexion=2]
 [Content=
-Y-Yes![Wait=500] I'M STAYING INSIDE YOU PSYCHOPATH![Wait=500][Space=2]
-I'M NOT GOING TO LET YOU SUCK MY BLOOD![Wait=500] I MAY BE A CLONE BUT I'M NOT BELIEVING ALL THIS SHIT![Wait=500][Space=2]
-[Color=Yellow]...[Wait=500] Hmmm...[Wait=500] Unfortunatly for you, I anticipated this kind of reaction.[Color=White][Wait=500][Space=2]
+Y-Yes![Wait=500] I'M STAYING INSIDE, YOU PSYCHOPATH![Wait=500][Space=2]
+I'M NOT GOING TO LET YOU SUCK MY BLOOD![Wait=500] I MAY BE A CLONE, BUT I'M NOT BELIEVING ALL THIS SHIT![Wait=500][Space=2]
+[Color=Yellow]...[Wait=500] Hmmm...[Wait=500] Unfortunately for you, I anticipated this kind of reaction.[Color=White][Wait=500][Space=2]
 [Color=Yellow]What are your last words?[Color=White][Wait=500][Space=2]
 Y-You're bluffing![Wait=500] I'm not going to fall for this eith-[Color=Gray]*PSHHHHHHHHHH*[Color=White]...[Wait=500][Space=2]
 ]
@@ -1082,12 +1082,12 @@ Y-You're bluffing![Wait=500] I'm not going to fall for this eith-[Color=Gray]*PS
 ...[Wait=500] OH SHIT![Wait=500] THERE'S GREEN GAS SPREADING IN THE ROOM![Wait=500][Space=2]
 [Color=Gray]*Door shake*[Color=White]...[Wait=500][Space=2]
 LET ME OUT, THIS FUCKER LOCKED THE DOOR![Wait=500][Space=2]
-[Color=Yellow]You made your own choices you and your friend.[Wait=500] Now you'll have to accept the consequences.[Color=White][Wait=500][Space=2]
+[Color=Yellow]You made your own choices, you and your friend.[Wait=500] Now you'll have to accept the consequences.[Color=White][Wait=500][Space=2]
 [Color=Gray]*Cough*[Color=White]... No...[Wait=500] [Color=Gray]*Cough*[Color=White] [Color=Gray]*Cough*[Color=White]...[Wait=500][Space=2]
 .[Wait=500].[Wait=500].[Wait=500][Space=2]
 ]
 [Choices=
-[Choice1=[NextScene=92][Content=DONT GIVE UP!]]
+[Choice1=[NextScene=92][Content=DON'T GIVE UP!]]
 ]
 ]
 
@@ -1113,7 +1113,7 @@ LET ME OUT, THIS FUCKER LOCKED THE DOOR![Wait=500][Space=2]
 [Connexion=2]
 [Content=
 N-NO![Wait=500] I WON'T FOLLOW HIM![Wait=500][Space=2]
-I DON'T TRUST YOU ANYMORE![Wait=500] You were plotting with him since the beggining right?[Wait=500][Space=2]
+I DON'T TRUST YOU ANYMORE![Wait=500] You were plotting with him since the beginning, right?[Wait=500][Space=2]
 [Color=Gray]*SLAM*[Color=White] OUCH![Wait=500] I'M GETTING OUT OF HERE![Wait=500][Space=2]
 [Color=Gray]*Fast footsteps*[Color=White]...[Wait=500][Space=2]
 ]
@@ -1139,7 +1139,7 @@ LIAR![Wait=500][Space=2]
 You could be behind THIS DOOR [Color=Gray]*SLAM*[Color=White]...[Wait=500][Space=2]
 THIS DOOR [Color=Gray]*SLAM*[Color=White]...[Wait=500][Space=2]
 ...[Wait=500] Ah AH! Just as I thought, a monitoring room![Wait=500][Space=2]
-You were here before huh?[Wait=500] Planning for the next puzzle and acting as if you were discovering it with me.[Wait=500][Space=2]
+You were here before, huh?[Wait=500] Planning for the next puzzle and acting as if you were discovering it with me.[Wait=500][Space=2]
 ]
 [Choices=
 [Choice1=[NextScene=96][Content=You're losing your mind.]]
@@ -1149,10 +1149,10 @@ You were here before huh?[Wait=500] Planning for the next puzzle and acting as i
 
 [Scene=96
 [Content=
-You're the crazy one here, cloning yourself and watch you suffer with this mad scientist![Wait=500][Space=2]
+You're the crazy one here, cloning yourself and watching you suffer with this mad scientist![Wait=500][Space=2]
 ...[Wait=500] Oh![Wait=500] Look![Wait=500] How unfortunate for you![Wait=500][Space=2]
-""This button should only be used in case that the Emotoxin breaches out.[Wait=500][Space=2]
-The explosion will eradicate all living organism in a 5 kilometers.""[Wait=500][Space=2]
+"This button should only be used in case that the Emotoxin breaches out.[Wait=500][Space=2]
+The explosion will eradicate all living organisms in a 5 kilometers radius."[Wait=500][Space=2]
 ...[Wait=500] You really put a self-destruct button here?[Wait=500] Too bad, because I'm going to press it.[Wait=500][Space=2]
 ]
 [Choices=
@@ -1163,8 +1163,8 @@ The explosion will eradicate all living organism in a 5 kilometers.""[Wait=500][
 [Scene=97
 [Content=
 AND I WILL ALSO KILL YOU AND YOUR SCIENTIST FRIEND![Wait=500][Space=2]
-I will end this whole madness![Wait=500] Hundreds of different versions of you were killed.[Wait=500] THEY HAD FEELINGS YOU KNOW?![Wait=500][Space=2]
-I'm willing to sacrifice, as a revenge for all the ones that suffered before me.[Wait=500][Space=2]
+I will end this whole madness![Wait=500] Hundreds of different versions of you were killed.[Wait=500] THEY HAD FEELINGS, YOU KNOW?![Wait=500][Space=2]
+I'm willing to sacrifice, as revenge for all the ones that suffered before me.[Wait=500][Space=2]
 ]
 [Choices=
 [Choice1=[NextScene=98][Content=You're really dumb.]]
@@ -1208,8 +1208,8 @@ Have a good death, original.[Wait=500][Space=2]
 ...[Wait=500] Is it really for the survival of humanity?[Wait=500] It's not a trick so that I get out and you can shoot me easily?[Wait=500][Space=2]
 [Color=Yellow]Absolutely not.[Wait=500] I care for my research, and I wouldn't waste any of my bullets or any of your blood.[Color=White][Wait=500][Space=2]
 ...[Wait=500] [Color=Gray]*Door opening*[Color=White]...[Wait=500] [Color=Yellow]So you opened.[Color=White][Wait=500][Space=2]
-I don't know what you mean by needing my blood but I assume this will not be pleasurable?[Wait=500][Space=2]
-[Color=Yellow]You guessed it. But I will do what's possible to keep you alive after that?[Color=White][Wait=500][Space=2]
+I don't know what you mean by needing my blood, but I assume this will not be pleasurable?[Wait=500][Space=2]
+[Color=Yellow]You guessed it. But I will do what's possible to keep you alive after that.[Color=White][Wait=500][Space=2]
 ]
 [Choices=
 [Choice1=[NextScene=101][Content=That's reassuring!]]
@@ -1219,12 +1219,12 @@ I don't know what you mean by needing my blood but I assume this will not be ple
 
 [Scene=101
 [Content=
-[Color=Yellow]Good.[Wait=500] Now, original, you'll excuse us but we have to end the call here.[Wait=500] I have to borrow this clone.[Color=White][Wait=500][Space=2]
+[Color=Yellow]Good.[Wait=500] Now, original, you'll excuse us, but we have to end the call here.[Wait=500] I have to borrow this clone.[Color=White][Wait=500][Space=2]
 W-Wait... I have a question.[Wait=500] Why did you make us contact each other?[Wait=500][Space=2]
 [Color=Yellow]I needed a full panel of your emotions right when I knew that you were the right one.[Color=White][Wait=500][Space=2]
-[Color=Yellow]There was no better options than using yourself as to stimulate every aspect of your personnality.[Color=White][Wait=500][Space=2]
-[Color=Yellow]Talking to yourself shows how the human behaviour is not absolute for a single person.[Color=White][Wait=500][Space=2]
-[Color=Yellow]The gap between what we think we'd do and what we actually do is indeterminatable.[Color=White][Wait=500][Space=2]
+[Color=Yellow]There was no better option than using yourself to stimulate every aspect of your personality.[Color=White][Wait=500][Space=2]
+[Color=Yellow]Talking to yourself shows how human behavior is not absolute for a single person.[Color=White][Wait=500][Space=2]
+[Color=Yellow]The gap between what we think we'd do and what we actually do is indeterminable.[Color=White][Wait=500][Space=2]
 [Color=Yellow]By calling the original, you could explore every aspect of yourself...[Color=White][Wait=500][Space=2]
 ]
 [Choices=
@@ -1235,12 +1235,12 @@ W-Wait... I have a question.[Wait=500] Why did you make us contact each other?[W
 
 [Scene=102
 [Content=
-[Color=Yellow]I'm a scientist, not a social expert.[Wait=500] Now, original,  we have to end the call here.[Wait=500] I have to borrow this clone.[Color=White][Wait=500][Space=2]
+[Color=Yellow]I'm a scientist, not a social expert.[Wait=500] Now, original, we have to end the call here.[Wait=500] I have to borrow this clone.[Color=White][Wait=500][Space=2]
 W-Wait... I have a question.[Wait=500] Why did you make us contact each other?[Wait=500][Space=2]
 [Color=Yellow]I needed a full panel of your emotions right when I knew that you were the right one.[Color=White][Wait=500][Space=2]
-[Color=Yellow]There was no better options than using yourself as to stimulate every aspect of your personnality.[Color=White][Wait=500][Space=2]
-[Color=Yellow]Talking to yourself shows how the human behaviour is not absolute for a single person.[Color=White][Wait=500][Space=2]
-[Color=Yellow]The gap between what we think we'd do and what we actually do is indeterminatable.[Color=White][Wait=500][Space=2]
+[Color=Yellow]There was no better option than using yourself to stimulate every aspect of your personality.[Color=White][Wait=500][Space=2]
+[Color=Yellow]Talking to yourself shows how human behavior is not absolute for a single person.[Color=White][Wait=500][Space=2]
+[Color=Yellow]The gap between what we think we'd do and what we actually do is indeterminable.[Color=White][Wait=500][Space=2]
 [Color=Yellow]By calling the original, you could explore every aspect of yourself...[Color=White][Wait=500][Space=2]
 ]
 [Choices=
@@ -1251,7 +1251,7 @@ W-Wait... I have a question.[Wait=500] Why did you make us contact each other?[W
 
 [Scene=103
 [Content=
-[Color=Yellow]Confusing, I know.[Wait=500] Even if I vulgarise the terms, it's still a concept most won't understand.[Color=White][Wait=500][Space=2]
+[Color=Yellow]Confusing, I know.[Wait=500] Even if I simplify the terms, it's still a concept most won't understand.[Color=White][Wait=500][Space=2]
 ...[Wait=500][Space=2]
 One more thing.[Wait=500] Can I talk one last time with the original?[Wait=500][Space=2]
 [Color=Yellow]Go on.[Wait=500] I've waited years for you to exist, so I can wait one more minute.[Color=White][Wait=500][Space=2]
@@ -1264,7 +1264,7 @@ One more thing.[Wait=500] Can I talk one last time with the original?[Wait=500][
 
 [Scene=104
 [Content=
-You bet it was![Wait=500] That's unfortunate that we have to end on this save the humanity tone...[Wait=500][Space=2]
+You bet it was![Wait=500] That's unfortunate that we have to end on this "save the humanity" tone...[Wait=500][Space=2]
 But I guess we can't do anything about it.[Wait=500][Space=2]
 The world chose you to be immune.[Wait=500] And by you, that includes me...[Wait=500][Space=2]
 ]
@@ -1277,12 +1277,12 @@ The world chose you to be immune.[Wait=500] And by you, that includes me...[Wait
 [Scene=105
 [Content=
 Ahah![Wait=500] I guess you're right![Wait=500][Space=2]
-...[Wait=500] Thank you for staying with me...[Wait=500] I know I was just a random call of a stranger at the beginning but...[Wait=500][Space=2]
+...[Wait=500] Thank you for staying with me...[Wait=500] I know I was just a random call of a stranger at the beginning, but...[Wait=500][Space=2]
 But I hope I'll be able to call you again one day.[Wait=500] We'll be able to eat something at your favorite restaurant![Wait=500][Space=2]
-I know which one it is since I've got the same memories than you eheh![Wait=500][Space=2]
+I know which one it is since I've got the same memories as you, eheh![Wait=500][Space=2]
 ]
 [Choices=
-[Choice1=[NextScene=106][Content=We'll go and see a movie too! Since your favorites one are also mine.]]
+[Choice1=[NextScene=106][Content=We'll go and see a movie too! Since your favorites are also mine.]]
 [Choice2=[NextScene=106][Content=I hope you don't remember the awkward ones...]]
 ]
 ]
@@ -1292,7 +1292,7 @@ I know which one it is since I've got the same memories than you eheh![Wait=500]
 Ahahah![Wait=500] That's tru-.[Wait=500][Space=2]
 [Color=Yellow]We have to go.[Color=White][Wait=500][Space=2]
 O-Oh...[Wait=500] Well, I guess it's a goodbye.[Wait=500][Space=2]
-I really hope to see you again.[Wait=500] Until now, believe in yourself.[Wait=500] I know we're great people.[Wait=500][Space=2]
+I really hope to see you again.[Wait=500] Until then, believe in yourself.[Wait=500] I know we're great people.[Wait=500][Space=2]
 ]
 [Choices=
 [Choice1=[NextScene=107][Content=See you later.]]

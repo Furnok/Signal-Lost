@@ -16,7 +16,7 @@
 [Connexion=2]
 [Content=
 [Color=Gray]*Click*[Color=White]...[Wait=500][Space=2]
-[Color=Gray]*SHKRRRRRRRRR*[Color=White]...H-Hello? Is someone the-[Color=Gray]*SHKRRRRRRRRRRRR*[Color=White]...[Wait=500][Space=2]
+[Color=Gray]*SHKRRRRRRRRR*[Color=White]...H-Hello? Is someone there-[Color=Gray]*SHKRRRRRRRRRRRR*[Color=White]...[Wait=500][Space=2]
 How does this thing wor-[Color=Gray]*SHKRRRRRRRRRR*[Color=White]...[Wait=500] Can you hear m-[Color=Gray]*SHKRRRRRRRRRRR*[Color=White]...[Wait=500][Space=2]
 Hello?[Wait=500][Space=2]
 ]
@@ -43,8 +43,8 @@ Hello?[Wait=500][Space=2]
 
 [Scene=4
 [Content=
-[Color=Gray]*SHKRRRRRR*[Color=White]-MY GOD! I’ve been stuck here-[Color=Gray]*SHKRRRRRRRRRRR*[Color=white]-for days. Tt feels so good to hear someone’s voice...[Wait=500][Space=2]
-[Color=Gray]*SHKRRRRRRRRRRRRRRRR*[Color=White]-Any idea what’s happening? Who are y-[Color=Gray]*SHKRRRRRRRRRRRRRRRR*[Color=White]-I, and why I am here?[Wait=500][Space=2]
+[Color=Gray]*SHKRRRRRR*[Color=White]-MY GOD! I’ve been stuck here-[Color=Gray]*SHKRRRRRRRRRRR*[Color=White]-for days. It feels so good to hear someone’s voice...[Wait=500][Space=2]
+[Color=Gray]*SHKRRRRRRRRRRRRRRRR*[Color=White]-Any idea what’s happening? Who are y-[Color=Gray]*SHKRRRRRRRRRRRRRRRR*[Color=White]-I, and why am I here?[Wait=500][Space=2]
 ]
 [Choices=
 [Choice1=[NextScene=5][Content=Who are you?]]
@@ -117,7 +117,7 @@ It's like an abandoned city.[Wait=500][Space=2]
 
 [Scene=10
 [Content=
-Can’t even tell! I just found this old-ass flip phone on a shelf.[Wait=500][Space=2]
+Can’t even tell! I just found this old flip phone on a shelf.[Wait=500][Space=2]
 It started a call the moment I opened it![Wait=500][Space=2]
 There's nothing else on that piece of junk, no contacts, no internet access, just this call number.[Wait=500][Space=2]
 ]
@@ -274,7 +274,7 @@ PLEASE DON’T HANG UP! I just need someone to talk to![Wait=500][Space=2]
 I have no idea if either of us will even be able to call again if you hang up![Wait=500][Space=2]
 Wh-[Wait=500] whatever is happening to me is beyond anything they could believe anyway![Wait=500][Space=2]
 ...[Wait=500][Space=2]
-[Color=Magenta][Beep=True]It[Wait=500][Beep=True] wO[Wait=500][Beep=True] uLd[Wait=500][Beep=True] bE uS[Wait=500][Beep=True] eLLeSs.[Wait=500][Beep=True]  Ke[Wait=500][Beep=True] p tHe[Wait=500][Beep=True] CaLL[Wait=500][Beep=True] gO[Wait=500][Beep=True] iNg.[Color=White][Wait=500][Space=2]
+[Color=Magenta][Beep=True]It[Wait=500][Beep=True] wO[Wait=500][Beep=True] uLd[Wait=500][Beep=True] bE uS[Wait=500][Beep=True] eLLeSs.[Wait=500][Beep=True] Ke[Wait=500][Beep=True] p tHe[Wait=500][Beep=True] CaLL[Wait=500][Beep=True] gO[Wait=500][Beep=True] iNg.[Color=White][Wait=500][Space=2]
 ]
 [Choices=
 [Choice1=[NextScene=23][Content=Yeah, I'm calling the police. Hold on, I'll call you back.]]
@@ -700,7 +700,7 @@ Oh...[Wait=500] Looks like the beeping sound sto-[Wait=500] [Color=Gray]*BOOOM*[
 [Color=Gray]*Static*[Color=White]...[Wait=500][Space=2]
 .[Wait=500].[Wait=500].[Wait=500][Space=2]
 [Color=Red]--SIGNAL LOST--[Color=White][Wait=500][Space=2]
-[Color=Red]{YOU FAIL TO FIND THE RIGHT PASSWORD. MAYBE IF YOU'D TRIED HARDER?}[Color=White][Wait=500][Space=2]
+[Color=Red]{YOU FAILED TO FIND THE RIGHT PASSWORD. MAYBE IF YOU'D TRIED HARDER?}[Color=White][Wait=500][Space=2]
 [Color=Red]BAD ENDING.[Color=White][Wait=500][Space=2]
 ]
 [Choices=

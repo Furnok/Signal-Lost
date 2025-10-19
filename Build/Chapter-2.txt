@@ -631,9 +631,7 @@ I don't know what I'll find here, but I'm going inside anyway...[Wait=500][Space
 [Color=Gray]*Door squeak*[Color=White]...[Wait=500][Space=2]
 ]
 [Choices=
-[Choice1=[NextScene=54][Content=What if you don't find any fuse?]]
-[Choice2=[NextScene=58][Content=What if there was someone down there?]]
-[Choice3=[NextScene=61][Content=What if it's a trap?]]
+[Choice1=[NextScene=53][Content=What are you expecting to find here?]]
 ]
 ]
 

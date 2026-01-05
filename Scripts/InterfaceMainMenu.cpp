@@ -285,7 +285,7 @@ void InterfaceMainMenu::DisplayCredits(Utils& utils, SetupConsole& setupConsole)
 
 	SetConsoleOutputCP(CP_UTF8);
 
-	utils.DrawMenuItems(creditsItems, boxLeft, boxTop);
+	utils.DrawMenuItems(creditsItems, box2Left, box2Top);
 
 	SetConsoleOutputCP(originalCP);
 

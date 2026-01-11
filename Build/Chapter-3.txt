@@ -1202,7 +1202,7 @@ It's looking at me...[Wait=500][Space=2]
 I-I'm petrified...[Wait=500][Space=2]
 ...[Wait=500] He's not n-OH MY GOD IT'S RUNNING TOWARDS ME HELP!!!![Wait=500][Space=2]
 WHAT IS THE WAY BACK TO THE ENTRANCE?!!![Wait=500][Space=2]
-[Color=Magenta][Beep=True]ReMeM[Wait=500][Beep=True]beR yOuR[Wait=500][Beep=True]  pAtH tO[Wait=500][Beep=True]  tHe ViVa[Wait=500][Beep=True]rIuM[Wait=500],[Beep=True]  bUt bAc[Wait=500][Beep=True]kWaRdS![Color=White][Wait=500][Space=2]
+[Color=Magenta][Beep=True]ReMeM[Wait=500][Beep=True]beR yOuR[Wait=500][Beep=True]  pAtH tO[Wait=500][Beep=True]  tHe ViVa[Wait=500][Beep=True]rIuM[Wait=500][Beep=True],  bUt bAc[Wait=500][Beep=True]kWaRdS![Color=White][Wait=500][Space=2]
 ]
 [Choices=
 [Choice1=[Default=True][NextScene=100][Content=GO NORTH!]]

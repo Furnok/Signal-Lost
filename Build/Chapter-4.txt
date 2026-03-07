@@ -297,7 +297,7 @@ M-...[Wait=500] Me?[Wait=500] As I've said before I-...[Wait=500][Space=2]
 [Color=Magenta][Beep=True]OnE[Wait=500][Beep=True]  oF tHe[Wait=500][Beep=True]  pReVi[Wait=500][Beep=True]oUs.[Color=White][Wait=500] [Color=Gray]*Static*[Color=White]...[Wait=500][Space=2]
 [Color=Magenta][Beep=True]I'M[Wait=500][Beep=True]  hErE tO[Wait=500][Beep=True]  hElP yOu.[Wait=500][Beep=True]  I'M aBlE[Wait=500][Beep=True]  tO cOmMu[Wait=500][Beep=True]nIcAtE tHrOuGh[Wait=500][Beep=True]  tHe dEsA[Wait=500][Beep=True]fEcTeD cOnTrOl.[Color=White][Wait=500][Space=2]
 [Color=Gray]*Static*[Color=White]...[Wait=500][Space=2]
-[Color=Magenta][Beep=True]SuR[Wait=500]viVoR[Wait=500][Beep=True],  i’M tRy[Wait=500][Beep=True]iNg tO gEt[Wait=500][Beep=True]  oThErS oUt[Wait=500][Beep=True]  oF hIs[Wait=500][Beep=True]  tRaPs.[Color=White][Wait=500][Space=2]
+[Color=Magenta][Beep=True]SuR[Wait=500]viVoR[Wait=500][Beep=True],  i'M tRy[Wait=500][Beep=True]iNg tO gEt[Wait=500][Beep=True]  oThErS oUt[Wait=500][Beep=True]  oF hIs[Wait=500][Beep=True]  tRaPs.[Color=White][Wait=500][Space=2]
 Once again, I do NOT know why I'm here nor about any kind of experiments, just help me, alright?[Wait=500][Space=2]
 ]
 [Choices=
@@ -835,7 +835,7 @@ I-I'm starving.[Wait=500][Space=2]
 [Scene=64
 [Content=
 [Color=Magenta][Beep=True]AlL oF[Wait=500][Beep=True]  oUr lIvEs[Wait=500][Beep=True],  wE lIvEd[Wait=500][Beep=True]  tHeRe wItHoUt[Wait=500][Beep=True]  kNoWiNg.[Wait=500][Beep=True]  SaMe mEmOrIeS[Wait=500][Beep=True],  sAmE.[Color=White][Wait=500] [Color=Gray]*Static*[Color=White]...[Wait=500][Space=2]
-[Color=Magenta][Beep=True]SoMe[Wait=500][Beep=True]  aGe tO[Wait=500][Beep=True]  fIgHt iT[Wait=500][Beep=True]  lOnGeR.[Wait=500][Beep=True]  I’M[Wait=500][Beep=True]  oNe oF[Wait=500][Beep=True]  tHeM.[Color=White][Wait=500][Space=2]
+[Color=Magenta][Beep=True]SoMe[Wait=500][Beep=True]  aGe tO[Wait=500][Beep=True]  fIgHt iT[Wait=500][Beep=True]  lOnGeR.[Wait=500][Beep=True]  I'M[Wait=500][Beep=True]  oNe oF[Wait=500][Beep=True]  tHeM.[Color=White][Wait=500][Space=2]
 ...Are you still there?[Wait=500][Space=2]
 [Color=Magenta][Beep=True]ThEr[Wait=500][Beep=True]e's fOo[Wait=500][Beep=True]d iN[Wait=500][Beep=True]  tHe dAm[Wait=500][Beep=True]p aReA[Wait=500][Beep=True],  tHe fAcTo[Wait=500][Beep=True]ry uSeD[Wait=500][Beep=True]  tO pRoDu[Wait=500][Beep=True]ce iT[Wait=500][Beep=True]  aS wElL.[Color=White][Wait=500][Space=2]
 ]
@@ -1370,7 +1370,7 @@ I-I'll do what you tell.[Wait=500] You've been of great help up until there.[Wai
 [Color=Magenta][Beep=True]THeY[Wait=500][Beep=True]  mUsT[Wait=500][Beep=True]  bE qUi[Wait=500][Beep=True]cK,  tHe[Wait=500][Beep=True]  rOoMs[Wait=500][Beep=True]  sWiTcH[Wait=500][Beep=True]  lOcAtIoN[Wait=500][Beep=True]  qUiTe[Wait=500][Beep=True]  fReQuEnTlY.[Color=White][Wait=500][Space=2]
 ]
 [Choices=
-[Choice1=[NextScene=104][Content=The person on the line can help you, they’ve been of great help to me as well.]]
+[Choice1=[NextScene=104][Content=The person on the line can help you, they've been of great help to me as well.]]
 ]
 ]
 
@@ -1474,7 +1474,7 @@ Are you... talking about the thing's life?[Wait=500][Space=2]
 What-...[Wait=500] What do you mean?[Wait=500] What have you done to me?[Wait=500] Why am I here?[Wait=500][Space=2]
 ]
 [Choices=
-[Choice1=[NextScene=113][Content=I’m as lost as you! What does any of that mean?]]
+[Choice1=[NextScene=113][Content=I'm as lost as you! What does any of that mean?]]
 ]
 ]
 
@@ -1487,7 +1487,7 @@ Who am I?[Wait=500] What do you mean, grown?[Wait=500][Space=2]
 So, are we...[Wait=500] clones of you?[Wait=500][Space=2]
 ]
 [Choices=
-[Choice1=[NextScene=114][Content=I didn’t know anything about that!]]
+[Choice1=[NextScene=114][Content=I didn't know anything about that!]]
 [Choice2=[NextScene=114][Content=This surely is a dream...]]
 ]
 ]
@@ -1499,7 +1499,7 @@ Wait![Wait=500] What do you mean by plan?[Wait=500][Space=2]
 [Color=Magenta]Don't you want to stop all of this?[Color=White][Wait=500][Space=2]
 [Color=Magenta]If we just escape, he'll just create more of us. We have to stop this.[Color=White][Wait=500][Space=2]
 I...[Wait=500] That's true.[Wait=500][Space=2]
-I don't want other people to go through what we’ve been, no matter if they're clones or not.[Wait=500][Space=2]
+I don't want other people to go through what we've been, no matter if they're clones or not.[Wait=500][Space=2]
 ]
 [Choices=
 [Choice1=[NextScene=115][Content=That's insanity! How are you going to stop this scientist?]]
@@ -1554,7 +1554,7 @@ I-I hope to see you again![Wait=500][Space=2]
 ]
 [Choices=
 [Choice1=[NextScene=119][Content=...Did they just throw me like garbage?]]
-[Choice2=[NextScene=119][Content=I guess it’s for the best.]]
+[Choice2=[NextScene=119][Content=I guess it's for the best.]]
 [Choice3=[NextScene=119][Content=NOOOO COME BACK!]]
 ]
 ]
@@ -1604,7 +1604,7 @@ Though it's good to think I could get out in case things go sour.[Wait=500][Spac
 [Scene=122
 [Content=
 Wah-...[Wait=500] OH SH...[Wait=500][Space=2]
-[Color=Gray]*Whisper*[Color=White]... T-There's...[Wait=500] It’s the thing that chased me in the vent...[Wait=500][Space=2]
+[Color=Gray]*Whisper*[Color=White]... T-There's...[Wait=500] It's the thing that chased me in the vent...[Wait=500][Space=2]
 It's o-on the catwalks...[Wait=500][Space=2]
 ...[Wait=500] Wait is that the...[Wait=500][Space=2]
 [Color=Magenta][Beep=True]DoN[Wait=500][Beep=True]'t dO[Wait=500][Beep=True] aNyThInG[Wait=500][Beep=True] sTuPiD[Wait=500][Beep=True],  i'M[Wait=500][Beep=True] gOnNa[Wait=500][Beep=True] dIsTrAcT[Wait=500][Beep=True] tHeM.[Color=White][Wait=500][Space=2]

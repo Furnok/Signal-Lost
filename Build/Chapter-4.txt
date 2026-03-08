@@ -562,8 +562,8 @@ It's cool that it brings back memories, but it's so useless right now.[Wait=500]
 [Scene=43
 [Content=
 There's a cork board covered in blank papers.[Wait=500][Space=2]
-Oh yeah, also the passcode: [Color=Green]7734[Color=White].[Wait=500][Space=2]
-Hold it! The lockpad is [Color=Green]3 digits[Color=White], so it won't fit! [Color=Gray]*Demented laugh*[Color=White]...[Wait=500][Space=2]
+Oh yeah, also the passcode: [Color=Green]169[Color=White].[Wait=500][Space=2]
+Hold it! The lockpad is [Color=Green]3 digits[Color=White], so it fit! [Color=Gray]*Demented laugh*[Color=White]...[Wait=500][Space=2]
 ]
 [Choices=
 [Choice1=[NextScene=44][Content=Calm down and try this.]]
@@ -575,10 +575,10 @@ Hold it! The lockpad is [Color=Green]3 digits[Color=White], so it won't fit! [Co
 Sure. First digit?[Wait=500][Space=2]
 ]
 [Choices=
-[Choice1=[NextScene=46][Content=3.]]
+[Choice1=[NextScene=46][Content=1.]]
 [Choice2=[NextScene=46][Content=4.]]
 [Choice3=[NextScene=45][Content=6.]]
-[Choice4=[NextScene=46][Content=7.]]
+[Choice4=[NextScene=46][Content=9.]]
 ]
 ]
 
@@ -587,10 +587,10 @@ Sure. First digit?[Wait=500][Space=2]
 Then?[Wait=500][Space=2]
 ]
 [Choices=
-[Choice1=[NextScene=48][Content=3.]]
+[Choice1=[NextScene=48][Content=1.]]
 [Choice2=[NextScene=48][Content=4.]]
-[Choice3=[NextScene=47][Content=6.]]
-[Choice4=[NextScene=48][Content=7.]]
+[Choice3=[NextScene=48][Content=6.]]
+[Choice4=[NextScene=47][Content=9.]]
 ]
 ]
 
@@ -599,10 +599,10 @@ Then?[Wait=500][Space=2]
 Then?[Wait=500][Space=2]
 ]
 [Choices=
-[Choice1=[NextScene=48][Content=3.]]
+[Choice1=[NextScene=48][Content=1.]]
 [Choice2=[NextScene=48][Content=4.]]
 [Choice3=[NextScene=48][Content=6.]]
-[Choice4=[NextScene=48][Content=7.]]
+[Choice4=[NextScene=48][Content=9.]]
 ]
 ]
 
@@ -611,10 +611,10 @@ Then?[Wait=500][Space=2]
 Then?[Wait=500][Space=2]
 ]
 [Choices=
-[Choice1=[NextScene=50][Content=3.]]
+[Choice1=[NextScene=49][Content=1.]]
 [Choice2=[NextScene=50][Content=4.]]
-[Choice3=[NextScene=49][Content=6.]]
-[Choice4=[NextScene=50][Content=7.]]
+[Choice3=[NextScene=50][Content=6.]]
+[Choice4=[NextScene=50][Content=9.]]
 ]
 ]
 
@@ -623,16 +623,16 @@ Then?[Wait=500][Space=2]
 Then?[Wait=500][Space=2]
 ]
 [Choices=
-[Choice1=[NextScene=50][Content=3.]]
+[Choice1=[NextScene=50][Content=1.]]
 [Choice2=[NextScene=50][Content=4.]]
 [Choice3=[NextScene=50][Content=6.]]
-[Choice4=[NextScene=50][Content=7.]]
+[Choice4=[NextScene=50][Content=9.]]
 ]
 ]
 
 [Scene=49
 [Content=
-And we got it open. [Color=Green]666[Color=White]. What kind of protection is that?[Wait=500][Space=2]
+And we got it open. [Color=Green]691[Color=White]. What kind of protection is that?[Wait=500][Space=2]
 How'd you figure that out?[Wait=500][Space=2]
 ]
 [Choices=
@@ -646,7 +646,7 @@ How'd you figure that out?[Wait=500][Space=2]
 [Content=
 Nope. Not opening.[Wait=500][Space=2]
 [Color=Magenta][Beep=True]NeVe[Wait=500][Beep=True]r fLiP[Wait=500][Beep=True]peD a[Wait=500][Beep=True]  cAlC[Wait=500][Beep=True]uLaTo[Wait=500][Beep=True]r bEf[Wait=500][Beep=True]oRe?[Color=White][Wait=500][Space=2]
-7734, upside-down calculator... can you work something out with this?[Wait=500][Space=2]
+[Color=Green]169, upside-down calculator[Color=White]... can you work something out with this?[Wait=500][Space=2]
 ]
 [Choices=
 [Choice1=[NextScene=44][Content=Okay, let's try something else.]]
@@ -770,7 +770,7 @@ And these big tubes...[Wait=500] This place isn't for making shoes, that's for s
 About my size.[Wait=500] They're all connected to a dense net of wires on the ground.[Wait=500][Space=2]
 Almost makes it hard to navigate.[Wait=500][Space=2]
 Also smells quite odd.[Wait=500] It's both off-putting...[Wait=500] and weirdly comforting...[Wait=500][Space=2]
-[Color=Magenta][Beep=True]He[Wait=500][Beep=True]'s pLaY[Wait=500][Beep=True]iNg wIt[Wait=500][Beep=True]h yOu.[Wait=500][Beep=True]  WHy[Wait=500][Beep=True]  bRiNg[Wait=500][Beep=True]  [Color=Gray]*Static*[Color=White]...[Wait=500][Beep=True]  uP?[Color=White][Wait=500][Space=2]
+[Color=Magenta][Beep=True]He[Wait=500][Beep=True]'s pLaY[Wait=500][Beep=True]iNg wIt[Wait=500][Beep=True]h yOu.[Wait=500][Beep=True]  WHy[Wait=500][Beep=True]  bRiNg[Wait=500][Beep=True]  [Color=Gray]*Static*[Color=White]...[Wait=500][Color=Magenta][Beep=True]  uP?[Color=White][Wait=500][Space=2]
 ]
 [Choices=
 [Choice1=[NextScene=61][Content=To the person interfering, what's that about?]]
@@ -795,7 +795,7 @@ It's an...[Wait=500] ...[Wait=500] overwhelming view...[Wait=500] This looks lik
 [Content=
 What's that about a per...[Wait=500] Oh[Wait=500], they came back.[Wait=500][Space=2]
 [Color=Gray]*Static*[Color=White]...[Wait=500][Space=2]
-[Color=Magenta][Beep=True]ThEs[Wait=500][Beep=True]e aRe[Wait=500][Beep=True]  oLd[Wait=500][Beep=True]  [Color=Gray]*Static*[Color=White]...[Wait=500][Beep=True]  fAmIlIaR[Wait=500][Beep=True]  pLaCe[Wait=500][Beep=True]  fOr[Wait=500][Beep=True]  aLl[Wait=500][Beep=True]  oF uS.[Wait=500][Beep=True]  GrOwN[Wait=500][Beep=True]  aNd[Wait=500][Beep=True]  fEd[Wait=500][Beep=True]  [Color=Gray]*Static*[Color=White]...[Wait=500][Beep=True]  tHoSe.[Color=White][Wait=500][Space=2]
+[Color=Magenta][Beep=True]ThEs[Wait=500][Beep=True]e aRe[Wait=500][Beep=True]  oLd[Wait=500][Beep=True]  [Color=Gray]*Static*[Color=White]...[Wait=500][Color=Magenta][Beep=True]  fAmIlIaR[Wait=500][Beep=True]  pLaCe[Wait=500][Beep=True]  fOr[Wait=500][Beep=True]  aLl[Wait=500][Beep=True]  oF uS.[Wait=500][Beep=True]  GrOwN[Wait=500][Beep=True]  aNd[Wait=500][Beep=True]  fEd[Wait=500][Beep=True]  [Color=Gray]*Static*[Color=White]...[Wait=500][Color=Magenta][Beep=True]  tHoSe.[Color=White][Wait=500][Space=2]
 [Color=Magenta][Beep=True]NeW[Wait=500][Beep=True]  oNeS[Wait=500][Beep=True]  iN[Wait=500][Beep=True]  tHe[Wait=500][Beep=True]  mUsEuM.[Color=White][Wait=500][Space=2]
 ]
 [Choices=
